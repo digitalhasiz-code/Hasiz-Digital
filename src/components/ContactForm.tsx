@@ -19,12 +19,16 @@ interface FormData {
 }
 
 const serviceOptions = [
+  "Landing Page (Special Offer)",
   "WordPress Development",
   "Shopify Development",
   "Custom Web Development",
-  "AI Integration",
   "Web Application Development",
+  "AI Integration",
   "UI/UX Design",
+  "Website Redesign",
+  "Speed Optimization",
+  "Website Maintenance & SEO",
   "Other"
 ];
 

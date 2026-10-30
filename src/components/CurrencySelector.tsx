@@ -89,3 +89,4 @@ export default function CurrencySelector({ variant = "header", className = "" }:
     </div>
   );
 }
+

@@ -5,74 +5,322 @@ export interface CurrencyConfig {
   symbol: string;
   name: string;
   flag: string;
-  format: (amount: number) => string;
+  prefix: string;
+  format: (amount: number, isMonthly?: boolean) => string;
 }
 
 export const supportedCurrencies: Record<CurrencyCode, CurrencyConfig> = {
   USD: {
     code: "USD",
     symbol: "$",
-    name: "US Dollar (Global)",
+    name: "Global / USA",
     flag: "🇺🇸",
-    format: (amt) => `$${amt.toLocaleString("en-US")}`
+    prefix: "$",
+    format: (amt, isMonthly) => `$${amt.toLocaleString("en-US")}${isMonthly ? "/mo" : ""}`
   },
   PKR: {
     code: "PKR",
-    symbol: "₨",
-    name: "Pakistani Rupee (Pakistan)",
+    symbol: "Rs.",
+    name: "Pakistan",
     flag: "🇵🇰",
-    format: (amt) => `₨ ${amt.toLocaleString("en-PK")}`
+    prefix: "Rs. ",
+    format: (amt, isMonthly) => `Rs. ${amt.toLocaleString("en-PK")}${isMonthly ? "/mo" : ""}`
   },
   GBP: {
     code: "GBP",
     symbol: "£",
-    name: "British Pound (UK)",
+    name: "United Kingdom",
     flag: "🇬🇧",
-    format: (amt) => `£${amt.toLocaleString("en-GB")}`
+    prefix: "£",
+    format: (amt, isMonthly) => `£${amt.toLocaleString("en-GB")}${isMonthly ? "/mo" : ""}`
   },
   EUR: {
     code: "EUR",
     symbol: "€",
-    name: "Euro (Europe)",
+    name: "Europe",
     flag: "🇪🇺",
-    format: (amt) => `€${amt.toLocaleString("de-DE")}`
+    prefix: "€",
+    format: (amt, isMonthly) => `€${amt.toLocaleString("de-DE")}${isMonthly ? "/mo" : ""}`
   },
   AED: {
     code: "AED",
     symbol: "AED",
-    name: "UAE Dirham (UAE / Gulf)",
+    name: "UAE",
     flag: "🇦🇪",
-    format: (amt) => `AED ${amt.toLocaleString("en-AE")}`
+    prefix: "AED ",
+    format: (amt, isMonthly) => `AED ${amt.toLocaleString("en-AE")}${isMonthly ? "/mo" : ""}`
   },
   SAR: {
     code: "SAR",
     symbol: "SAR",
-    name: "Saudi Riyal (KSA)",
+    name: "Saudi Arabia",
     flag: "🇸🇦",
-    format: (amt) => `SAR ${amt.toLocaleString("en-SA")}`
+    prefix: "SAR ",
+    format: (amt, isMonthly) => `SAR ${amt.toLocaleString("en-SA")}${isMonthly ? "/mo" : ""}`
   },
   CAD: {
     code: "CAD",
     symbol: "C$",
-    name: "Canadian Dollar (Canada)",
+    name: "Canada",
     flag: "🇨🇦",
-    format: (amt) => `C$${amt.toLocaleString("en-CA")}`
+    prefix: "C$",
+    format: (amt, isMonthly) => `C$${amt.toLocaleString("en-CA")}${isMonthly ? "/mo" : ""}`
   },
   AUD: {
     code: "AUD",
     symbol: "A$",
-    name: "Australian Dollar (Australia)",
+    name: "Australia",
     flag: "🇦🇺",
-    format: (amt) => `A$${amt.toLocaleString("en-AU")}`
+    prefix: "A$",
+    format: (amt, isMonthly) => `A$${amt.toLocaleString("en-AU")}${isMonthly ? "/mo" : ""}`
   },
   INR: {
     code: "INR",
     symbol: "₹",
-    name: "Indian Rupee (India)",
+    name: "India",
     flag: "🇮🇳",
-    format: (amt) => `₹${amt.toLocaleString("en-IN")}`
+    prefix: "₹",
+    format: (amt, isMonthly) => `₹${amt.toLocaleString("en-IN")}${isMonthly ? "/mo" : ""}`
   }
 };
+
+export interface MasterServicePrice {
+  id: string;
+  name: string;
+  category: "Development" | "E-Commerce" | "Optimization & SEO" | "Maintenance";
+  description: string;
+  isMonthly?: boolean;
+  isSpecialLandingPage?: boolean;
+  prices: Record<CurrencyCode, number>;
+}
+
+// Master Pricing Table from client's official rate card (with Landing Page reduced to Rs. 15,000 PKR / $190 USD)
+export const masterPricingTable: MasterServicePrice[] = [
+  {
+    id: "landing-page",
+    name: "Landing Page",
+    category: "Development",
+    isSpecialLandingPage: true,
+    description: "Ultra-fast, conversion-focused single page designed to capture high-intent leads and drive direct sales.",
+    prices: {
+      USD: 190,
+      PKR: 15000,
+      GBP: 150,
+      EUR: 175,
+      AED: 700,
+      SAR: 720,
+      CAD: 260,
+      AUD: 290,
+      INR: 13500
+    }
+  },
+  {
+    id: "wordpress-website",
+    name: "WordPress Website",
+    category: "Development",
+    description: "Complete bespoke WordPress business website with responsive mobile layout, clean code, and zero theme bloat.",
+    prices: {
+      USD: 500,
+      PKR: 45000,
+      GBP: 400,
+      EUR: 450,
+      AED: 1800,
+      SAR: 1900,
+      CAD: 690,
+      AUD: 760,
+      INR: 40000
+    }
+  },
+  {
+    id: "custom-corporate-website",
+    name: "Custom Corporate Website",
+    category: "Development",
+    description: "Enterprise corporate brand website engineered with Next.js/Tailwind for maximum performance and brand authority.",
+    prices: {
+      USD: 900,
+      PKR: 80000,
+      GBP: 700,
+      EUR: 800,
+      AED: 3300,
+      SAR: 3400,
+      CAD: 1240,
+      AUD: 1370,
+      INR: 72000
+    }
+  },
+  {
+    id: "elementor-website",
+    name: "Elementor Website",
+    category: "Development",
+    description: "Speed-optimized Elementor Pro build with customized visual components and easy client marketing controls.",
+    prices: {
+      USD: 350,
+      PKR: 35000,
+      GBP: 280,
+      EUR: 320,
+      AED: 1300,
+      SAR: 1350,
+      CAD: 480,
+      AUD: 530,
+      INR: 30000
+    }
+  },
+  {
+    id: "woocommerce-development",
+    name: "WooCommerce Development",
+    category: "E-Commerce",
+    description: "Full e-commerce store with catalog, shopping cart, custom checkout, and automated payment gateway integrations.",
+    prices: {
+      USD: 800,
+      PKR: 75000,
+      GBP: 650,
+      EUR: 700,
+      AED: 3000,
+      SAR: 3000,
+      CAD: 1100,
+      AUD: 1220,
+      INR: 68000
+    }
+  },
+  {
+    id: "shopify-development",
+    name: "Shopify Development",
+    category: "E-Commerce",
+    description: "Bespoke high-converting Shopify storefront with custom Liquid architecture, cart upsells, and zero app bloat.",
+    prices: {
+      USD: 750,
+      PKR: 70000,
+      GBP: 600,
+      EUR: 680,
+      AED: 2800,
+      SAR: 2850,
+      CAD: 1030,
+      AUD: 1140,
+      INR: 63000
+    }
+  },
+  {
+    id: "custom-web-development",
+    name: "Custom Web Development",
+    category: "Development",
+    description: "Tailored full-stack web application or portal built with React, Next.js, TypeScript, and robust database backends.",
+    prices: {
+      USD: 1200,
+      PKR: 100000,
+      GBP: 950,
+      EUR: 1100,
+      AED: 4400,
+      SAR: 4500,
+      CAD: 1650,
+      AUD: 1820,
+      INR: 90000
+    }
+  },
+  {
+    id: "web-application-saas",
+    name: "Web Application / SaaS",
+    category: "Development",
+    description: "Full production SaaS MVP or enterprise application with database, authentication, billing tiers, and dashboards.",
+    prices: {
+      USD: 2500,
+      PKR: 250000,
+      GBP: 2000,
+      EUR: 2300,
+      AED: 9200,
+      SAR: 9400,
+      CAD: 3450,
+      AUD: 3800,
+      INR: 225000
+    }
+  },
+  {
+    id: "ai-integration",
+    name: "AI Integration",
+    category: "Development",
+    description: "Smart LLM workflow automation, AI customer triage, document synthesis, and custom Gemini/OpenAI agents.",
+    prices: {
+      USD: 500,
+      PKR: 50000,
+      GBP: 400,
+      EUR: 450,
+      AED: 1850,
+      SAR: 1900,
+      CAD: 690,
+      AUD: 760,
+      INR: 45000
+    }
+  },
+  {
+    id: "website-redesign",
+    name: "Website Redesign",
+    category: "Optimization & SEO",
+    description: "Modern visual makeover, mobile UX optimization, and conversion-focused restructuring of your existing site.",
+    prices: {
+      USD: 400,
+      PKR: 40000,
+      GBP: 320,
+      EUR: 360,
+      AED: 1500,
+      SAR: 1500,
+      CAD: 550,
+      AUD: 610,
+      INR: 36000
+    }
+  },
+  {
+    id: "speed-optimization",
+    name: "Speed Optimization",
+    category: "Optimization & SEO",
+    description: "Core Web Vitals audit, image compression, script tree-shaking, and sub-second load time guarantee.",
+    prices: {
+      USD: 150,
+      PKR: 15000,
+      GBP: 120,
+      EUR: 135,
+      AED: 550,
+      SAR: 575,
+      CAD: 210,
+      AUD: 230,
+      INR: 13500
+    }
+  },
+  {
+    id: "website-maintenance",
+    name: "Website Maintenance",
+    category: "Maintenance",
+    isMonthly: true,
+    description: "Monthly security patches, plugin/core updates, 24/7 uptime monitoring, daily backups, and bug fixes.",
+    prices: {
+      USD: 100,
+      PKR: 8000,
+      GBP: 80,
+      EUR: 90,
+      AED: 370,
+      SAR: 375,
+      CAD: 140,
+      AUD: 150,
+      INR: 7200
+    }
+  },
+  {
+    id: "seo-services",
+    name: "SEO Services",
+    category: "Optimization & SEO",
+    isMonthly: true,
+    description: "Technical SEO audits, keyword research, on-page optimization, Schema markup, and Search Console management.",
+    prices: {
+      USD: 300,
+      PKR: 25000,
+      GBP: 240,
+      EUR: 275,
+      AED: 1100,
+      SAR: 1125,
+      CAD: 410,
+      AUD: 450,
+      INR: 22500
+    }
+  }
+];
 
 export interface PricingTier {
   id: string;
@@ -94,92 +342,96 @@ export interface ServicePricing {
 export const servicesPricing: Record<string, ServicePricing> = {
   "wordpress-development": {
     slug: "wordpress-development",
+    // Starts at Landing Page Special (Rs. 15,000 / $190) or WordPress Website (Rs. 45,000 / $500)
     startingPrice: {
-      USD: 1000,
-      PKR: 95000,
-      GBP: 790,
-      EUR: 920,
-      AED: 3670,
-      SAR: 3750,
-      CAD: 1350,
-      AUD: 1500,
-      INR: 85000
+      USD: 500,
+      PKR: 45000,
+      GBP: 400,
+      EUR: 450,
+      AED: 1800,
+      SAR: 1900,
+      CAD: 690,
+      AUD: 760,
+      INR: 40000
     },
     tiers: [
       {
-        id: "wp-starter",
-        name: "Core Custom WordPress",
-        badge: "Most Popular For Businesses",
-        popular: true,
-        timeline: "2 – 3 Weeks",
-        summary: "Bespoke clean-coded theme engineering, 100% mobile responsive, ultra-fast speed, and zero plugin bloat.",
+        id: "wp-landing",
+        name: "High-Converting Landing Page",
+        badge: "Special Offer",
+        popular: false,
+        timeline: "4 – 7 Days",
+        summary: "Single-page high-converting sales funnel, lead generation layout, mobile-first responsiveness, and form integrations.",
         prices: {
-          USD: 1000,
-          PKR: 95000,
-          GBP: 790,
-          EUR: 920,
-          AED: 3670,
-          SAR: 3750,
-          CAD: 1350,
-          AUD: 1500,
-          INR: 85000
+          USD: 190,
+          PKR: 15000,
+          GBP: 150,
+          EUR: 175,
+          AED: 700,
+          SAR: 720,
+          CAD: 260,
+          AUD: 290,
+          INR: 13500
         },
         features: [
+          "Special low-cost landing page package",
+          "Ultra-fast sub-second loading speed",
+          "Lead capture form & WhatsApp button",
+          "Conversion-focused copywriting structure",
+          "SEO meta tags & social share card",
+          "15 days technical warranty"
+        ]
+      },
+      {
+        id: "wp-starter",
+        name: "Standard WordPress Website",
+        badge: "Most Popular",
+        popular: true,
+        timeline: "1 – 2 Weeks",
+        summary: "Bespoke clean-coded theme engineering, 100% mobile responsive, ultra-fast speed, and zero plugin bloat.",
+        prices: {
+          USD: 500,
+          PKR: 45000,
+          GBP: 400,
+          EUR: 450,
+          AED: 1800,
+          SAR: 1900,
+          CAD: 690,
+          AUD: 760,
+          INR: 40000
+        },
+        features: [
+          "Complete multi-page WordPress business website",
           "Bespoke lightweight theme (Zero slow templates)",
           "Sub-second page load (<1.2s Core Web Vitals)",
           "Custom post types & flexible Gutenberg blocks",
           "Advanced SEO technical setup & schema",
-          "Hardened security & anti-malware configuration",
           "30 days post-launch technical support"
         ]
       },
       {
         id: "wp-growth",
-        name: "WooCommerce & E-Commerce",
-        timeline: "3 – 4 Weeks",
+        name: "WooCommerce Storefront",
+        timeline: "2 – 3 Weeks",
         summary: "High-converting online store with seamless checkout, inventory tracking, payment gateways, and CRM sync.",
         prices: {
-          USD: 1800,
-          PKR: 175000,
-          GBP: 1420,
-          EUR: 1650,
-          AED: 6600,
-          SAR: 6750,
-          CAD: 2450,
-          AUD: 2700,
-          INR: 150000
+          USD: 800,
+          PKR: 75000,
+          GBP: 650,
+          EUR: 700,
+          AED: 3000,
+          SAR: 3000,
+          CAD: 1100,
+          AUD: 1220,
+          INR: 68000
         },
         features: [
-          "Everything in Core Custom WordPress",
+          "Everything in Standard WordPress Website",
           "Full WooCommerce store with optimized checkout",
           "Stripe / PayPal / Local payment gateway integrations",
           "Automated transactional emails & customer portal",
           "Speed-optimized product filters & search",
           "60 days post-launch technical warranty"
-        ]
-      },
-      {
-        id: "wp-enterprise",
-        name: "Headless / Enterprise WP",
-        timeline: "4 – 6 Weeks",
-        summary: "Decoupled Next.js frontend with WordPress headless CMS backend for supreme speed and unlimited scalability.",
-        prices: {
-          USD: 2900,
-          PKR: 285000,
-          GBP: 2300,
-          EUR: 2680,
-          AED: 10650,
-          SAR: 10875,
-          CAD: 3950,
-          AUD: 4350,
-          INR: 245000
-        },
-        features: [
-          "Next.js App Router frontend + WP GraphQL",
-          "Instantaneous sub-500ms page transitions",
-          "Multi-lingual & multi-region localization",
-          "Enterprise staging & CI/CD deployment pipeline",
-          "Dedicated principal engineer & SLA support"
         ]
       }
     ]
@@ -187,38 +439,64 @@ export const servicesPricing: Record<string, ServicePricing> = {
   "shopify-development": {
     slug: "shopify-development",
     startingPrice: {
-      USD: 1500,
-      PKR: 145000,
-      GBP: 1190,
-      EUR: 1380,
-      AED: 5500,
-      SAR: 5600,
-      CAD: 2050,
-      AUD: 2280,
-      INR: 125000
+      USD: 750,
+      PKR: 70000,
+      GBP: 600,
+      EUR: 680,
+      AED: 2800,
+      SAR: 2850,
+      CAD: 1030,
+      AUD: 1140,
+      INR: 63000
     },
     tiers: [
       {
+        id: "shopify-landing",
+        name: "Shopify Product Landing Page",
+        badge: "Quick Launch",
+        popular: false,
+        timeline: "5 – 7 Days",
+        summary: "High-converting single product landing page with sticky buy button, dynamic reviews, and one-click checkout.",
+        prices: {
+          USD: 290,
+          PKR: 28000,
+          GBP: 230,
+          EUR: 260,
+          AED: 1050,
+          SAR: 1100,
+          CAD: 400,
+          AUD: 440,
+          INR: 25000
+        },
+        features: [
+          "Focused single-product sales page",
+          "Sticky ATC (Add-To-Cart) & variant pills",
+          "Fast mobile checkout with Apple Pay / Google Pay",
+          "Trust badges, FAQ accordion & social proof",
+          "30 days technical support"
+        ]
+      },
+      {
         id: "shopify-starter",
-        name: "Bespoke Storefront Launch",
-        badge: "Recommended for Growing Brands",
+        name: "Full Shopify Storefront",
+        badge: "Recommended for Brands",
         popular: true,
         timeline: "2 – 3 Weeks",
         summary: "Custom Liquid storefront engineered for high conversion, minimal app dependencies, and lightning speed.",
         prices: {
-          USD: 1500,
-          PKR: 145000,
-          GBP: 1190,
-          EUR: 1380,
-          AED: 5500,
-          SAR: 5600,
-          CAD: 2050,
-          AUD: 2280,
-          INR: 125000
+          USD: 750,
+          PKR: 70000,
+          GBP: 600,
+          EUR: 680,
+          AED: 2800,
+          SAR: 2850,
+          CAD: 1030,
+          AUD: 1140,
+          INR: 63000
         },
         features: [
-          "Custom lightweight Liquid theme architecture",
-          "Conversion-optimized mobile product pages",
+          "Complete bespoke Shopify store setup & theme",
+          "Custom lightweight Liquid architecture",
           "Cart drawer with upsells and free shipping bar",
           "Elimination of slow monthly subscription apps",
           "Payment gateway & shipping rate setup",
@@ -228,50 +506,26 @@ export const servicesPricing: Record<string, ServicePricing> = {
       {
         id: "shopify-growth",
         name: "Advanced Brand Store & Funnels",
-        timeline: "4 – 5 Weeks",
-        summary: "Custom product builders, subscription setups, bundling flows, and automated Klaviyo email integrations.",
+        timeline: "3 – 5 Weeks",
+        summary: "Custom product builders, subscription setups, bundling flows, and automated email marketing integrations.",
         prices: {
-          USD: 2500,
-          PKR: 245000,
-          GBP: 1980,
-          EUR: 2300,
-          AED: 9180,
-          SAR: 9375,
-          CAD: 3400,
-          AUD: 3800,
-          INR: 210000
+          USD: 1400,
+          PKR: 130000,
+          GBP: 1120,
+          EUR: 1280,
+          AED: 5200,
+          SAR: 5350,
+          CAD: 1920,
+          AUD: 2130,
+          INR: 118000
         },
         features: [
-          "Everything in Bespoke Storefront",
+          "Everything in Full Shopify Storefront",
           "Custom bundle builder or dynamic variant selectors",
           "Subscription integration (Recharge / Seal)",
           "Klaviyo automated flows & event tracking",
           "Post-purchase one-click upsell flows",
           "60 days post-launch support & CRO review"
-        ]
-      },
-      {
-        id: "shopify-enterprise",
-        name: "Shopify Plus & Headless Store",
-        timeline: "6 – 8 Weeks",
-        summary: "Headless Next.js storefront via Shopify Storefront API with custom checkout extensions and ERP/WMS sync.",
-        prices: {
-          USD: 4200,
-          PKR: 420000,
-          GBP: 3350,
-          EUR: 3900,
-          AED: 15400,
-          SAR: 15750,
-          CAD: 5750,
-          AUD: 6380,
-          INR: 350000
-        },
-        features: [
-          "Headless Next.js 14 frontend + Storefront API",
-          "Global multi-currency & multi-market routing",
-          "Shopify Plus checkout UI extensions",
-          "Custom ERP / WMS fulfillment synchronization",
-          "Dedicated architectural lead & SLA warranty"
         ]
       }
     ]
@@ -279,91 +533,93 @@ export const servicesPricing: Record<string, ServicePricing> = {
   "custom-web-development": {
     slug: "custom-web-development",
     startingPrice: {
-      USD: 2200,
-      PKR: 220000,
-      GBP: 1750,
-      EUR: 2050,
-      AED: 8000,
-      SAR: 8250,
-      CAD: 3000,
-      AUD: 3350,
-      INR: 185000
+      USD: 900,
+      PKR: 80000,
+      GBP: 700,
+      EUR: 800,
+      AED: 3300,
+      SAR: 3400,
+      CAD: 1240,
+      AUD: 1370,
+      INR: 72000
     },
     tiers: [
       {
-        id: "custom-core",
-        name: "Next.js High-Performance Platform",
-        badge: "Modern Tech Stack",
-        popular: true,
-        timeline: "3 – 4 Weeks",
-        summary: "Tailored Next.js + TypeScript website engineered for modern digital authority, SEO supremacy, and sub-second speed.",
+        id: "custom-landing",
+        name: "Next.js High-Conversion Landing Page",
+        badge: "Ultra-Fast",
+        popular: false,
+        timeline: "5 – 7 Days",
+        summary: "Hardened Next.js + Tailwind single-page landing with instant load times, custom animations, and lead capture.",
         prices: {
-          USD: 2200,
-          PKR: 220000,
-          GBP: 1750,
-          EUR: 2050,
-          AED: 8000,
-          SAR: 8250,
-          CAD: 3000,
-          AUD: 3350,
-          INR: 185000
+          USD: 250,
+          PKR: 20000,
+          GBP: 200,
+          EUR: 230,
+          AED: 900,
+          SAR: 950,
+          CAD: 340,
+          AUD: 380,
+          INR: 18000
         },
         features: [
           "Next.js App Router + TypeScript + Tailwind CSS",
           "100/100 Google Lighthouse Core Web Vitals",
-          "Dynamic CMS integration (Sanity / Strapi / Supabase)",
+          "Lead capture with email notification & database",
+          "Enterprise edge security & WAF protection",
+          "30 days technical support"
+        ]
+      },
+      {
+        id: "custom-corporate",
+        name: "Custom Corporate Website",
+        badge: "Corporate Choice",
+        popular: true,
+        timeline: "2 – 3 Weeks",
+        summary: "Tailored Next.js corporate platform engineered for modern digital authority, SEO supremacy, and sub-second speed.",
+        prices: {
+          USD: 900,
+          PKR: 80000,
+          GBP: 700,
+          EUR: 800,
+          AED: 3300,
+          SAR: 3400,
+          CAD: 1240,
+          AUD: 1370,
+          INR: 72000
+        },
+        features: [
+          "Complete multi-page corporate web architecture",
+          "Next.js App Router + TypeScript + Tailwind CSS",
+          "Dynamic CMS integration (Sanity / Supabase)",
           "Enterprise security headers & WAF edge protection",
           "Full Schema.org structured data & social cards",
           "45 days technical warranty & bug-fix guarantee"
         ]
       },
       {
-        id: "custom-growth",
-        name: "Interactive Web Portal & Database",
-        timeline: "5 – 6 Weeks",
+        id: "custom-full",
+        name: "Advanced Custom Web Development",
+        timeline: "4 – 6 Weeks",
         summary: "Custom client dashboard, secure authentication, role-based permissions, and dynamic database workflows.",
         prices: {
-          USD: 3600,
-          PKR: 360000,
-          GBP: 2850,
-          EUR: 3350,
-          AED: 13200,
-          SAR: 13500,
-          CAD: 4900,
-          AUD: 5450,
-          INR: 305000
+          USD: 1200,
+          PKR: 100000,
+          GBP: 950,
+          EUR: 1100,
+          AED: 4400,
+          SAR: 4500,
+          CAD: 1650,
+          AUD: 1820,
+          INR: 90000
         },
         features: [
-          "Everything in High-Performance Platform",
+          "Everything in Custom Corporate Website",
           "Supabase / PostgreSQL relational schema & auth",
           "Client dashboard with role-based access control",
           "Stripe subscriptions & invoicing webhooks",
-          "Automated email notifications via Resend / SendGrid",
+          "Automated email notifications via Resend",
           "60 days direct senior engineer support"
-        ]
-      },
-      {
-        id: "custom-enterprise",
-        name: "Enterprise Multi-Service Architecture",
-        timeline: "7 – 10 Weeks",
-        summary: "High-concurrency microservices, multi-region database replication, and custom third-party API orchestration.",
-        prices: {
-          USD: 5500,
-          PKR: 550000,
-          GBP: 4350,
-          EUR: 5100,
-          AED: 20200,
-          SAR: 20600,
-          CAD: 7500,
-          AUD: 8350,
-          INR: 465000
-        },
-        features: [
-          "Distributed cloud infrastructure & CI/CD pipeline",
-          "High-volume data processing & caching layer (Redis)",
-          "Granular API security, rate limiting & logging",
-          "Comprehensive technical documentation & handover",
-          "Quarterly architecture review & SLA maintenance"
         ]
       }
     ]
@@ -371,34 +627,34 @@ export const servicesPricing: Record<string, ServicePricing> = {
   "ai-integration": {
     slug: "ai-integration",
     startingPrice: {
-      USD: 2800,
-      PKR: 280000,
-      GBP: 2200,
-      EUR: 2580,
-      AED: 10200,
-      SAR: 10500,
-      CAD: 3850,
-      AUD: 4250,
-      INR: 235000
+      USD: 500,
+      PKR: 50000,
+      GBP: 400,
+      EUR: 450,
+      AED: 1850,
+      SAR: 1900,
+      CAD: 690,
+      AUD: 760,
+      INR: 45000
     },
     tiers: [
       {
         id: "ai-starter",
-        name: "Intelligent Workflow Automation",
-        badge: "Immediate ROI",
+        name: "AI Lead & Customer Workflow Integration",
+        badge: "Instant ROI",
         popular: true,
-        timeline: "2 – 3 Weeks",
+        timeline: "1 – 2 Weeks",
         summary: "Automate repetitive operational bottlenecks, customer lead processing, and document synthesis using modern LLMs.",
         prices: {
-          USD: 2800,
-          PKR: 280000,
-          GBP: 2200,
-          EUR: 2580,
-          AED: 10200,
-          SAR: 10500,
-          CAD: 3850,
-          AUD: 4250,
-          INR: 235000
+          USD: 500,
+          PKR: 50000,
+          GBP: 400,
+          EUR: 450,
+          AED: 1850,
+          SAR: 1900,
+          CAD: 690,
+          AUD: 760,
+          INR: 45000
         },
         features: [
           "Custom Gemini / OpenAI API integration",
@@ -410,20 +666,20 @@ export const servicesPricing: Record<string, ServicePricing> = {
         ]
       },
       {
-        id: "ai-growth",
+        id: "ai-rag",
         name: "Custom RAG Knowledgebase Agent",
-        timeline: "4 – 5 Weeks",
+        timeline: "2 – 4 Weeks",
         summary: "Retrieval-Augmented Generation (RAG) assistant connected to your internal documents, databases, and customer history.",
         prices: {
-          USD: 4500,
-          PKR: 450000,
-          GBP: 3580,
-          EUR: 4180,
-          AED: 16500,
-          SAR: 16875,
-          CAD: 6150,
-          AUD: 6850,
-          INR: 380000
+          USD: 1100,
+          PKR: 100000,
+          GBP: 880,
+          EUR: 990,
+          AED: 4050,
+          SAR: 4150,
+          CAD: 1520,
+          AUD: 1670,
+          INR: 88000
         },
         features: [
           "Vector database setup (pgvector / Pinecone)",
@@ -436,26 +692,26 @@ export const servicesPricing: Record<string, ServicePricing> = {
       },
       {
         id: "ai-enterprise",
-        name: "Autonomous Multi-Agent System",
-        timeline: "6 – 8 Weeks",
+        name: "Autonomous Multi-Agent AI System",
+        timeline: "4 – 6 Weeks",
         summary: "Multi-agent autonomous system capable of multi-step reasoning, tool execution, code running, and complex tasks.",
         prices: {
-          USD: 7200,
-          PKR: 720000,
-          GBP: 5700,
-          EUR: 6680,
-          AED: 26400,
-          SAR: 27000,
-          CAD: 9850,
-          AUD: 10950,
-          INR: 610000
+          USD: 2200,
+          PKR: 220000,
+          GBP: 1750,
+          EUR: 2050,
+          AED: 8000,
+          SAR: 8250,
+          CAD: 3000,
+          AUD: 3350,
+          INR: 185000
         },
         features: [
           "Autonomous agentic workflow with self-correction",
           "Function calling & database query orchestration",
           "Comprehensive audit logging & safety rails",
-          "Dedicated fine-tuning or model routing pipeline",
-          "Full IP ownership & source code transfer"
+          "Full IP ownership & source code transfer",
+          "90 days senior engineer support"
         ]
       }
     ]
@@ -463,15 +719,15 @@ export const servicesPricing: Record<string, ServicePricing> = {
   "web-application-development": {
     slug: "web-application-development",
     startingPrice: {
-      USD: 3500,
-      PKR: 350000,
-      GBP: 2790,
-      EUR: 3250,
-      AED: 12850,
-      SAR: 13100,
-      CAD: 4800,
-      AUD: 5300,
-      INR: 295000
+      USD: 2500,
+      PKR: 250000,
+      GBP: 2000,
+      EUR: 2300,
+      AED: 9200,
+      SAR: 9400,
+      CAD: 3450,
+      AUD: 3800,
+      INR: 225000
     },
     tiers: [
       {
@@ -479,21 +735,21 @@ export const servicesPricing: Record<string, ServicePricing> = {
         name: "Production MVP / SaaS Launch",
         badge: "Built for Founders",
         popular: true,
-        timeline: "4 – 6 Weeks",
+        timeline: "3 – 5 Weeks",
         summary: "Turn product vision into a scalable, revenue-generating SaaS web application with auth, database, and billing.",
         prices: {
-          USD: 3500,
-          PKR: 350000,
-          GBP: 2790,
-          EUR: 3250,
-          AED: 12850,
-          SAR: 13100,
-          CAD: 4800,
-          AUD: 5300,
-          INR: 295000
+          USD: 2500,
+          PKR: 250000,
+          GBP: 2000,
+          EUR: 2300,
+          AED: 9200,
+          SAR: 9400,
+          CAD: 3450,
+          AUD: 3800,
+          INR: 225000
         },
         features: [
-          "Full-stack Next.js 14 App Router + React + TypeScript",
+          "Full-stack Next.js App Router + React + TypeScript",
           "PostgreSQL / Supabase relational database architecture",
           "Complete Auth (Email, Google, OAuth, Session security)",
           "Stripe Billing (Monthly / Annual recurring tiers)",
@@ -504,18 +760,18 @@ export const servicesPricing: Record<string, ServicePricing> = {
       {
         id: "webapp-scale",
         name: "Scaled Enterprise Application",
-        timeline: "7 – 10 Weeks",
+        timeline: "5 – 8 Weeks",
         summary: "Multi-tenant B2B platform with team workspaces, audit logs, webhook dispatchers, and granular permissions.",
         prices: {
-          USD: 5800,
-          PKR: 580000,
-          GBP: 4600,
-          EUR: 5380,
-          AED: 21300,
-          SAR: 21750,
-          CAD: 7950,
-          AUD: 8800,
-          INR: 490000
+          USD: 3900,
+          PKR: 390000,
+          GBP: 3100,
+          EUR: 3550,
+          AED: 14300,
+          SAR: 14600,
+          CAD: 5350,
+          AUD: 5900,
+          INR: 350000
         },
         features: [
           "Everything in MVP SaaS",
@@ -529,18 +785,18 @@ export const servicesPricing: Record<string, ServicePricing> = {
       {
         id: "webapp-custom",
         name: "Mission-Critical Cloud Platform",
-        timeline: "10 – 14 Weeks",
-        summary: "High-availability, SOC-2 compliant web application architecture designed for high security and millions of events.",
+        timeline: "8 – 12 Weeks",
+        summary: "High-availability, compliant web application architecture designed for high security and heavy traffic.",
         prices: {
-          USD: 9500,
-          PKR: 950000,
-          GBP: 7550,
-          EUR: 8820,
-          AED: 34800,
-          SAR: 35600,
-          CAD: 13000,
-          AUD: 14400,
-          INR: 805000
+          USD: 5900,
+          PKR: 590000,
+          GBP: 4700,
+          EUR: 5400,
+          AED: 21700,
+          SAR: 22200,
+          CAD: 8100,
+          AUD: 8950,
+          INR: 530000
         },
         features: [
           "Microservices / Serverless edge computing",
@@ -555,91 +811,87 @@ export const servicesPricing: Record<string, ServicePricing> = {
   "ui-ux-design": {
     slug: "ui-ux-design",
     startingPrice: {
-      USD: 1100,
-      PKR: 110000,
-      GBP: 890,
-      EUR: 1020,
-      AED: 4000,
-      SAR: 4120,
-      CAD: 1500,
-      AUD: 1670,
-      INR: 95000
+      USD: 190,
+      PKR: 15000,
+      GBP: 150,
+      EUR: 175,
+      AED: 700,
+      SAR: 720,
+      CAD: 260,
+      AUD: 290,
+      INR: 13500
     },
     tiers: [
       {
-        id: "uiux-starter",
-        name: "Website UI/UX & Interactive Prototype",
-        badge: "Essential for Conversions",
+        id: "uiux-landing",
+        name: "Landing Page UI/UX Prototype",
+        badge: "Special Price",
         popular: true,
-        timeline: "2 – 3 Weeks",
-        summary: "High-converting, bespoke Figma design engineered for optimal user flow, visual credibility, and developer handoff.",
+        timeline: "3 – 5 Days",
+        summary: "High-converting, bespoke Figma landing page design engineered for optimal user flow and rapid development handoff.",
         prices: {
-          USD: 1100,
-          PKR: 110000,
-          GBP: 890,
-          EUR: 1020,
-          AED: 4000,
-          SAR: 4120,
-          CAD: 1500,
-          AUD: 1670,
-          INR: 95000
+          USD: 190,
+          PKR: 15000,
+          GBP: 150,
+          EUR: 175,
+          AED: 700,
+          SAR: 720,
+          CAD: 260,
+          AUD: 290,
+          INR: 13500
         },
         features: [
           "Complete custom Figma file (Desktop & Mobile)",
-          "Competitor research & user flow mapping",
+          "Conversion-optimized user flow mapping",
           "Clickable interactive Figma prototype",
-          "Component library with responsive Auto-Layout",
           "Developer-ready export specs & assets",
-          "Unlimited revisions during active design phase"
+          "Unlimited revisions during active phase"
         ]
       },
       {
-        id: "uiux-growth",
-        name: "Full Product Design & Design System",
-        timeline: "4 – 5 Weeks",
-        summary: "Comprehensive multi-screen web app or e-commerce design system with design tokens, states, and accessibility audits.",
+        id: "uiux-redesign",
+        name: "Complete Website Redesign",
+        timeline: "1 – 2 Weeks",
+        summary: "Modern visual overhaul, mobile UX restructuring, and brand modernization for multi-page websites.",
         prices: {
-          USD: 2100,
-          PKR: 210000,
-          GBP: 1680,
-          EUR: 1950,
-          AED: 7700,
-          SAR: 7875,
-          CAD: 2880,
-          AUD: 3200,
-          INR: 178000
+          USD: 400,
+          PKR: 40000,
+          GBP: 320,
+          EUR: 360,
+          AED: 1500,
+          SAR: 1500,
+          CAD: 550,
+          AUD: 610,
+          INR: 36000
         },
         features: [
-          "Everything in Website UI/UX",
-          "Comprehensive Design System with typography & tokens",
-          "Multi-role user journey flows (Buyer, Admin, Member)",
-          "Dark mode & light mode color palettes",
-          "WCAG 2.1 AA accessibility compliance audit",
-          "Direct collaboration with your engineering team"
+          "Multi-page responsive Figma designs",
+          "Modern typography, palette, and component tokens",
+          "Accessibility & contrast audits (WCAG 2.1)",
+          "Asset optimization & handover documentation"
         ]
       },
       {
-        id: "uiux-enterprise",
-        name: "Enterprise Multi-Brand Design System",
-        timeline: "6 – 8 Weeks",
-        summary: "Design system tailored for enterprise teams with component documentation, token synchronization, and UI guidelines.",
+        id: "uiux-system",
+        name: "Full Product Design System",
+        timeline: "3 – 4 Weeks",
+        summary: "Comprehensive multi-screen web app or e-commerce design system with design tokens, states, and accessibility audits.",
         prices: {
-          USD: 3600,
-          PKR: 360000,
-          GBP: 2850,
-          EUR: 3350,
-          AED: 13200,
-          SAR: 13500,
-          CAD: 4900,
-          AUD: 5450,
-          INR: 305000
+          USD: 900,
+          PKR: 85000,
+          GBP: 700,
+          EUR: 800,
+          AED: 3300,
+          SAR: 3400,
+          CAD: 1240,
+          AUD: 1370,
+          INR: 75000
         },
         features: [
           "Zero-dependency scalable Figma token architecture",
-          "Storybook component synchronization guidelines",
-          "Brand guidelines & typography system documentation",
-          "Design system governance & training session",
-          "Ongoing design advisory"
+          "Multi-role user journey flows (Buyer, Admin, Member)",
+          "Dark mode & light mode palettes",
+          "Direct collaboration with your engineering team"
         ]
       }
     ]
@@ -647,13 +899,67 @@ export const servicesPricing: Record<string, ServicePricing> = {
 };
 
 export const budgetOptionsByCurrency: Record<CurrencyCode, string[]> = {
-  USD: ["$1,000 – $2,500", "$2,500 – $5,000", "$5,000 – $10,000", "$10,000 – $25,000", "$25,000+"],
-  PKR: ["₨ 95,000 – ₨ 200,000", "₨ 200,000 – ₨ 400,000", "₨ 400,000 – ₨ 750,000", "₨ 750,000 – ₨ 1,500,000", "₨ 1,500,000+"],
-  GBP: ["£790 – £2,000", "£2,000 – £4,000", "£4,000 – £8,000", "£8,000 – £20,000", "£20,000+"],
-  EUR: ["€920 – €2,500", "€2,500 – €5,000", "€5,000 – €10,000", "€10,000 – €25,000", "€25,000+"],
-  AED: ["AED 3,600 – AED 9,000", "AED 9,000 – AED 18,000", "AED 18,000 – AED 35,000", "AED 35,000 – AED 90,000", "AED 90,000+"],
-  SAR: ["SAR 3,750 – SAR 9,500", "SAR 9,500 – SAR 19,000", "SAR 19,000 – SAR 38,000", "SAR 38,000 – SAR 95,000", "SAR 95,000+"],
-  CAD: ["C$1,350 – C$3,500", "C$3,500 – C$7,000", "C$7,000 – C$14,000", "C$14,000 – C$35,000", "C$35,000+"],
-  AUD: ["A$1,500 – A$3,800", "A$3,800 – A$7,500", "A$7,500 – A$15,000", "A$15,000 – A$38,000", "A$38,000+"],
-  INR: ["₹85,000 – ₹200,000", "₹200,000 – ₹400,000", "₹400,000 – ₹800,000", "₹800,000 – ₹2,000,000", "₹2,000,000+"]
+  PKR: [
+    "Rs. 15,000 – Rs. 45,000 (Landing Page / Speed)",
+    "Rs. 45,000 – Rs. 100,000 (WordPress / Shopify / Redesign)",
+    "Rs. 100,000 – Rs. 250,000 (Custom Web / AI Integration)",
+    "Rs. 250,000 – Rs. 500,000 (Web Application / SaaS)",
+    "Rs. 500,000+ (Enterprise Cloud Systems)"
+  ],
+  USD: [
+    "$190 – $500 (Landing Page / Elementor / Speed)",
+    "$500 – $1,000 (WordPress / Shopify / Redesign)",
+    "$1,000 – $2,500 (Custom Web / AI Integration)",
+    "$2,500 – $5,000 (Web Application / SaaS)",
+    "$5,000+ (Enterprise Architecture)"
+  ],
+  GBP: [
+    "£150 – £400 (Landing Page / Elementor)",
+    "£400 – £800 (WordPress / Shopify)",
+    "£800 – £2,000 (Custom Web / AI)",
+    "£2,000 – £4,000 (Web App / SaaS)",
+    "£4,000+ (Enterprise)"
+  ],
+  EUR: [
+    "€175 – €450 (Landing Page / Elementor)",
+    "€450 – €900 (WordPress / Shopify)",
+    "€900 – €2,300 (Custom Web / AI)",
+    "€2,300 – €4,500 (Web App / SaaS)",
+    "€4,500+ (Enterprise)"
+  ],
+  AED: [
+    "AED 700 – AED 2,000 (Landing Page / Elementor)",
+    "AED 2,000 – AED 4,500 (WordPress / Shopify)",
+    "AED 4,500 – AED 9,500 (Custom Web / AI)",
+    "AED 9,500 – AED 20,000 (Web App / SaaS)",
+    "AED 20,000+ (Enterprise)"
+  ],
+  SAR: [
+    "SAR 720 – SAR 2,000 (Landing Page / Elementor)",
+    "SAR 2,000 – SAR 4,600 (WordPress / Shopify)",
+    "SAR 4,600 – SAR 9,500 (Custom Web / AI)",
+    "SAR 9,500 – AED 20,000 (Web App / SaaS)",
+    "SAR 20,000+ (Enterprise)"
+  ],
+  CAD: [
+    "C$260 – C$700 (Landing Page / Elementor)",
+    "C$700 – C$1,600 (WordPress / Shopify)",
+    "C$1,600 – C$3,500 (Custom Web / AI)",
+    "C$3,500 – C$7,000 (Web App / SaaS)",
+    "C$7,000+ (Enterprise)"
+  ],
+  AUD: [
+    "A$290 – A$750 (Landing Page / Elementor)",
+    "A$750 – A$1,800 (WordPress / Shopify)",
+    "A$1,800 – A$3,800 (Custom Web / AI)",
+    "A$3,800 – A$7,500 (Web App / SaaS)",
+    "A$7,500+ (Enterprise)"
+  ],
+  INR: [
+    "₹13,500 – ₹40,000 (Landing Page / Elementor)",
+    "₹40,000 – ₹90,000 (WordPress / Shopify)",
+    "₹90,000 – ₹225,000 (Custom Web / AI)",
+    "₹225,000 – ₹450,000 (Web App / SaaS)",
+    "₹450,000+ (Enterprise)"
+  ]
 };

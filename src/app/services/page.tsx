@@ -3,6 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ServiceCard from "@/components/ServiceCard";
 import CurrencySelector from "@/components/CurrencySelector";
+import MasterPricingTable from "@/components/MasterPricingTable";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TechStackGrid from "@/components/TechStackGrid";
 import { servicesData } from "@/data/services";
@@ -80,10 +81,15 @@ export default function ServicesPage() {
             <CurrencySelector variant="inline" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {serviceList.map((service, index) => (
               <ServiceCard key={service.slug} service={service} index={index} />
             ))}
+          </div>
+
+          {/* Full Rate Card Table */}
+          <div className="pt-8 border-t border-slate-100">
+            <MasterPricingTable />
           </div>
         </div>
       </section>
