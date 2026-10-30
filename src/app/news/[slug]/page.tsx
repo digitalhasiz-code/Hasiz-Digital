@@ -306,3 +306,4 @@ export default function SingleNewsPage({ params }: PageProps) {
     </>
   );
 }
+

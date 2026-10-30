@@ -374,7 +374,10 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
             </p>
           </div>
 
-          <ContactForm defaultService={service.title} />
+          <ContactForm 
+            defaultService={service.title} 
+            formName={`${service.title} Service Page Inquiry Form`} 
+          />
         </div>
       </section>
     </div>

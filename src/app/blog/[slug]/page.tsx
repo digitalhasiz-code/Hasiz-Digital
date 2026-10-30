@@ -262,3 +262,4 @@ export default function SingleBlogPage({ params }: Props) {
     </>
   );
 }
+

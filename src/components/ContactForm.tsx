@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, AlertCircle, Loader2, ArrowRight } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ShieldCheck } from "lucide-react";
 
 interface FormData {
   fullName: string;
@@ -13,6 +13,7 @@ interface FormData {
   websiteUrl: string;
   projectDescription: string;
   honeypot: string; // Anti-spam hidden field
+  formName: string; // Specific source form name
 }
 
 const serviceOptions = [
@@ -40,7 +41,14 @@ const timelineOptions = [
   "Flexible / Planning Phase"
 ];
 
-export default function ContactForm({ defaultService }: { defaultService?: string }) {
+interface ContactFormProps {
+  defaultService?: string;
+  formName?: string;
+}
+
+export default function ContactForm({ defaultService, formName }: ContactFormProps) {
+  const initialFormName = formName || (defaultService ? `${defaultService} Inquiry Form` : "Main Contact / Start a Project Form");
+
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
@@ -50,7 +58,8 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
     timeline: "1 – 2 Months",
     websiteUrl: "",
     projectDescription: "",
-    honeypot: ""
+    honeypot: "",
+    formName: initialFormName
   });
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
@@ -104,23 +113,54 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
       if (err instanceof Error) {
         setErrorMessage(err.message);
       } else {
-        setErrorMessage("An unexpected error occurred. Please contact us directly at contact@hasiz.com");
+        setErrorMessage("An unexpected error occurred. Please contact us directly at digitalhasiz@gmail.com");
       }
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name as keyof FormData]) {
+      setErrors((prev) => ({ ...prev, [name]: undefined }));
     }
   };
 
   if (status === "success") {
     return (
-      <div className="bg-white border border-surface-border shadow-card rounded-2xl p-8 sm:p-10 text-center animate-in fade-in-50">
-        <div className="w-14 h-14 bg-blue-50 text-brand-blue rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200/60">
+      <div className="rounded-2xl border border-blue-200 bg-white p-8 sm:p-12 shadow-elevated text-center space-y-6 animate-in fade-in duration-300">
+        <div className="w-16 h-16 rounded-full bg-blue-50 text-brand-blue flex items-center justify-center mx-auto border border-blue-100">
           <CheckCircle2 className="w-8 h-8" />
         </div>
-        <h3 className="font-heading text-2xl font-bold text-navy-900 mb-2">
-          Inquiry Successfully Received
-        </h3>
-        <p className="text-content-body max-w-md mx-auto text-sm leading-relaxed mb-6">
-          Thank you for reaching out to HASIZ. Our engineering team reviews all incoming project scopes and will respond within 24 business hours with initial architectural insights and scheduling options.
-        </p>
+
+        <div className="space-y-2">
+          <h3 className="font-heading text-2xl sm:text-3xl font-bold text-navy-900">
+            Inquiry Submitted Successfully
+          </h3>
+          <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto leading-relaxed">
+            Thank you, <strong className="text-navy-900">{formData.fullName}</strong>. Your project brief has been sent directly to our leads at <strong className="text-navy-900">digitalhasiz@gmail.com</strong>.
+          </p>
+        </div>
+
+        <div className="p-4 rounded-xl bg-slate-50 border border-surface-border text-left text-xs font-mono space-y-1.5 max-w-md mx-auto text-slate-600">
+          <div className="flex justify-between">
+            <span className="text-slate-400">Form Source:</span>
+            <span className="font-semibold text-navy-900">{formData.formName}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-slate-400">Target Notification:</span>
+            <span className="text-brand-blue">digitalhasiz@gmail.com</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-slate-400">Selected Service:</span>
+            <span className="text-navy-900">{formData.service}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-slate-400">Target Response:</span>
+            <span className="text-emerald-600 font-semibold">Within 24 business hours</span>
+          </div>
+        </div>
+
         <button
           type="button"
           onClick={() => {
@@ -134,12 +174,14 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
               timeline: "1 – 2 Months",
               websiteUrl: "",
               projectDescription: "",
-              honeypot: ""
+              honeypot: "",
+              formName: initialFormName
             });
           }}
-          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:text-blue-700 transition-colors"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-brand-blue hover:text-blue-800 transition-colors"
         >
-          Submit another inquiry &rarr;
+          <span>Submit Another Project Brief</span>
+          <ArrowRight className="w-4 h-4" />
         </button>
       </div>
     );
@@ -147,7 +189,20 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 bg-white p-6 sm:p-10 rounded-2xl border border-surface-border shadow-card" noValidate>
-      {/* Honeypot anti-spam trap */}
+      {/* Form Source Indicator */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+        <div className="flex items-center gap-2 text-xs font-mono text-slate-500">
+          <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse"></span>
+          <span>Source: <strong className="text-navy-900">{formData.formName}</strong></span>
+        </div>
+        <div className="text-[11px] font-mono text-slate-400 flex items-center gap-1">
+          <ShieldCheck className="w-3.5 h-3.5 text-brand-blue" />
+          <span>Verified Dispatch to digitalhasiz@gmail.com</span>
+        </div>
+      </div>
+
+      {/* Hidden Form Name for validation & anti-spam honeypot */}
+      <input type="hidden" name="formName" value={formData.formName} />
       <div className="hidden" aria-hidden="true">
         <label htmlFor="hp_field">Do not fill this</label>
         <input
@@ -155,134 +210,131 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
           type="text"
           name="honeypot"
           value={formData.honeypot}
-          onChange={(e) => setFormData({ ...formData, honeypot: e.target.value })}
+          onChange={handleChange}
           tabIndex={-1}
           autoComplete="off"
         />
       </div>
 
+      {status === "error" && (
+        <div className="p-4 rounded-xl bg-red-50 border border-red-200 flex items-start gap-3 text-sm text-red-800" role="alert">
+          <AlertCircle className="w-5 h-5 text-red-600 flex-shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <p className="font-semibold">Unable to submit inquiry</p>
+            <p className="text-xs text-red-700 leading-relaxed">{errorMessage}</p>
+          </div>
+        </div>
+      )}
+
+      {/* Contact Name & Email */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {/* Full Name */}
-        <div>
-          <label htmlFor="fullName" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-            Full Name <span className="text-brand-blue">*</span>
+        <div className="space-y-2">
+          <label htmlFor="fullName" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Your Full Name <span className="text-brand-blue">*</span>
           </label>
           <input
             id="fullName"
             type="text"
+            name="fullName"
             required
             value={formData.fullName}
-            onChange={(e) => {
-              setFormData({ ...formData, fullName: e.target.value });
-              if (errors.fullName) setErrors({ ...errors, fullName: undefined });
-            }}
-            placeholder="e.g. Alexander Vance"
-            aria-invalid={!!errors.fullName}
-            aria-describedby={errors.fullName ? "fullName-error" : undefined}
-            className={`w-full px-4 py-3 rounded-lg border text-sm text-navy-900 placeholder-slate-400 focus:outline-none transition-colors ${
-              errors.fullName ? "border-navy-900 bg-slate-50 focus:border-brand-blue" : "border-surface-border focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+            onChange={handleChange}
+            placeholder="e.g. Alexander Wright"
+            className={`w-full px-4 py-3 rounded-lg border text-sm text-navy-900 bg-white placeholder-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue ${
+              errors.fullName ? "border-red-400 bg-red-50/20" : "border-surface-border hover:border-slate-300"
             }`}
           />
           {errors.fullName && (
-            <p id="fullName-error" className="text-xs text-navy-900 font-medium mt-1 flex items-center gap-1">
-              <AlertCircle className="w-3.5 h-3.5 text-brand-blue" />
-              {errors.fullName}
-            </p>
+            <p className="text-xs text-red-600 font-medium">{errors.fullName}</p>
           )}
         </div>
 
-        {/* Business Email */}
-        <div>
-          <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
+        <div className="space-y-2">
+          <label htmlFor="email" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
             Business Email <span className="text-brand-blue">*</span>
           </label>
           <input
             id="email"
             type="email"
+            name="email"
             required
             value={formData.email}
-            onChange={(e) => {
-              setFormData({ ...formData, email: e.target.value });
-              if (errors.email) setErrors({ ...errors, email: undefined });
-            }}
-            placeholder="alexander@company.com"
-            aria-invalid={!!errors.email}
-            aria-describedby={errors.email ? "email-error" : undefined}
-            className={`w-full px-4 py-3 rounded-lg border text-sm text-navy-900 placeholder-slate-400 focus:outline-none transition-colors ${
-              errors.email ? "border-navy-900 bg-slate-50 focus:border-brand-blue" : "border-surface-border focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+            onChange={handleChange}
+            placeholder="alex@company.com"
+            className={`w-full px-4 py-3 rounded-lg border text-sm text-navy-900 bg-white placeholder-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue ${
+              errors.email ? "border-red-400 bg-red-50/20" : "border-surface-border hover:border-slate-300"
             }`}
           />
           {errors.email && (
-            <p id="email-error" className="text-xs text-navy-900 font-medium mt-1 flex items-center gap-1">
-              <AlertCircle className="w-3.5 h-3.5 text-brand-blue" />
-              {errors.email}
-            </p>
+            <p className="text-xs text-red-600 font-medium">{errors.email}</p>
           )}
         </div>
       </div>
 
+      {/* Company Name & Current Website */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {/* Company / Business Name */}
-        <div>
-          <label htmlFor="companyName" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-            Company / Business Name
+        <div className="space-y-2">
+          <label htmlFor="companyName" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Company or Organization
           </label>
           <input
             id="companyName"
             type="text"
+            name="companyName"
             value={formData.companyName}
-            onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
-            placeholder="e.g. Vance Global Ventures"
-            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 placeholder-slate-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
+            onChange={handleChange}
+            placeholder="Company or Brand Name"
+            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white placeholder-slate-400 hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue"
           />
         </div>
 
-        {/* Website URL (optional) */}
-        <div>
-          <label htmlFor="websiteUrl" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-            Current Website URL <span className="text-slate-400 text-[10px] lowercase">(optional)</span>
+        <div className="space-y-2">
+          <label htmlFor="websiteUrl" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Current Website URL
           </label>
           <input
             id="websiteUrl"
             type="url"
+            name="websiteUrl"
             value={formData.websiteUrl}
-            onChange={(e) => setFormData({ ...formData, websiteUrl: e.target.value })}
-            placeholder="https://company.com"
-            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 placeholder-slate-400 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
+            onChange={handleChange}
+            placeholder="https://yourwebsite.com (optional)"
+            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white placeholder-slate-400 hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue"
           />
         </div>
       </div>
 
-      {/* Service Required */}
-      <div>
-        <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-          Service Required <span className="text-brand-blue">*</span>
-        </label>
-        <select
-          id="service"
-          value={formData.service}
-          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-          className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
-        >
-          {serviceOptions.map((opt) => (
-            <option key={opt} value={opt}>
-              {opt}
-            </option>
-          ))}
-        </select>
-      </div>
+      {/* Service, Budget, Timeline */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="space-y-2">
+          <label htmlFor="service" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Service Required <span className="text-brand-blue">*</span>
+          </label>
+          <select
+            id="service"
+            name="service"
+            value={formData.service}
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue"
+          >
+            {serviceOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {/* Project Budget */}
-        <div>
-          <label htmlFor="budget" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-            Estimated Budget Range
+        <div className="space-y-2">
+          <label htmlFor="budget" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Target Budget (USD)
           </label>
           <select
             id="budget"
+            name="budget"
             value={formData.budget}
-            onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue"
           >
             {budgetOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -292,16 +344,16 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
           </select>
         </div>
 
-        {/* Project Timeline */}
-        <div>
-          <label htmlFor="timeline" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-            Target Timeline
+        <div className="space-y-2">
+          <label htmlFor="timeline" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Desired Timeline
           </label>
           <select
             id="timeline"
+            name="timeline"
             value={formData.timeline}
-            onChange={(e) => setFormData({ ...formData, timeline: e.target.value })}
-            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue transition-colors"
+            onChange={handleChange}
+            className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue"
           >
             {timelineOptions.map((opt) => (
               <option key={opt} value={opt}>
@@ -313,65 +365,54 @@ export default function ContactForm({ defaultService }: { defaultService?: strin
       </div>
 
       {/* Project Description */}
-      <div>
-        <label htmlFor="projectDescription" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 mb-2">
-          Project Description & Goals <span className="text-brand-blue">*</span>
-        </label>
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <label htmlFor="projectDescription" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
+            Project Overview & Technical Scope <span className="text-brand-blue">*</span>
+          </label>
+          <span className="text-xs text-slate-400 font-mono">Min 15 characters</span>
+        </div>
         <textarea
           id="projectDescription"
-          rows={4}
+          name="projectDescription"
+          rows={5}
           required
           value={formData.projectDescription}
-          onChange={(e) => {
-            setFormData({ ...formData, projectDescription: e.target.value });
-            if (errors.projectDescription) setErrors({ ...errors, projectDescription: undefined });
-          }}
-          placeholder="Briefly describe your objectives, target audience, existing technical bottlenecks, and desired project outcomes..."
-          aria-invalid={!!errors.projectDescription}
-          aria-describedby={errors.projectDescription ? "desc-error" : undefined}
-          className={`w-full px-4 py-3 rounded-lg border text-sm text-navy-900 placeholder-slate-400 focus:outline-none transition-colors ${
-            errors.projectDescription ? "border-navy-900 bg-slate-50 focus:border-brand-blue" : "border-surface-border focus:border-brand-blue focus:ring-1 focus:ring-brand-blue"
+          onChange={handleChange}
+          placeholder="Briefly describe your objectives, key deliverables, target launch date, and any specific technology requirements..."
+          className={`w-full px-4 py-3 rounded-lg border text-sm text-navy-900 bg-white placeholder-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue ${
+            errors.projectDescription ? "border-red-400 bg-red-50/20" : "border-surface-border hover:border-slate-300"
           }`}
         />
         {errors.projectDescription && (
-          <p id="desc-error" className="text-xs text-navy-900 font-medium mt-1 flex items-center gap-1">
-            <AlertCircle className="w-3.5 h-3.5 text-brand-blue" />
-            {errors.projectDescription}
-          </p>
+          <p className="text-xs text-red-600 font-medium">{errors.projectDescription}</p>
         )}
       </div>
 
-      {/* Submit Error */}
-      {status === "error" && (
-        <div className="p-4 rounded-lg bg-slate-100 border border-slate-300 text-navy-900 text-sm flex items-start gap-2">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5 text-brand-blue" />
-          <span>{errorMessage}</span>
-        </div>
-      )}
-
       {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-lg text-sm font-semibold text-white bg-brand-blue hover:bg-blue-700 disabled:opacity-70 transition-all duration-200 shadow-sm group"
-      >
-        {status === "submitting" ? (
-          <>
-            <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Transmitting Project Brief...</span>
-          </>
-        ) : (
-          <>
-            <span>Submit Project Inquiry</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </>
-        )}
-      </button>
+      <div className="pt-2">
+        <button
+          type="submit"
+          disabled={status === "submitting"}
+          className="w-full inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl text-base font-semibold text-white bg-brand-blue hover:bg-blue-700 disabled:bg-slate-400 disabled:cursor-not-allowed shadow-md shadow-brand-blue/20 hover:shadow-lg hover:shadow-brand-blue/25 transition-all duration-200 group"
+        >
+          {status === "submitting" ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              <span>Transmitting Inquiry to digitalhasiz@gmail.com...</span>
+            </>
+          ) : (
+            <>
+              <span>Submit Project Inquiry</span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </>
+          )}
+        </button>
 
-      <p className="text-[11px] text-center text-slate-400 leading-normal">
-        Strict privacy: Your technical specifications and contact details are treated with total confidentiality and never shared with third parties.
-      </p>
+        <p className="text-center text-xs text-slate-500 font-mono mt-3">
+          Direct forward to <strong>digitalhasiz@gmail.com</strong>. Reviewed by senior engineers within 24 hours.
+        </p>
+      </div>
     </form>
   );
 }
-

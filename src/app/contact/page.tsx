@@ -50,7 +50,7 @@ export default function ContactPage() {
               <h2 className="font-heading text-2xl font-bold text-navy-900 mb-6">
                 Project Specification Brief
               </h2>
-              <ContactForm />
+              <ContactForm formName="Main Contact / Start a Project Page Form" />
             </div>
 
             {/* Right Information & Expectations Column */}
