@@ -5,7 +5,12 @@ export const metadata: Metadata = {
   title: "Terms & Conditions | HASIZ Digital Engineering Studio",
   description: "Terms and conditions governing the use of the HASIZ digital engineering studio website and professional service engagements.",
   alternates: {
-    canonical: "/terms-and-conditions",
+    canonical: "https://www.hasiz.com/terms-and-conditions",
+  },
+  openGraph: {
+    title: "Terms & Conditions | HASIZ Digital Engineering Studio",
+    description: "Terms and conditions governing the use of the HASIZ digital engineering studio website and professional service engagements.",
+    url: "https://www.hasiz.com/terms-and-conditions",
   },
 };
 

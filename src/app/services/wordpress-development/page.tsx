@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title: service.seoTitle,
   description: service.metaDescription,
   alternates: {
-    canonical: "/services/wordpress-development",
+    canonical: "https://www.hasiz.com/services/wordpress-development",
   },
   openGraph: {
     title: service.seoTitle,
     description: service.metaDescription,
-    url: "https://hasiz.com/services/wordpress-development",
+    url: "https://www.hasiz.com/services/wordpress-development",
     images: [{ url: service.heroImage, width: 1200, height: 750, alt: service.altText }],
   },
 };

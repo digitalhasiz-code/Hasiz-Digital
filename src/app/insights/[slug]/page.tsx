@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${article.title} | HASIZ Insights`,
     description: article.excerpt,
     alternates: {
-      canonical: `/insights/${article.slug}`,
+      canonical: `https://www.hasiz.com/insights/${article.slug}`,
     },
     openGraph: {
       title: article.title,
@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: article.publishedDate,
       modifiedTime: article.updatedDate,
       authors: [article.author.name],
-      url: `https://hasiz.com/insights/${article.slug}`,
+      url: `https://www.hasiz.com/insights/${article.slug}`,
       images: [
         {
           url: article.featuredImage,

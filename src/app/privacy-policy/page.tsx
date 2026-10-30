@@ -5,7 +5,12 @@ export const metadata: Metadata = {
   title: "Privacy Policy | HASIZ Digital Engineering Studio",
   description: "Read the HASIZ Privacy Policy detailing our data collection, inquiry processing, security standards, and client confidentiality practices.",
   alternates: {
-    canonical: "/privacy-policy",
+    canonical: "https://www.hasiz.com/privacy-policy",
+  },
+  openGraph: {
+    title: "Privacy Policy | HASIZ Digital Engineering Studio",
+    description: "Read the HASIZ Privacy Policy detailing our data collection, inquiry processing, security standards, and client confidentiality practices.",
+    url: "https://www.hasiz.com/privacy-policy",
   },
 };
 

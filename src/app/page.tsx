@@ -1,3 +1,4 @@
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { 
@@ -23,6 +24,20 @@ import ServiceCard from "@/components/ServiceCard";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TechStackGrid from "@/components/TechStackGrid";
 import PhilosophySection from "@/components/PhilosophySection";
+
+export const metadata: Metadata = {
+  title: "HASIZ — Digital Engineering Studio | We Engineer Digital Experiences",
+  description: "HASIZ is an award-winning digital engineering studio building high-performance websites, e-commerce platforms, custom software, and intelligent digital solutions for modern businesses worldwide.",
+  alternates: {
+    canonical: "https://www.hasiz.com/",
+  },
+  openGraph: {
+    title: "HASIZ — We Engineer Digital Experiences That Move Businesses Forward",
+    description: "From high-performance websites and scalable e-commerce to intelligent software solutions, HASIZ turns complex ideas into powerful digital experiences.",
+    url: "https://www.hasiz.com/",
+    images: [{ url: "/images/brand/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
 export default function HomePage() {
   const featuredProjects = projects.filter(p => p.featured).slice(0, 4);

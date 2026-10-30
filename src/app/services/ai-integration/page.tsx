@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   title: service.seoTitle,
   description: service.metaDescription,
   alternates: {
-    canonical: "/services/ai-integration",
+    canonical: "https://www.hasiz.com/services/ai-integration",
   },
   openGraph: {
     title: service.seoTitle,
     description: service.metaDescription,
-    url: "https://hasiz.com/services/ai-integration",
+    url: "https://www.hasiz.com/services/ai-integration",
     images: [{ url: service.heroImage, width: 1200, height: 750, alt: service.altText }],
   },
 };

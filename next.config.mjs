@@ -28,6 +28,21 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'hasiz.com',
+          },
+        ],
+        destination: 'https://www.hasiz.com/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

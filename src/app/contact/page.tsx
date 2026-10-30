@@ -7,12 +7,12 @@ export const metadata: Metadata = {
   title: "Start a Project | Contact HASIZ Digital Engineering Studio",
   description: "Initiate a project inquiry with HASIZ. Share your technical requirements, desired timelines, and business goals to receive an architectural review and scoping proposal.",
   alternates: {
-    canonical: "/contact",
+    canonical: "https://www.hasiz.com/contact",
   },
   openGraph: {
     title: "Start a Project | Contact HASIZ",
     description: "Get in touch with HASIZ digital engineering studio to discuss high-performance web development, Shopify, web apps, or AI integrations.",
-    url: "https://hasiz.com/contact",
+    url: "https://www.hasiz.com/contact",
     images: [{ url: "/images/brand/og-image.png", width: 1200, height: 630 }],
   },
 };

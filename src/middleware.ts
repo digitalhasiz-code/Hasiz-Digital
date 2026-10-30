@@ -12,11 +12,11 @@ const rateLimitStore = new Map<string, RateLimitRecord>();
 // Clean up stale rate limit entries every 5 minutes
 setInterval(() => {
   const now = Date.now();
-  for (const [key, value] of rateLimitStore.entries()) {
+  rateLimitStore.forEach((value, key) => {
     if (value.resetAt <= now) {
       rateLimitStore.delete(key);
     }
-  }
+  });
 }, 300000);
 
 // Signatures of known malicious vulnerability scanners and scrapers
@@ -58,6 +58,16 @@ const SENSITIVE_PROBE_PATTERNS = [
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const userAgent = (request.headers.get("user-agent") || "").toLowerCase();
+
+  // 0. Enforce www canonical domain: 301 Permanent Redirect from non-www hasiz.com to www.hasiz.com
+  const host = (request.headers.get("x-forwarded-host") || request.headers.get("host") || "").toLowerCase().split(":")[0];
+  if (host === "hasiz.com") {
+    const url = request.nextUrl.clone();
+    url.host = "www.hasiz.com";
+    url.protocol = "https:";
+    url.port = "";
+    return NextResponse.redirect(url.toString(), 301);
+  }
   
   // Extract client IP (Vercel provides x-real-ip / x-forwarded-for)
   const clientIp = 
@@ -140,3 +150,4 @@ export const config = {
     "/((?!_next/static|_next/image|favicon.ico|images/).*)",
   ],
 };
+

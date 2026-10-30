@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/privacy-policy",
     "/terms-and-conditions",
   ].map((route) => ({
-    url: `${baseUrl}${route}`,
+    url: route === "" ? `${baseUrl}/` : `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: (route === "" || route === "/news" ? "daily" : "weekly") as "daily" | "weekly",
     priority: route === "" ? 1.0 : route.startsWith("/services") || route === "/work" || route === "/news" ? 0.9 : 0.8,

@@ -24,12 +24,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${project.title} — Case Study | HASIZ Digital Studio`,
     description: `${project.overview.slice(0, 155)}...`,
     alternates: {
-      canonical: `/work/${project.slug}`,
+      canonical: `https://www.hasiz.com/work/${project.slug}`,
     },
     openGraph: {
       title: `${project.title} | HASIZ Case Study`,
       description: project.overview,
-      url: `https://hasiz.com/work/${project.slug}`,
+      url: `https://www.hasiz.com/work/${project.slug}`,
       images: [
         {
           url: project.featuredImage,
@@ -56,11 +56,11 @@ export default function CaseStudyPage({ params }: Props) {
     "name": `${project.title} Case Study`,
     "headline": project.title,
     "description": project.overview,
-    "image": `https://hasiz.com${project.featuredImage}`,
+    "image": `https://www.hasiz.com${project.featuredImage}`,
     "creator": {
       "@type": "Organization",
       "name": "HASIZ Digital Engineering Studio",
-      "url": "https://hasiz.com"
+      "url": "https://www.hasiz.com"
     },
     "genre": project.category,
     "about": project.industry,

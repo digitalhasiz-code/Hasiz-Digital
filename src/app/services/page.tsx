@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   title: "Engineering Services | Web Development, Shopify, AI & Apps",
   description: "Explore HASIZ digital engineering services: Custom WordPress, bespoke Shopify storefronts, Next.js web development, AI workflow automation, and SaaS applications.",
   alternates: {
-    canonical: "/services",
+    canonical: "https://www.hasiz.com/services",
   },
   openGraph: {
     title: "Engineering Services | HASIZ Digital Engineering Studio",
     description: "Explore our 6 core engineering specializations: WordPress, Shopify, Custom Web Development, AI Integration, Web Applications, and UI/UX Design Systems.",
-    url: "https://hasiz.com/services",
+    url: "https://www.hasiz.com/services",
     images: [{ url: "/images/brand/og-image.png", width: 1200, height: 630 }],
   },
 };
