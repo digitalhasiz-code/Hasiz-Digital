@@ -65,7 +65,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Global Financial Markets Bureau",
       publishedTimestamp: "2026-10-30T09:15:00Z"
     },
-    featuredImage: "/images/services/ai-workflow-automation.webp",
+    featuredImage: "/images/news/global-markets-trading-wall-street.webp",
     tags: ["Trading", "Tech Stocks", "Semiconductors", "AI Infrastructure", "Wall Street"],
     isUrgentOrBreaking: true
   },
@@ -96,7 +96,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "International Logistics & Trade Desk",
       publishedTimestamp: "2026-10-30T07:45:00Z"
     },
-    featuredImage: "/images/portfolio/wholesaler-b2b-portal.webp",
+    featuredImage: "/images/news/red-sea-maritime-container-ship.webp",
     tags: ["Supply Chain", "Maritime Logistics", "E-Commerce", "Inflation", "Red Sea"],
     isUrgentOrBreaking: false
   },
@@ -127,7 +127,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Eastern Europe Security Bureau",
       publishedTimestamp: "2026-10-30T05:30:00Z"
     },
-    featuredImage: "/images/services/custom-web-development-architecture.webp",
+    featuredImage: "/images/news/ukraine-energy-grid-telecom-defense.webp",
     tags: ["Geopolitics", "Ukraine Conflict", "Cyber Defense", "Energy Security", "Infrastructure"],
     isUrgentOrBreaking: true
   },
@@ -158,7 +158,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Middle East Energy & Commodities Desk",
       publishedTimestamp: "2026-10-30T04:00:00Z"
     },
-    featuredImage: "/images/services/hasiz-web-development-portfolio.webp",
+    featuredImage: "/images/news/middle-east-oil-tanker-strait-hormuz.webp",
     tags: ["Middle East", "Oil & Gas", "Strait of Hormuz", "Commodities", "Defense"],
     isUrgentOrBreaking: false
   },
@@ -189,7 +189,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Telecommunications & Global Tech Bureau",
       publishedTimestamp: "2026-10-30T01:15:00Z"
     },
-    featuredImage: "/images/services/custom-web-application-dashboard.webp",
+    featuredImage: "/images/news/subsea-fiber-optic-cables-network.webp",
     tags: ["Undersea Cables", "Internet Backbone", "Cybersecurity", "Cloud Infrastructure", "Networking"],
     isUrgentOrBreaking: false
   },
@@ -220,7 +220,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Silicon & Hardware Industry Desk",
       publishedTimestamp: "2026-10-29T22:30:00Z"
     },
-    featuredImage: "/images/services/shopify-store-design.webp",
+    featuredImage: "/images/news/semiconductor-microchip-cleanroom-wafer.webp",
     tags: ["Semiconductors", "Taiwan", "Hardware", "CHIPS Act", "Supply Chain"],
     isUrgentOrBreaking: false
   },
@@ -251,7 +251,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Global Economics & Monetary Desk",
       publishedTimestamp: "2026-10-29T18:00:00Z"
     },
-    featuredImage: "/images/services/custom-wordpress-development.webp",
+    featuredImage: "/images/news/central-banks-global-monetary-policy.webp",
     tags: ["Federal Reserve", "Interest Rates", "Venture Capital", "Enterprise Software", "Markets"],
     isUrgentOrBreaking: false
   },
@@ -282,7 +282,7 @@ export const newsArticles: NewsArticle[] = [
       authorOrBureau: "Diplomatic & Middle East Affairs Bureau",
       publishedTimestamp: "2026-10-29T12:00:00Z"
     },
-    featuredImage: "/images/portfolio/dluxe-destinations.webp",
+    featuredImage: "/images/news/diplomatic-security-summit-corridors.webp",
     tags: ["Diplomacy", "Maritime Security", "Trade Corridors", "Middle East", "Logistics"],
     isUrgentOrBreaking: false
   }
