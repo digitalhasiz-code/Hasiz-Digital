@@ -48,6 +48,7 @@ interface ContactFormProps {
 
 export default function ContactForm({ defaultService, formName }: ContactFormProps) {
   const initialFormName = formName || (defaultService ? `${defaultService} Inquiry Form` : "Main Contact / Start a Project Form");
+  const [formLoadTime] = useState<number>(() => Date.now());
 
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -98,7 +99,10 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
+        body: JSON.stringify({
+          ...formData,
+          formLoadTime
+        })
       });
 
       const data = await res.json();

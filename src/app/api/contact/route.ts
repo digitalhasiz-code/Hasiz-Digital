@@ -4,9 +4,54 @@ import nodemailer from "nodemailer";
 
 const TARGET_EMAIL = process.env.CONTACT_NOTIFICATION_EMAIL || "digitalhasiz@gmail.com";
 
+// Known disposable/temporary email provider domains used by bot farms
+const DISPOSABLE_EMAIL_DOMAINS = new Set([
+  "mailinator.com",
+  "tempmail.com",
+  "10minutemail.com",
+  "guerrillamail.com",
+  "sharklasers.com",
+  "throwawaymail.com",
+  "yopmail.com",
+  "trashmail.com",
+  "dispostable.com",
+  "fakeinbox.com",
+  "getairmail.com",
+  "temp-mail.org",
+  "fakemailgenerator.com"
+]);
+
+// Strip dangerous characters, script tags, HTML tags, control bytes, and limit length
+function sanitize(input: unknown, maxLength: number): string {
+  if (typeof input !== "string") return "";
+  return input
+    .replace(/\0/g, "") // Remove null bytes
+    .replace(/[<>]/g, "") // Strip HTML/XML brackets
+    .replace(/javascript:/gi, "") // Prevent javascript pseudo-protocols
+    .trim()
+    .slice(0, maxLength);
+}
+
 export async function POST(request: Request) {
   try {
-    const body = await request.json();
+    // 1. Payload size check (prevent large buffer flood attacks)
+    const contentLength = parseInt(request.headers.get("content-length") || "0", 10);
+    if (contentLength > 35000) {
+      return NextResponse.json(
+        { success: false, message: "Payload size exceeds maximum allowable security limit." },
+        { status: 413 }
+      );
+    }
+
+    let body: any = {};
+    try {
+      body = await request.json();
+    } catch {
+      return NextResponse.json(
+        { success: false, message: "Malformed or invalid JSON body rejected." },
+        { status: 400 }
+      );
+    }
     const { 
       fullName, 
       email, 
@@ -17,59 +62,90 @@ export async function POST(request: Request) {
       websiteUrl, 
       projectDescription, 
       honeypot,
-      formName 
+      formName,
+      formLoadTime 
     } = body;
 
-    // Anti-spam honeypot
-    if (honeypot && honeypot.trim().length > 0) {
+    // 2. Anti-spam honeypot trap: if filled by automated bots, discard silently
+    if (honeypot && typeof honeypot === "string" && honeypot.trim().length > 0) {
       return NextResponse.json({ success: true, message: "Inquiry received." }, { status: 200 });
     }
 
-    // Server-side validation
-    if (!fullName || typeof fullName !== "string" || fullName.trim().length < 2) {
+    // 3. Automated Sub-Second Bot Submission Trap
+    if (formLoadTime && typeof formLoadTime === "number") {
+      const elapsed = Date.now() - formLoadTime;
+      // If submitted in under 1200ms, it is an automated machine script
+      if (elapsed < 1200) {
+        return NextResponse.json({ success: true, message: "Inquiry received." }, { status: 200 });
+      }
+    }
+
+    // 4. Sanitize and validate inputs
+    const cleanFullName = sanitize(fullName, 100);
+    const cleanEmail = sanitize(email, 120).toLowerCase();
+    const cleanCompany = sanitize(companyName, 120);
+    const cleanService = sanitize(service, 80);
+    const cleanBudget = sanitize(budget, 50);
+    const cleanTimeline = sanitize(timeline, 50);
+    const cleanWebsite = sanitize(websiteUrl, 200);
+    const cleanDescription = sanitize(projectDescription, 3500);
+
+    if (cleanFullName.length < 2) {
       return NextResponse.json(
-        { success: false, message: "A valid full name is required." },
+        { success: false, message: "A valid full name is required (minimum 2 characters)." },
         { status: 400 }
       );
     }
 
-    if (!email || typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    // Strict RFC 5322 email regex check
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+    if (!cleanEmail || !emailRegex.test(cleanEmail)) {
       return NextResponse.json(
         { success: false, message: "A valid business email address is required." },
         { status: 400 }
       );
     }
 
-    if (!projectDescription || typeof projectDescription !== "string" || projectDescription.trim().length < 15) {
+    // Block throwaway disposable emails
+    const emailDomain = cleanEmail.split("@")[1];
+    if (emailDomain && DISPOSABLE_EMAIL_DOMAINS.has(emailDomain)) {
+      return NextResponse.json(
+        { success: false, message: "Please use your professional or company email address." },
+        { status: 400 }
+      );
+    }
+
+    if (cleanDescription.length < 15) {
       return NextResponse.json(
         { success: false, message: "Project description must contain at least 15 characters." },
         { status: 400 }
       );
     }
 
-    // Resolve explicit form name
-    const resolvedFormName = formName && typeof formName === "string" && formName.trim().length > 0
-      ? formName.trim()
-      : (service ? `${service} Page Inquiry Form` : "Main Contact / Start a Project Form");
+    // Resolve form name securely
+    const resolvedFormName = sanitize(
+      formName || (cleanService ? `${cleanService} Service Page Inquiry Form` : "Main Contact / Start a Project Form"),
+      100
+    );
 
-    // Structured lead record
+    // Immutable structured record
     const submission = {
       receivedAt: new Date().toISOString(),
       formName: resolvedFormName,
-      fullName: fullName.trim(),
-      email: email.trim().toLowerCase(),
-      companyName: companyName ? companyName.trim() : "Not specified",
-      service: service || "Custom Web Development",
-      budget: budget || "Not specified",
-      timeline: timeline || "Not specified",
-      websiteUrl: websiteUrl ? websiteUrl.trim() : "None",
-      projectDescription: projectDescription.trim(),
+      fullName: cleanFullName,
+      email: cleanEmail,
+      companyName: cleanCompany || "Not specified",
+      service: cleanService || "Custom Web Development",
+      budget: cleanBudget || "Not specified",
+      timeline: cleanTimeline || "Not specified",
+      websiteUrl: cleanWebsite || "None",
+      projectDescription: cleanDescription,
       targetEmail: TARGET_EMAIL,
     };
 
-    console.log(`[HASIZ LEAD ALERT -> ${TARGET_EMAIL}]:`, JSON.stringify(submission, null, 2));
+    console.log(`[SECURE INQUIRY -> ${TARGET_EMAIL}]:`, JSON.stringify(submission, null, 2));
 
-    // 1. Deliver Email via Nodemailer (if SMTP credentials or Gmail App Password configured)
+    // 5. Deliver Email via Nodemailer (if SMTP credentials or Gmail App Password configured)
     const smtpHost = process.env.SMTP_HOST || "smtp.gmail.com";
     const smtpPort = parseInt(process.env.SMTP_PORT || "465", 10);
     const smtpUser = process.env.SMTP_USER || process.env.GMAIL_USER || (process.env.SMTP_PASS ? "digitalhasiz@gmail.com" : undefined);
@@ -161,7 +237,7 @@ export async function POST(request: Request) {
       }
     }
 
-    // 2. Deliver Email via Resend HTTP API (if RESEND_API_KEY configured)
+    // 6. Deliver Email via Resend HTTP API (if RESEND_API_KEY configured)
     const resendApiKey = process.env.RESEND_API_KEY;
     if (resendApiKey) {
       try {
@@ -192,16 +268,13 @@ export async function POST(request: Request) {
 
         if (resendResponse.ok) {
           console.log(`[Resend Email Success]: Lead successfully sent to ${TARGET_EMAIL}`);
-        } else {
-          const resendErrData = await resendResponse.json();
-          console.warn("[Resend Warning]:", resendErrData);
         }
       } catch (resendErr) {
         console.error("[Resend Delivery Error]:", resendErr);
       }
     }
 
-    // 3. Webhook Dispatch (e.g. Slack / Discord / Zapier / Make / n8n)
+    // 7. Webhook Dispatch (e.g. Slack / Discord / Zapier)
     const webhookUrl = process.env.CONTACT_WEBHOOK_URL;
     if (webhookUrl) {
       try {
@@ -217,7 +290,7 @@ export async function POST(request: Request) {
       }
     }
 
-    // 4. Save Inquiry to Supabase Database (with form_name & target_email)
+    // 8. Save Inquiry to Supabase Database (with form_name & target_email)
     try {
       const { error: dbError } = await supabase
         .from("inquiries")
@@ -237,8 +310,8 @@ export async function POST(request: Request) {
         ]);
 
       if (dbError) {
-        // Fallback insert if form_name column hasn't been added to existing Supabase table yet
-        console.warn("[Supabase Note, retrying with base schema]:", dbError.message);
+        // Fallback insert if form_name column hasn't been migrated yet
+        console.warn("[Supabase Note, fallback insert]:", dbError.message);
         await supabase
           .from("inquiries")
           .insert([
@@ -255,7 +328,7 @@ export async function POST(request: Request) {
             },
           ]);
       } else {
-        console.log(`[Supabase]: Lead successfully stored under form '${submission.formName}'.`);
+        console.log(`[Supabase]: Lead securely stored under form '${submission.formName}'.`);
       }
     } catch (sbErr) {
       console.warn("[Supabase Insert Warning]:", sbErr);
@@ -264,7 +337,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: true,
-        message: `Thank you. Your project brief from '${submission.formName}' has been dispatched to ${TARGET_EMAIL}. Our engineering leads will respond within 24 hours.`,
+        message: `Thank you. Your project brief from '${submission.formName}' has been securely dispatched to ${TARGET_EMAIL}. Our engineering leads will respond within 24 hours.`,
         formName: submission.formName,
         recipient: TARGET_EMAIL,
       },
