@@ -4,24 +4,29 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://hasiz.com"),
+  metadataBase: new URL("https://www.hasiz.com"),
   title: {
     default: "HASIZ — Digital Engineering Studio | We Engineer Digital Experiences",
     template: "%s | HASIZ Digital Engineering Studio"
   },
-  description: "HASIZ is a digital engineering studio building high-performance websites, e-commerce platforms, custom software, and intelligent digital solutions for ambitious modern businesses.",
+  description: "HASIZ is an award-winning digital engineering studio building high-performance websites, e-commerce platforms, custom software, and intelligent digital solutions for modern businesses worldwide.",
   keywords: [
     "Digital Engineering Studio",
-    "Custom Web Development",
-    "WordPress Development Services",
-    "Shopify Store Development",
-    "Web Application Development",
-    "AI Workflow Automation",
-    "UI UX Design Systems",
+    "High Performance Web Development",
+    "Custom Software Engineering",
     "Next.js Development Studio",
-    "High Performance Web Development"
+    "Enterprise WordPress Development",
+    "Shopify Plus E-Commerce Storefronts",
+    "Web Application Development",
+    "AI Workflow Automation & Integration",
+    "UI UX Design Systems",
+    "Technical SEO Architecture",
+    "Global Market Intelligence",
+    "World Trading News",
+    "Geopolitical Supply Chain Analysis",
+    "Top Web Development Agency USA UK Europe"
   ],
-  authors: [{ name: "HASIZ Engineering Team", url: "https://hasiz.com" }],
+  authors: [{ name: "HASIZ Engineering Team", url: "https://www.hasiz.com" }],
   creator: "HASIZ",
   publisher: "HASIZ Digital Engineering Studio",
   formatDetection: {
@@ -32,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://hasiz.com",
+    url: "https://www.hasiz.com",
     siteName: "HASIZ Digital Engineering Studio",
     title: "HASIZ — We Engineer Digital Experiences That Move Businesses Forward",
     description: "From high-performance websites and scalable e-commerce to intelligent software solutions, HASIZ turns complex ideas into powerful digital experiences.",
@@ -82,11 +87,11 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://hasiz.com/#organization",
+        "@id": "https://www.hasiz.com/#organization",
         "name": "HASIZ",
         "legalName": "HASIZ Digital Engineering Studio",
-        "url": "https://hasiz.com",
-        "logo": "https://hasiz.com/images/brand/logo-dark.svg",
+        "url": "https://www.hasiz.com",
+        "logo": "https://www.hasiz.com/images/brand/logo-dark.svg",
         "description": "HASIZ is a digital engineering studio focused on building high-performance websites, e-commerce experiences, custom software, and intelligent digital solutions for modern businesses.",
         "slogan": "We Engineer Digital Experiences.",
         "email": "contact@hasiz.com",
@@ -98,11 +103,11 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://hasiz.com/#website",
-        "url": "https://hasiz.com",
+        "@id": "https://www.hasiz.com/#website",
+        "url": "https://www.hasiz.com",
         "name": "HASIZ Digital Engineering Studio",
         "publisher": {
-          "@id": "https://hasiz.com/#organization"
+          "@id": "https://www.hasiz.com/#organization"
         },
         "inLanguage": "en-US"
       }

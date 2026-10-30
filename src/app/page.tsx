@@ -1,9 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, CheckCircle2, Code2, Cpu, Globe2, ShieldCheck, Zap } from "lucide-react";
+import { 
+  ArrowRight, 
+  ArrowUpRight, 
+  CheckCircle2, 
+  Code2, 
+  Cpu, 
+  Globe2, 
+  ShieldCheck, 
+  Zap, 
+  TrendingUp, 
+  ExternalLink, 
+  Activity, 
+  Clock 
+} from "lucide-react";
 import { projects } from "@/data/projects";
 import { servicesData } from "@/data/services";
 import { blogArticles } from "@/data/blog";
+import { newsArticles, marketTickers } from "@/data/news";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import ServiceCard from "@/components/ServiceCard";
 import ProcessTimeline from "@/components/ProcessTimeline";
@@ -14,6 +28,7 @@ export default function HomePage() {
   const featuredProjects = projects.filter(p => p.featured).slice(0, 4);
   const serviceList = Object.values(servicesData);
   const featuredArticles = blogArticles.slice(0, 3);
+  const latestNews = newsArticles.slice(0, 3);
 
   return (
     <div className="relative">
@@ -32,11 +47,11 @@ export default function HomePage() {
                 <span>DIGITAL ENGINEERING STUDIO</span>
               </div>
 
-              <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-navy-900 leading-[1.08]">
+              <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-navy-900 leading-[1.1] sm:leading-[1.08]">
                 We Engineer Digital Experiences That Move Businesses Forward.
               </h1>
 
-              <p className="text-lg sm:text-xl text-slate-600 leading-relaxed max-w-2xl">
+              <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl">
                 From high-performance websites and scalable e-commerce platforms to intelligent software solutions, HASIZ helps ambitious businesses turn complex ideas into powerful digital experiences.
               </p>
 
@@ -60,7 +75,7 @@ export default function HomePage() {
               </div>
 
               {/* Verified Capabilities Checklist */}
-              <div className="pt-6 border-t border-slate-200/70 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs text-slate-600 font-medium">
+              <div className="pt-6 border-t border-slate-200/70 grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 text-xs text-slate-600 font-medium">
                 <div className="flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-brand-blue flex-shrink-0" />
                   <span>Sub-Second Load Times</span>
@@ -417,6 +432,121 @@ export default function HomePage() {
                   >
                     <span>Read Article</span>
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10B — GLOBAL MARKET & CONFLICT INTELLIGENCE */}
+      <section className="py-20 lg:py-28 bg-white border-t border-surface-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="max-w-2xl space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200">
+                <Activity className="w-3.5 h-3.5" />
+                <span>Live Intelligence Feed</span>
+              </div>
+
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-navy-900 leading-tight">
+                World Trading & Geopolitical Conflict Analysis.
+              </h2>
+
+              <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
+                Strategic updates tracking international markets, semiconductor hardware supply chains, and geopolitical shipping corridors — directly linked to authoritative primary reporting agencies.
+              </p>
+            </div>
+
+            <Link
+              href="/news"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-brand-blue bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-colors self-start md:self-auto group"
+            >
+              <span>Explore All News & Markets</span>
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          {/* Ticker Snapshot */}
+          <div className="p-4 rounded-xl bg-navy-950 text-white flex flex-wrap items-center justify-between gap-4 text-xs font-mono">
+            <div className="flex items-center gap-2 text-brand-sky font-semibold">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>MARKET INDICATORS</span>
+            </div>
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-300">
+              {marketTickers.slice(0, 4).map((ticker) => (
+                <div key={ticker.symbol} className="flex items-center gap-2">
+                  <span className="text-slate-400">{ticker.symbol}:</span>
+                  <span className="text-white font-semibold">{ticker.price}</span>
+                  <span className={`text-[11px] ${ticker.positive ? "text-emerald-400" : "text-rose-400"}`}>
+                    {ticker.change}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* News Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+            {latestNews.map((news) => (
+              <article
+                key={news.id}
+                className="bg-surface rounded-xl border border-surface-border overflow-hidden hover:border-slate-300 shadow-subtle hover:shadow-card transition-all flex flex-col justify-between"
+              >
+                <div>
+                  <div className="relative aspect-[16/9] w-full bg-slate-200">
+                    <Image
+                      src={news.featuredImage}
+                      alt={news.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute top-2.5 left-2.5 bg-white/95 backdrop-blur-sm px-2.5 py-1 rounded text-[11px] font-semibold text-navy-900 border border-slate-200">
+                      {news.category}
+                    </div>
+                    <div className="absolute top-2.5 right-2.5 bg-navy-950/80 text-white px-2 py-0.5 rounded text-[10px] font-mono">
+                      {news.source.name}
+                    </div>
+                  </div>
+
+                  <div className="p-5 sm:p-6 space-y-2.5">
+                    <div className="flex items-center justify-between text-xs text-slate-500 font-mono">
+                      <span>{news.timeAgo}</span>
+                      <span>{news.readTime}</span>
+                    </div>
+
+                    <h3 className="font-heading text-base font-bold text-navy-900 hover:text-brand-blue transition-colors line-clamp-2 leading-snug">
+                      <Link href={`/news/${news.slug}`}>
+                        {news.title}
+                      </Link>
+                    </h3>
+
+                    <p className="text-slate-600 text-xs sm:text-sm line-clamp-3 leading-relaxed">
+                      {news.summary}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-5 sm:p-6 pt-0 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                  <a
+                    href={news.source.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 font-semibold text-brand-blue hover:text-blue-800 transition-colors"
+                  >
+                    <span>{news.source.name} Wire</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+
+                  <Link
+                    href={`/news/${news.slug}`}
+                    className="inline-flex items-center gap-1 font-semibold text-slate-600 hover:text-navy-900 transition-colors"
+                  >
+                    <span>Strategic Impact</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
                   </Link>
                 </div>
               </article>

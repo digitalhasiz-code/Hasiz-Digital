@@ -78,6 +78,17 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/blog" className="text-slate-400 hover:text-white transition-colors">
+                  Engineering Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/news" className="text-slate-400 hover:text-white transition-colors flex items-center gap-1.5">
+                  <span>Market & World News</span>
+                  <span className="px-1.5 py-0.2 rounded text-[10px] font-mono bg-blue-900 text-blue-300">LIVE</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/insights" className="text-slate-400 hover:text-white transition-colors">
                   Technical Insights
                 </Link>

@@ -2,9 +2,10 @@ import { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 import { servicesData } from "@/data/services";
 import { blogArticles } from "@/data/blog";
+import { newsArticles } from "@/data/news";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://hasiz.com";
+  const baseUrl = "https://www.hasiz.com";
 
   // Static Pages
   const staticPages = [
@@ -12,6 +13,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/services",
     "/work",
+    "/blog",
+    "/news",
     "/insights",
     "/contact",
     "/privacy-policy",
@@ -19,8 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
-    changeFrequency: (route === "" ? "weekly" : "monthly") as "weekly" | "monthly",
-    priority: route === "" ? 1.0 : route.startsWith("/services") || route === "/work" ? 0.9 : 0.7,
+    changeFrequency: (route === "" || route === "/news" ? "daily" : "weekly") as "daily" | "weekly",
+    priority: route === "" ? 1.0 : route.startsWith("/services") || route === "/work" || route === "/news" ? 0.9 : 0.8,
   }));
 
   // Services Pages
@@ -39,14 +42,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Blog / Insights Articles
+  // Blog Articles
   const blogPages = blogArticles.map((article) => ({
+    url: `${baseUrl}/blog/${article.slug}`,
+    lastModified: article.updatedDate || article.publishedDate,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  // Insights Articles (supporting alias)
+  const insightPages = blogArticles.map((article) => ({
     url: `${baseUrl}/insights/${article.slug}`,
     lastModified: article.updatedDate || article.publishedDate,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...workPages, ...blogPages];
-}
+  // News Articles
+  const newsPages = newsArticles.map((article) => ({
+    url: `${baseUrl}/news/${article.slug}`,
+    lastModified: article.source.publishedTimestamp,
+    changeFrequency: "daily" as const,
+    priority: 0.85,
+  }));
 
+  return [...staticPages, ...servicePages, ...workPages, ...blogPages, ...insightPages, ...newsPages];
+}

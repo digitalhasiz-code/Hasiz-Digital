@@ -7,7 +7,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://hasiz.com/sitemap.xml",
+    sitemap: "https://www.hasiz.com/sitemap.xml",
   };
 }
 
