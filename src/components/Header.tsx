@@ -10,6 +10,7 @@ import { Menu, X, ArrowUpRight, Globe2, BookOpen } from "lucide-react";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/work", label: "Work" },
   { href: "/blog", label: "Blog" },
   { href: "/news", label: "News & Markets", badge: "LIVE" },
@@ -64,14 +65,14 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-1" aria-label="Main Navigation">
+          <nav className="hidden lg:flex items-center space-x-0.5 xl:space-x-1" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (link.href !== "/" && pathname.startsWith(link.href));
               return (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-1.5 ${
+                  className={`px-2 xl:px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 flex items-center gap-1.5 ${
                     isActive
                       ? "text-brand-blue font-semibold bg-blue-50/60"
                       : "text-navy-900 hover:text-brand-blue hover:bg-slate-50"

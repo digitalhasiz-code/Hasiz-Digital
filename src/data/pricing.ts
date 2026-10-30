@@ -963,3 +963,204 @@ export const budgetOptionsByCurrency: Record<CurrencyCode, string[]> = {
     "₹450,000+ (Enterprise)"
   ]
 };
+
+export interface PackageTier {
+  id: "starter" | "professional" | "premium" | "enterprise";
+  name: string;
+  badge?: string;
+  popular?: boolean;
+  tagline: string;
+  idealFor: string;
+  turnaround: string;
+  pakistanDisplay: string;
+  internationalDisplay: string;
+  isStartingFrom?: boolean;
+  prices: Record<CurrencyCode, number | null>;
+  features: string[];
+}
+
+export const packageTiers: PackageTier[] = [
+  {
+    id: "starter",
+    name: "Starter",
+    badge: "Fast Launch",
+    tagline: "Essential digital presence engineered for startups, solo consultants & high-converting landing pages.",
+    idealFor: "Startups, small local businesses & single-offer launches",
+    turnaround: "5 – 7 business days",
+    pakistanDisplay: "Rs. 35k",
+    internationalDisplay: "$350",
+    prices: {
+      USD: 350,
+      PKR: 35000,
+      GBP: 280,
+      EUR: 320,
+      AED: 1300,
+      SAR: 1350,
+      CAD: 480,
+      AUD: 530,
+      INR: 30000
+    },
+    features: [
+      "Up to 5 conversion-focused pages (or high-impact landing page)",
+      "100% Mobile & tablet responsive architecture",
+      "Foundational On-Page SEO (Meta tags, OpenGraph & sitemap)",
+      "Lead generation contact form with WhatsApp / email routing",
+      "Core Web Vitals speed optimization (Sub-second load times)",
+      "SSL configuration & security headers hardening",
+      "14 days post-launch warranty & bug-fixing support"
+    ]
+  },
+  {
+    id: "professional",
+    name: "Professional",
+    badge: "Most Popular",
+    popular: true,
+    tagline: "Comprehensive bespoke digital engineering designed to elevate commercial credibility and maximize conversions.",
+    idealFor: "Established brands, corporate firms & growing companies",
+    turnaround: "2 – 3 weeks",
+    pakistanDisplay: "Rs. 80k",
+    internationalDisplay: "$900",
+    prices: {
+      USD: 900,
+      PKR: 80000,
+      GBP: 700,
+      EUR: 800,
+      AED: 3300,
+      SAR: 3400,
+      CAD: 1240,
+      AUD: 1370,
+      INR: 72000
+    },
+    features: [
+      "Up to 10 bespoke pages with tailored UI/UX styling",
+      "Next.js / Tailwind or custom WordPress engineering (Zero theme bloat)",
+      "Advanced On-Page SEO + Local Business Schema structured data",
+      "Interactive UI components, micro-animations & testimonial sliders",
+      "CRM, newsletter (Mailchimp/Klaviyo) & analytics integration",
+      "Multi-layer security (Honeypot anti-spam + rate-limiting)",
+      "Complete client dashboard walkthrough & training session",
+      "30 days dedicated priority post-launch support"
+    ]
+  },
+  {
+    id: "premium",
+    name: "Premium",
+    badge: "E-Commerce & Scale",
+    tagline: "High-performance digital platforms, bespoke Shopify/WooCommerce stores, or custom AI-powered web solutions.",
+    idealFor: "E-commerce brands, high-growth startups & custom platforms",
+    turnaround: "3 – 5 weeks",
+    pakistanDisplay: "Rs. 150k+",
+    internationalDisplay: "$1,500+",
+    isStartingFrom: true,
+    prices: {
+      USD: 1500,
+      PKR: 150000,
+      GBP: 1200,
+      EUR: 1380,
+      AED: 5500,
+      SAR: 5700,
+      CAD: 2070,
+      AUD: 2280,
+      INR: 125000
+    },
+    features: [
+      "Full E-Commerce storefront (Shopify / WooCommerce) or custom web app",
+      "Product catalog, inventory tracking, cart upsells & checkout optimization",
+      "Automated payment gateway integrations (Stripe, Paymob, JazzCash/EasyPaisa, COD)",
+      "AI workflow or smart chatbot integration (Custom Gemini/OpenAI agents)",
+      "Conversion Rate Optimization (CRO) & cart abandonment tracking",
+      "Advanced Google Analytics 4, Meta Pixel & conversion API tracking",
+      "Staging environment testing before live rollout",
+      "60 days priority VIP support & performance SLA"
+    ]
+  },
+  {
+    id: "enterprise",
+    name: "Enterprise",
+    badge: "Custom Architecture",
+    tagline: "Tailored full-stack SaaS engineering, multi-tenant web applications, and mission-critical cloud platforms.",
+    idealFor: "Funded tech startups, enterprise organizations & SaaS products",
+    turnaround: "Tailored sprint roadmap",
+    pakistanDisplay: "Custom quote",
+    internationalDisplay: "Custom quote",
+    prices: {
+      USD: null,
+      PKR: null,
+      GBP: null,
+      EUR: null,
+      AED: null,
+      SAR: null,
+      CAD: null,
+      AUD: null,
+      INR: null
+    },
+    features: [
+      "Full-stack SaaS MVP or custom software engineering",
+      "Scalable relational/NoSQL database architecture & caching layer",
+      "Multi-tenant authentication, role-based access control (RBAC) & subscriptions",
+      "Custom internal admin dashboards & reporting suites",
+      "Third-party API & webhook integrations (ERP, CRM, payment rails)",
+      "Automated CI/CD deployment pipelines & high-availability cloud hosting",
+      "Dedicated senior engineering lead & weekly progress reviews",
+      "Long-term retainer & ongoing feature development SLA"
+    ]
+  }
+];
+
+export const pricingConditions = {
+  included: [
+    {
+      title: "Basic Responsive Design Included",
+      description: "Every website build is meticulously engineered and verified across mobile, tablet, laptop, and 4K desktop displays with fluid, touch-friendly layouts."
+    },
+    {
+      title: "Basic On-Page SEO Included",
+      description: "Standard on-page SEO best practices: semantic heading hierarchy (H1-H4), metadata titles/descriptions, canonical tags, OpenGraph cards, and automated XML sitemaps."
+    },
+    {
+      title: "Core Web Vitals & Speed Optimization",
+      description: "Next-gen image formatting, zero bloated plugins, tree-shaken JavaScript, and sub-second load times engineered from the ground up."
+    },
+    {
+      title: "100% Full Code Ownership",
+      description: "Upon project completion, you receive complete source code, repository access, and database credentials with absolutely zero vendor lock-in."
+    }
+  ],
+  separate: [
+    {
+      title: "Domain and Hosting Charged Separately",
+      description: "Domain registration and cloud server hosting (e.g. Vercel, Hostinger, AWS, Cloudflare) are billed directly to your own account or managed via our retainer."
+    },
+    {
+      title: "Premium Themes, Plugins & 3rd-Party Subscriptions Separate",
+      description: "Commercial licenses (such as paid Shopify apps, premium WordPress plugins, commercial font licenses, or external SaaS APIs) are funded directly by the client."
+    },
+    {
+      title: "Advanced Integrations & Custom Dashboards Quoted Separately",
+      description: "Complex third-party ERP/CRM integrations, custom member portals, multi-tier admin dashboards, or bespoke backend logic beyond the agreed initial scope are quoted transparently via milestone add-ons."
+    }
+  ]
+};
+
+export const pricingFaqs = [
+  {
+    question: "Do you offer a special rate if I only need a single Landing Page?",
+    answer: "Yes! If you only need a single, ultra-fast conversion-focused landing page (for a product launch, lead capture campaign, or Google Ads campaign), we have a dedicated Landing Page Special priced at Rs. 15,000 PKR / $190 USD."
+  },
+  {
+    question: "How do payments and project milestones work?",
+    answer: "We typically work on a structured 50/50 milestone agreement: 50% deposit upfront to initiate architectural planning, wireframing, and development, and the remaining 50% upon final client sign-off, live deployment, and asset handover."
+  },
+  {
+    question: "Who manages and pays for hosting and domains?",
+    answer: "To ensure you always maintain 100% ownership and control over your digital assets, domain registration and hosting accounts are registered under your name. We configure and deploy everything for you free of charge. If you prefer a hands-off experience, we can host and manage your platform under our Monthly Maintenance retainer (Rs. 8,000/mo or $100/mo)."
+  },
+  {
+    question: "Can I upgrade my package as my business grows?",
+    answer: "Absolutely. All our codebases are built modularly without bloated frameworks. You can easily start with our Starter package and upgrade to Professional or full E-Commerce as your business expands."
+  },
+  {
+    question: "What currencies do you accept?",
+    answer: "We support transparent pricing and local invoicing across Pakistan (PKR via Bank Transfer/Raast/JazzCash/EasyPaisa), the United States (USD via Stripe/Wire), United Kingdom (GBP), Europe (EUR), UAE (AED), Saudi Arabia (SAR), Canada (CAD), and Australia (AUD)."
+  }
+];

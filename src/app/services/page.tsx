@@ -4,6 +4,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import ServiceCard from "@/components/ServiceCard";
 import CurrencySelector from "@/components/CurrencySelector";
 import MasterPricingTable from "@/components/MasterPricingTable";
+import PricingConditions from "@/components/PricingConditions";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TechStackGrid from "@/components/TechStackGrid";
 import { servicesData } from "@/data/services";
@@ -88,8 +89,25 @@ export default function ServicesPage() {
           </div>
 
           {/* Full Rate Card Table */}
-          <div className="pt-8 border-t border-slate-100">
+          <div className="pt-8 border-t border-slate-100 space-y-12">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-blue-50/70 border border-blue-200/60">
+              <div className="space-y-0.5">
+                <span className="text-xs font-mono font-bold text-navy-950 uppercase">Looking for bundled project packages?</span>
+                <p className="text-xs text-slate-600">Explore our Starter (Rs. 35k), Professional (Rs. 80k), and Premium (Rs. 150k+) tiers.</p>
+              </div>
+              <Link
+                href="/pricing"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-navy-900 hover:bg-brand-blue text-white text-xs font-semibold font-mono transition-colors whitespace-nowrap"
+              >
+                <span>View Pricing Packages</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            </div>
+
             <MasterPricingTable />
+
+            {/* Scope Transparency & Pricing Conditions */}
+            <PricingConditions />
           </div>
         </div>
       </section>

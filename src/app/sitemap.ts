@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/about",
     "/services",
+    "/pricing",
     "/work",
     "/blog",
     "/news",
@@ -23,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: route === "" ? `${baseUrl}/` : `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: (route === "" || route === "/news" ? "daily" : "weekly") as "daily" | "weekly",
-    priority: route === "" ? 1.0 : route.startsWith("/services") || route === "/work" || route === "/news" ? 0.9 : 0.8,
+    priority: route === "" ? 1.0 : route.startsWith("/services") || route === "/pricing" || route === "/work" || route === "/news" ? 0.9 : 0.8,
   }));
 
   // Services Pages

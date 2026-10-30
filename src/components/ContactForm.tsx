@@ -19,6 +19,10 @@ interface FormData {
 }
 
 const serviceOptions = [
+  "Starter Package (Rs. 35k / $350)",
+  "Professional Package (Rs. 80k / $900)",
+  "Premium Package (Rs. 150k+ / $1,500+)",
+  "Enterprise Custom Scope",
   "Landing Page (Special Offer)",
   "WordPress Development",
   "Shopify Development",
@@ -70,6 +74,27 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
     honeypot: "",
     formName: initialFormName
   });
+
+  // Pre-select package or service if passed via URL query parameter
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const pkg = params.get("package");
+      const srv = params.get("service");
+
+      if (pkg === "starter") {
+        setFormData(prev => ({ ...prev, service: "Starter Package (Rs. 35k / $350)" }));
+      } else if (pkg === "professional") {
+        setFormData(prev => ({ ...prev, service: "Professional Package (Rs. 80k / $900)" }));
+      } else if (pkg === "premium") {
+        setFormData(prev => ({ ...prev, service: "Premium Package (Rs. 150k+ / $1,500+)" }));
+      } else if (pkg === "enterprise") {
+        setFormData(prev => ({ ...prev, service: "Enterprise Custom Scope" }));
+      } else if (srv === "landing-page") {
+        setFormData(prev => ({ ...prev, service: "Landing Page (Special Offer)" }));
+      }
+    }
+  }, []);
 
   // Sync budget option default when currency changes
   useEffect(() => {
