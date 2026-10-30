@@ -145,9 +145,9 @@ export const config = {
      * - _next/static (static files)
      * - _next/image (image optimization files)
      * - favicon.ico (favicon file)
-     * - public files (images, icons)
+     * - icon files & public assets
      */
-    "/((?!_next/static|_next/image|favicon.ico|images/).*)",
+    "/((?!_next/static|_next/image|favicon.ico|icon.png|apple-icon.png|apple-touch-icon.png|favicon-.*\\.png|site.webmanifest|images/).*)",
   ],
 };
 
