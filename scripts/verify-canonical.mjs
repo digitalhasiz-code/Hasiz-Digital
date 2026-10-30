@@ -87,14 +87,9 @@ async function checkSitemap() {
 }
 
 async function checkNonWwwRedirect() {
-  const url = `${BASE_URL}/about`;
+  const url = "https://hasiz.com/about";
   try {
     const res = await fetch(url, {
-      headers: {
-        Host: "hasiz.com",
-        "X-Forwarded-Host": "hasiz.com",
-        "User-Agent": "Mozilla/5.0"
-      },
       redirect: "manual"
     });
 
@@ -103,7 +98,7 @@ async function checkNonWwwRedirect() {
     return {
       status: res.status,
       location,
-      ok: isRedirect && location?.startsWith("https://www.hasiz.com")
+      ok: isRedirect && location === "https://www.hasiz.com/about"
     };
   } catch (err) {
     return { ok: false, error: err.message };
