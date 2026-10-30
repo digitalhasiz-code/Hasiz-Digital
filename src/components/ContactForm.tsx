@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ShieldCheck } from "lucide-react";
+import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ShieldCheck, Sparkles, Tag, Info } from "lucide-react";
 import { useCurrency } from "@/context/CurrencyContext";
-import { budgetOptionsByCurrency } from "@/data/pricing";
+import { budgetOptionsByCurrency, serviceEstimates } from "@/data/pricing";
 
 interface FormData {
   fullName: string;
@@ -407,6 +407,72 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
           </select>
         </div>
       </div>
+
+      {/* Dynamic Instant Price Estimator Card */}
+      {(() => {
+        const selectedEstimate = serviceEstimates[formData.service];
+        if (!selectedEstimate) return null;
+
+        const estimatePriceValue = selectedEstimate.prices[currency];
+        let formattedEstimate = "";
+        if (estimatePriceValue === null) {
+          formattedEstimate = "Custom Scope Quote";
+        } else {
+          const formatted = currencyConfig.format(estimatePriceValue, selectedEstimate.isMonthly);
+          formattedEstimate = selectedEstimate.isStartingFrom ? `From ${formatted}` : formatted;
+        }
+
+        return (
+          <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-blue-200/80 shadow-sm transition-all duration-300">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
+              <div className="flex items-center gap-2">
+                <span className="p-1.5 rounded-lg bg-blue-100 text-brand-blue">
+                  <Tag className="w-4 h-4" />
+                </span>
+                <div>
+                  <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold block">
+                    {currencyConfig.flag} Detected {currencyConfig.name} Rate ({currencyConfig.code})
+                  </span>
+                  <span className="font-heading font-bold text-navy-950 text-base">
+                    {selectedEstimate.name}
+                  </span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-2">
+                {selectedEstimate.isSpecialLandingPage ? (
+                  <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    Special Offer
+                  </span>
+                ) : selectedEstimate.badge ? (
+                  <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-blue-100 text-brand-blue">
+                    {selectedEstimate.badge}
+                  </span>
+                ) : null}
+
+                <div className="font-heading text-lg sm:text-xl font-extrabold text-navy-900 bg-white px-3 py-1 rounded-xl border border-slate-200 shadow-xs">
+                  {formattedEstimate}
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-200/60">
+              {selectedEstimate.scopeNotes}
+            </p>
+
+            <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-mono text-slate-500">
+              <span className="flex items-center gap-1 text-emerald-700">
+                <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                Basic responsive design &amp; on-page SEO included
+              </span>
+              <span className="flex items-center gap-1">
+                <Info className="w-3 h-3 text-slate-400" />
+                Domain &amp; hosting charged separately
+              </span>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Project Description */}
       <div className="space-y-2">

@@ -66,8 +66,8 @@ export default function ContactPage() {
                     <Mail className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
                     <div>
                       <span className="block text-xs text-slate-400 font-mono">Email Address</span>
-                      <a href="mailto:contact@hasiz.com" className="font-semibold text-navy-900 hover:text-brand-blue transition-colors">
-                        contact@hasiz.com
+                      <a href="mailto:digitalhasiz@gmail.com" className="font-semibold text-navy-900 hover:text-brand-blue transition-colors">
+                        digitalhasiz@gmail.com
                       </a>
                     </div>
                   </div>
@@ -75,8 +75,8 @@ export default function ContactPage() {
                   <div className="flex items-start gap-3">
                     <Globe className="w-5 h-5 text-brand-blue mt-0.5 flex-shrink-0" />
                     <div>
-                      <span className="block text-xs text-slate-400 font-mono">Client Timezones</span>
-                      <span className="font-medium text-slate-700">North America (EST/PST), UK (GMT), Europe (CET)</span>
+                      <span className="block text-xs text-slate-400 font-mono">Studio Operations</span>
+                      <span className="font-medium text-slate-700">100% Online &amp; Remote Globally</span>
                     </div>
                   </div>
 

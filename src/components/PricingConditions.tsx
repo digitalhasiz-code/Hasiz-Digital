@@ -114,3 +114,4 @@ export default function PricingConditions({ className = "" }: PricingConditionsP
     </section>
   );
 }
+

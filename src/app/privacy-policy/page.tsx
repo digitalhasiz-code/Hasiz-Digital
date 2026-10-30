@@ -99,7 +99,7 @@ export default function PrivacyPolicyPage() {
               <li>The right to object to or restrict processing of your personal information.</li>
             </ul>
             <p className="mt-2 text-sm">
-              To exercise any of these rights, please contact our data privacy officer at <a href="mailto:contact@hasiz.com" className="text-brand-blue font-semibold">contact@hasiz.com</a>.
+              To exercise any of these rights, please contact our data privacy officer at <a href="mailto:digitalhasiz@gmail.com" className="text-brand-blue font-semibold">digitalhasiz@gmail.com</a>.
             </p>
           </div>
 
@@ -108,7 +108,7 @@ export default function PrivacyPolicyPage() {
               7. Contacting Us
             </h2>
             <p>
-              If you have any questions regarding this Privacy Policy or our operational security practices, please email <a href="mailto:contact@hasiz.com" className="text-brand-blue font-semibold">contact@hasiz.com</a>.
+              If you have any questions regarding this Privacy Policy or our operational security practices, please email <a href="mailto:digitalhasiz@gmail.com" className="text-brand-blue font-semibold">digitalhasiz@gmail.com</a>.
             </p>
           </div>
         </div>

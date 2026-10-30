@@ -1164,3 +1164,234 @@ export const pricingFaqs = [
     answer: "We support transparent pricing and local invoicing across Pakistan (PKR via Bank Transfer/Raast/JazzCash/EasyPaisa), the United States (USD via Stripe/Wire), United Kingdom (GBP), Europe (EUR), UAE (AED), Saudi Arabia (SAR), Canada (CAD), and Australia (AUD)."
   }
 ];
+
+export interface ServiceEstimateInfo {
+  name: string;
+  badge?: string;
+  isSpecialLandingPage?: boolean;
+  isStartingFrom?: boolean;
+  isMonthly?: boolean;
+  prices: Record<CurrencyCode, number | null>;
+  scopeNotes: string;
+}
+
+export const serviceEstimates: Record<string, ServiceEstimateInfo> = {
+  "Landing Page (Special Offer)": {
+    name: "Landing Page (Special Offer)",
+    badge: "⚡ Special Limited Offer",
+    isSpecialLandingPage: true,
+    prices: {
+      USD: 190,
+      PKR: 15000,
+      GBP: 150,
+      EUR: 175,
+      AED: 700,
+      SAR: 720,
+      CAD: 260,
+      AUD: 290,
+      INR: 13500
+    },
+    scopeNotes: "Ultra-fast conversion landing page for ad campaigns, lead gen & product launches. Includes basic responsive design & SEO setup."
+  },
+  "Starter Package (Rs. 35k / $350)": {
+    name: "Starter Package",
+    badge: "Fast Launch",
+    prices: {
+      USD: 350,
+      PKR: 35000,
+      GBP: 280,
+      EUR: 320,
+      AED: 1300,
+      SAR: 1350,
+      CAD: 480,
+      AUD: 530,
+      INR: 30000
+    },
+    scopeNotes: "Up to 5 conversion pages, 100% mobile-friendly responsive layout, on-page SEO metadata, and contact form integration."
+  },
+  "Professional Package (Rs. 80k / $900)": {
+    name: "Professional Package",
+    badge: "Most Popular",
+    prices: {
+      USD: 900,
+      PKR: 80000,
+      GBP: 700,
+      EUR: 800,
+      AED: 3300,
+      SAR: 3400,
+      CAD: 1240,
+      AUD: 1370,
+      INR: 72000
+    },
+    scopeNotes: "Up to 10 bespoke engineered pages, Next.js or custom WordPress, advanced SEO + schema markup, and 30-day post-launch support."
+  },
+  "Premium Package (Rs. 150k+ / $1,500+)": {
+    name: "Premium Package",
+    badge: "E-Commerce & Scale",
+    isStartingFrom: true,
+    prices: {
+      USD: 1500,
+      PKR: 150000,
+      GBP: 1200,
+      EUR: 1380,
+      AED: 5500,
+      SAR: 5700,
+      CAD: 2070,
+      AUD: 2280,
+      INR: 125000
+    },
+    scopeNotes: "Full E-Commerce store (Shopify / WooCommerce) or complex web application with payments, inventory and 60-day VIP support."
+  },
+  "Enterprise Custom Scope": {
+    name: "Enterprise Architecture",
+    badge: "Tailored Architecture",
+    prices: {
+      USD: null,
+      PKR: null,
+      GBP: null,
+      EUR: null,
+      AED: null,
+      SAR: null,
+      CAD: null,
+      AUD: null,
+      INR: null
+    },
+    scopeNotes: "Custom full-stack SaaS platform, multi-tenant databases, custom APIs and high-availability cloud infrastructure."
+  },
+  "WordPress Development": {
+    name: "WordPress Development",
+    prices: {
+      USD: 500,
+      PKR: 45000,
+      GBP: 400,
+      EUR: 450,
+      AED: 1800,
+      SAR: 1900,
+      CAD: 690,
+      AUD: 760,
+      INR: 40000
+    },
+    scopeNotes: "Clean bespoke WordPress corporate site, zero theme bloat, responsive layout, and client-editable dashboard."
+  },
+  "Shopify Development": {
+    name: "Shopify Development",
+    prices: {
+      USD: 750,
+      PKR: 70000,
+      GBP: 600,
+      EUR: 680,
+      AED: 2800,
+      SAR: 2850,
+      CAD: 1030,
+      AUD: 1140,
+      INR: 63000
+    },
+    scopeNotes: "Custom high-converting Shopify storefront, liquid code architecture, cart drawer upsells, and payment gateway setup."
+  },
+  "Custom Web Development": {
+    name: "Custom Web Development",
+    prices: {
+      USD: 1200,
+      PKR: 100000,
+      GBP: 950,
+      EUR: 1100,
+      AED: 4400,
+      SAR: 4500,
+      CAD: 1650,
+      AUD: 1820,
+      INR: 90000
+    },
+    scopeNotes: "Next.js / TypeScript custom web application or portal built for sub-second speeds and SEO dominance."
+  },
+  "Web Application Development": {
+    name: "Web Application / SaaS",
+    prices: {
+      USD: 2500,
+      PKR: 250000,
+      GBP: 2000,
+      EUR: 2300,
+      AED: 9200,
+      SAR: 9400,
+      CAD: 3450,
+      AUD: 3800,
+      INR: 225000
+    },
+    scopeNotes: "Full SaaS MVP build with database schema, authentication, subscription billing, and user dashboards."
+  },
+  "AI Integration": {
+    name: "AI Integration & Automation",
+    prices: {
+      USD: 500,
+      PKR: 50000,
+      GBP: 400,
+      EUR: 450,
+      AED: 1850,
+      SAR: 1900,
+      CAD: 690,
+      AUD: 760,
+      INR: 45000
+    },
+    scopeNotes: "Gemini / OpenAI workflow automation, custom AI chat agents, document analysis, and triage bots."
+  },
+  "UI/UX Design": {
+    name: "UI/UX & Design Systems",
+    prices: {
+      USD: 400,
+      PKR: 40000,
+      GBP: 320,
+      EUR: 360,
+      AED: 1500,
+      SAR: 1500,
+      CAD: 550,
+      AUD: 610,
+      INR: 36000
+    },
+    scopeNotes: "High-fidelity Figma wireframes, interactive component prototypes, and mobile-first design systems."
+  },
+  "Website Redesign": {
+    name: "Website Redesign & Modernization",
+    prices: {
+      USD: 400,
+      PKR: 40000,
+      GBP: 320,
+      EUR: 360,
+      AED: 1500,
+      SAR: 1500,
+      CAD: 550,
+      AUD: 610,
+      INR: 36000
+    },
+    scopeNotes: "Modern UI redesign, responsive mobile layout fixes, and conversion restructuring for existing websites."
+  },
+  "Speed Optimization": {
+    name: "Speed & Core Web Vitals Optimization",
+    prices: {
+      USD: 150,
+      PKR: 15000,
+      GBP: 120,
+      EUR: 135,
+      AED: 550,
+      SAR: 575,
+      CAD: 210,
+      AUD: 230,
+      INR: 13500
+    },
+    scopeNotes: "Comprehensive Core Web Vitals audit, image optimization, script tree-shaking, sub-second load guarantee."
+  },
+  "Website Maintenance & SEO": {
+    name: "Website Maintenance & SEO Retainer",
+    isMonthly: true,
+    prices: {
+      USD: 100,
+      PKR: 8000,
+      GBP: 80,
+      EUR: 90,
+      AED: 370,
+      SAR: 375,
+      CAD: 140,
+      AUD: 150,
+      INR: 7200
+    },
+    scopeNotes: "Monthly plugin/core security updates, 24/7 uptime monitoring, daily backups, and technical on-page SEO."
+  }
+};

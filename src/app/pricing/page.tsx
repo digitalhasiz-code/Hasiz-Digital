@@ -1,12 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import CurrencySelector from "@/components/CurrencySelector";
 import PricingPackages from "@/components/PricingPackages";
 import PricingConditions from "@/components/PricingConditions";
-import MasterPricingTable from "@/components/MasterPricingTable";
 import { pricingFaqs } from "@/data/pricing";
-import { ArrowRight, CheckCircle2, HelpCircle, Shield, Sparkles, PhoneCall } from "lucide-react";
+import { ArrowRight, CheckCircle2, HelpCircle, Shield, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Engineering Pricing & Packages | Transparent Global Rates | HASIZ",
@@ -47,11 +45,11 @@ export default function PricingPage() {
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-mono text-slate-600">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                Pakistan (PKR) Localized Affordability
+                Automatic Local Currency Detection
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-brand-blue" />
-                Global Multi-Currency Billing
+                100% Online Remote Studio
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-brand-blue" />
@@ -65,20 +63,6 @@ export default function PricingPage() {
       {/* Main Pricing Content */}
       <section className="py-16 lg:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          {/* Currency Switcher Bar */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-surface border border-surface-border shadow-subtle">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-navy-900 uppercase tracking-wide">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>Regional Currency Selector</span>
-              </div>
-              <p className="text-xs text-slate-500">
-                Prices automatically adjust to your region. Switch your preferred currency at any time:
-              </p>
-            </div>
-            <CurrencySelector variant="inline" />
-          </div>
-
           {/* 4 Packages Grid */}
           <div>
             <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
@@ -95,23 +79,6 @@ export default function PricingPage() {
 
           {/* Pricing Conditions & Project Inclusions */}
           <PricingConditions />
-
-          {/* Master 13-Service A-La-Carte Table */}
-          <div className="pt-10 border-t border-slate-100">
-            <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-slate-100 text-slate-700">
-                A-La-Carte Rates
-              </div>
-              <h2 className="text-2xl sm:text-3xl font-heading font-bold text-navy-900">
-                Complete 13-Service Rate Card
-              </h2>
-              <p className="text-slate-500 text-xs sm:text-sm">
-                Prefer an individual service build (like standalone Shopify, WordPress, or Speed Optimization)? Review our master rate card across global currencies:
-              </p>
-            </div>
-
-            <MasterPricingTable />
-          </div>
 
           {/* Pricing FAQ Section */}
           <div className="pt-10 border-t border-slate-100">
@@ -181,3 +148,4 @@ export default function PricingPage() {
     </div>
   );
 }
+

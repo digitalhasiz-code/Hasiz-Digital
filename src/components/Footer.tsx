@@ -126,8 +126,8 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-brand-sky mt-0.5 flex-shrink-0" />
                 <div>
                   <span className="block text-xs text-slate-400">Project Inquiries:</span>
-                  <a href="mailto:contact@hasiz.com" className="text-white hover:text-brand-sky transition-colors">
-                    contact@hasiz.com
+                  <a href="mailto:digitalhasiz@gmail.com" className="text-white hover:text-brand-sky transition-colors">
+                    digitalhasiz@gmail.com
                   </a>
                 </div>
               </div>
@@ -135,8 +135,8 @@ export default function Footer() {
               <div className="flex items-start gap-2.5">
                 <Globe className="w-4 h-4 text-brand-sky mt-0.5 flex-shrink-0" />
                 <div>
-                  <span className="block text-xs text-slate-400">Time Zones Supported:</span>
-                  <span className="text-slate-300">EST / GMT / CET</span>
+                  <span className="block text-xs text-slate-400">Studio Model:</span>
+                  <span className="text-slate-300">100% Online &amp; Remote Worldwide</span>
                 </div>
               </div>
 

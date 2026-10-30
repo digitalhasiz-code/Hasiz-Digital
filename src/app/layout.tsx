@@ -100,7 +100,7 @@ export default function RootLayout({
         "logo": "https://www.hasiz.com/images/brand/logo-dark.svg",
         "description": "HASIZ is a digital engineering studio focused on building high-performance websites, e-commerce experiences, custom software, and intelligent digital solutions for modern businesses.",
         "slogan": "We Engineer Digital Experiences.",
-        "email": "contact@hasiz.com",
+        "email": "digitalhasiz@gmail.com",
         "sameAs": [
           "https://github.com",
           "https://linkedin.com",

@@ -175,3 +175,4 @@ export default function PricingPackages({ className = "" }: PricingPackagesProps
     </div>
   );
 }
+

@@ -108,7 +108,7 @@ export default function TermsPage() {
               8. Contact
             </h2>
             <p>
-              For legal inquiries regarding these terms, please contact <a href="mailto:contact@hasiz.com" className="text-brand-blue font-semibold">contact@hasiz.com</a>.
+              For legal inquiries regarding these terms, please contact <a href="mailto:digitalhasiz@gmail.com" className="text-brand-blue font-semibold">digitalhasiz@gmail.com</a>.
             </p>
           </div>
         </div>

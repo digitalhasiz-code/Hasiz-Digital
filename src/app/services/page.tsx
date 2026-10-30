@@ -2,8 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ServiceCard from "@/components/ServiceCard";
-import CurrencySelector from "@/components/CurrencySelector";
-import MasterPricingTable from "@/components/MasterPricingTable";
 import PricingConditions from "@/components/PricingConditions";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TechStackGrid from "@/components/TechStackGrid";
@@ -68,43 +66,27 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Localized Currency Bar */}
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-surface border border-surface-border mb-12 shadow-subtle">
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-navy-900 uppercase tracking-wide">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>Transparent Regional Pricing Architecture</span>
-              </div>
-              <p className="text-xs text-slate-500">
-                All engineering rates are automatically calibrated for your market. Switch currency anytime:
-              </p>
-            </div>
-            <CurrencySelector variant="inline" />
-          </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
             {serviceList.map((service, index) => (
               <ServiceCard key={service.slug} service={service} index={index} />
             ))}
           </div>
 
-          {/* Full Rate Card Table */}
+          {/* Pricing Packages Link & Conditions */}
           <div className="pt-8 border-t border-slate-100 space-y-12">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-blue-50/70 border border-blue-200/60">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-blue-50/70 border border-blue-200/60 shadow-sm">
               <div className="space-y-0.5">
-                <span className="text-xs font-mono font-bold text-navy-950 uppercase">Looking for bundled project packages?</span>
-                <p className="text-xs text-slate-600">Explore our Starter (Rs. 35k), Professional (Rs. 80k), and Premium (Rs. 150k+) tiers.</p>
+                <span className="text-xs font-mono font-bold text-navy-950 uppercase tracking-wide">Looking for Fixed Bundled Packages?</span>
+                <p className="text-xs text-slate-600">Review our Starter, Professional, and Premium packages with instant country-based quoting.</p>
               </div>
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-navy-900 hover:bg-brand-blue text-white text-xs font-semibold font-mono transition-colors whitespace-nowrap"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-brand-blue text-white text-xs font-semibold font-mono transition-colors whitespace-nowrap shadow-sm"
               >
                 <span>View Pricing Packages</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
-
-            <MasterPricingTable />
 
             {/* Scope Transparency & Pricing Conditions */}
             <PricingConditions />

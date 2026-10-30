@@ -8,7 +8,6 @@ import { projects } from "@/data/projects";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import CurrencySelector from "@/components/CurrencySelector";
 import { useCurrency } from "@/context/CurrencyContext";
 import { ArrowRight, CheckCircle2, ChevronDown, Sparkles, ShieldCheck, Tag } from "lucide-react";
 
@@ -377,25 +376,17 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
       {servicePricing && (
         <section id="pricing" className="py-20 lg:py-28 bg-surface border-t border-b border-surface-border">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-              <div className="max-w-2xl space-y-3">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
-                  <ShieldCheck className="w-3.5 h-3.5" />
-                  <span>Transparent Investment &amp; Scoping</span>
-                </div>
-                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-navy-900 leading-tight">
-                  Clear Engineering Packages. Zero Hidden Fees.
-                </h2>
-                <p className="text-slate-600 text-base leading-relaxed">
-                  Calibrated for maximum commercial ROI. All deliverables backed by clean-code standards, verified speed benchmarks, and post-launch technical warranty.
-                </p>
+            <div className="max-w-3xl space-y-3 mb-14">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Transparent Investment &amp; Scoping</span>
               </div>
-
-              {/* Currency Selector Pill */}
-              <div className="flex items-center gap-2.5 bg-white p-2.5 sm:p-3 rounded-xl border border-surface-border shadow-subtle flex-shrink-0">
-                <span className="text-xs font-mono font-medium text-slate-500">Currency:</span>
-                <CurrencySelector variant="inline" />
-              </div>
+              <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-navy-900 leading-tight">
+                Clear Engineering Packages. Zero Hidden Fees.
+              </h2>
+              <p className="text-slate-600 text-base leading-relaxed">
+                Calibrated for maximum commercial ROI. All deliverables backed by clean-code standards, verified speed benchmarks, and post-launch technical warranty.
+              </p>
             </div>
 
             {/* 3 Tiers Grid */}
