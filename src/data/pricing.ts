@@ -895,6 +895,267 @@ export const servicesPricing: Record<string, ServicePricing> = {
         ]
       }
     ]
+  },
+  "website-redesign": {
+    slug: "website-redesign",
+    startingPrice: {
+      USD: 400,
+      PKR: 40000,
+      GBP: 320,
+      EUR: 360,
+      AED: 1500,
+      SAR: 1500,
+      CAD: 550,
+      AUD: 610,
+      INR: 36000
+    },
+    tiers: [
+      {
+        id: "essential-refresh",
+        name: "Essential Refresh",
+        timeline: "7 – 10 Days",
+        summary: "Visual modernization and mobile responsiveness fix for existing 3 to 5 page websites.",
+        prices: {
+          USD: 400,
+          PKR: 40000,
+          GBP: 320,
+          EUR: 360,
+          AED: 1500,
+          SAR: 1500,
+          CAD: 550,
+          AUD: 610,
+          INR: 36000
+        },
+        features: [
+          "Complete visual UI redesign & modern typography hierarchy",
+          "100% Mobile & tablet layout responsiveness overhaul",
+          "Contact forms & lead capture optimization",
+          "Zero lost SEO rankings with strict URL preservation"
+        ]
+      },
+      {
+        id: "complete-redesign",
+        name: "Complete Redesign & Speed",
+        badge: "Recommended",
+        popular: true,
+        timeline: "2 – 3 Weeks",
+        summary: "Full structural, visual, and performance overhaul for corporate and brand websites.",
+        prices: {
+          USD: 750,
+          PKR: 75000,
+          GBP: 600,
+          EUR: 680,
+          AED: 2800,
+          SAR: 2850,
+          CAD: 1030,
+          AUD: 1140,
+          INR: 65000
+        },
+        features: [
+          "Up to 10 modernized pages with custom Tailwind or WordPress architecture",
+          "Core Web Vitals speed optimization (Sub-second load times)",
+          "301 Permanent Redirect mapping & Schema structured data",
+          "Interactive micro-interactions & conversion funnel optimization"
+        ]
+      },
+      {
+        id: "enterprise-overhaul",
+        name: "Full Digital Evolution",
+        timeline: "3 – 4 Weeks",
+        summary: "Large-scale redesign for e-commerce platforms, SaaS portals, or complex legacy sites.",
+        prices: {
+          USD: 1200,
+          PKR: 120000,
+          GBP: 950,
+          EUR: 1100,
+          AED: 4400,
+          SAR: 4500,
+          CAD: 1650,
+          AUD: 1820,
+          INR: 105000
+        },
+        features: [
+          "Multi-page enterprise redesign with complete database & content migration",
+          "Custom component library & design system tokens",
+          "E-commerce checkout & product page conversion overhaul",
+          "Dedicated staging preview & 60 days VIP post-launch support"
+        ]
+      }
+    ]
+  },
+  "website-maintenance": {
+    slug: "website-maintenance",
+    startingPrice: {
+      USD: 100,
+      PKR: 8000,
+      GBP: 80,
+      EUR: 90,
+      AED: 370,
+      SAR: 375,
+      CAD: 140,
+      AUD: 150,
+      INR: 7200
+    },
+    tiers: [
+      {
+        id: "essential-care",
+        name: "Essential Care Retainer",
+        timeline: "Ongoing Monthly",
+        summary: "Baseline security, backups, and uptime monitoring for corporate and portfolio websites.",
+        prices: {
+          USD: 100,
+          PKR: 8000,
+          GBP: 80,
+          EUR: 90,
+          AED: 370,
+          SAR: 375,
+          CAD: 140,
+          AUD: 150,
+          INR: 7200
+        },
+        features: [
+          "24/7 Global uptime monitoring (60-second ping intervals)",
+          "Daily encrypted offsite cloud backups (AWS S3)",
+          "Monthly core, theme & plugin security patching on staging",
+          "1 hour dedicated monthly engineering support for content updates"
+        ]
+      },
+      {
+        id: "pro-active-support",
+        name: "Growth Retainer",
+        badge: "Most Popular",
+        popular: true,
+        timeline: "Ongoing Monthly",
+        summary: "Comprehensive maintenance, speed auditing, and active engineering support for growing stores and businesses.",
+        prices: {
+          USD: 200,
+          PKR: 18000,
+          GBP: 160,
+          EUR: 180,
+          AED: 750,
+          SAR: 760,
+          CAD: 280,
+          AUD: 300,
+          INR: 15000
+        },
+        features: [
+          "Everything in Essential Care plus high-priority SLA response",
+          "3 hours dedicated monthly engineering support (banner, text & layout updates)",
+          "Quarterly Core Web Vitals audit & speed re-tuning",
+          "WAF firewall rule management & proactive malware scanning"
+        ]
+      },
+      {
+        id: "dedicated-retainer",
+        name: "Dedicated Engineering SLA",
+        timeline: "Ongoing Monthly",
+        summary: "Continuous engineering support, custom feature tweaks, and priority bug fixing for high-traffic platforms.",
+        prices: {
+          USD: 450,
+          PKR: 40000,
+          GBP: 360,
+          EUR: 410,
+          AED: 1650,
+          SAR: 1700,
+          CAD: 620,
+          AUD: 680,
+          INR: 35000
+        },
+        features: [
+          "Everything in Growth Retainer plus 8 hours dedicated dev hours",
+          "Instant emergency hotfix response within 2 hours",
+          "Database optimization & staging testing environment",
+          "Direct WhatsApp / Slack engineering channel access"
+        ]
+      }
+    ]
+  },
+  "product-upload-catalog-management": {
+    slug: "product-upload-catalog-management",
+    startingPrice: {
+      USD: 150,
+      PKR: 15000,
+      GBP: 120,
+      EUR: 135,
+      AED: 550,
+      SAR: 575,
+      CAD: 210,
+      AUD: 230,
+      INR: 13500
+    },
+    tiers: [
+      {
+        id: "catalog-starter",
+        name: "Batch Upload (Up to 100 SKUs)",
+        timeline: "2 – 3 Days",
+        summary: "Accurate uploading, variant configuration, and image formatting for up to 100 products.",
+        prices: {
+          USD: 150,
+          PKR: 15000,
+          GBP: 120,
+          EUR: 135,
+          AED: 550,
+          SAR: 575,
+          CAD: 210,
+          AUD: 230,
+          INR: 13500
+        },
+        features: [
+          "Up to 100 products uploaded (Shopify, WooCommerce, or Custom)",
+          "Variant matrix setup (Colors, sizes, SKUs, inventory counts)",
+          "Product image cropping & WebP compression for lightning speed",
+          "SEO title tags & image alt-text optimization included"
+        ]
+      },
+      {
+        id: "catalog-growth",
+        name: "Large Catalog (Up to 300 SKUs)",
+        badge: "Most Popular",
+        popular: true,
+        timeline: "3 – 5 Days",
+        summary: "High-volume product entry, structured collection mapping, and Google Merchant tag optimization.",
+        prices: {
+          USD: 350,
+          PKR: 35000,
+          GBP: 280,
+          EUR: 320,
+          AED: 1300,
+          SAR: 1350,
+          CAD: 480,
+          AUD: 530,
+          INR: 30000
+        },
+        features: [
+          "Up to 300 products uploaded with multi-attribute variations",
+          "Smart automated collection tagging & filter menu navigation",
+          "Full high-res photo editing, aspect ratio standardization & WebP conversion",
+          "Cart addition & checkout flow verification for all products"
+        ]
+      },
+      {
+        id: "catalog-managed",
+        name: "Ongoing Catalog Upkeep",
+        timeline: "Monthly Retainer",
+        summary: "Continuous product catalog management, new arrivals uploading, and inventory synchronization.",
+        prices: {
+          USD: 300,
+          PKR: 30000,
+          GBP: 240,
+          EUR: 270,
+          AED: 1100,
+          SAR: 1150,
+          CAD: 410,
+          AUD: 450,
+          INR: 25000
+        },
+        features: [
+          "Up to 150 new products or updates uploaded every month",
+          "Price changes, seasonal sale badge setup & inventory adjustments",
+          "Priority 24-hour turnaround for new collection drops",
+          "Broken link and out-of-stock product audit"
+        ]
+      }
+    ]
   }
 };
 
@@ -1393,5 +1654,38 @@ export const serviceEstimates: Record<string, ServiceEstimateInfo> = {
       INR: 7200
     },
     scopeNotes: "Monthly plugin/core security updates, 24/7 uptime monitoring, daily backups, and technical on-page SEO."
+  },
+  "Website Management & Maintenance": {
+    name: "Website Management & Maintenance Retainer",
+    isMonthly: true,
+    badge: "Monthly Retainer",
+    prices: {
+      USD: 100,
+      PKR: 8000,
+      GBP: 80,
+      EUR: 90,
+      AED: 370,
+      SAR: 375,
+      CAD: 140,
+      AUD: 150,
+      INR: 7200
+    },
+    scopeNotes: "Proactive 24/7 uptime monitoring, daily cloud backups, CMS & plugin security patching, and dedicated monthly content update hours."
+  },
+  "Product Upload & Catalog Management": {
+    name: "E-Commerce Product Upload & Catalog Management",
+    badge: "E-Commerce Setup",
+    prices: {
+      USD: 150,
+      PKR: 15000,
+      GBP: 120,
+      EUR: 135,
+      AED: 550,
+      SAR: 575,
+      CAD: 210,
+      AUD: 230,
+      INR: 13500
+    },
+    scopeNotes: "Accurate product entry (Shopify/WooCommerce), WebP image compression, variant matrices (size/color/SKU), and SEO alt tags."
   }
 };

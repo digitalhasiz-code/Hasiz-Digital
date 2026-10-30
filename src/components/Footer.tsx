@@ -58,6 +58,21 @@ export default function Footer() {
                   UI/UX & Design Systems
                 </Link>
               </li>
+              <li>
+                <Link href="/services/website-redesign" className="text-slate-400 hover:text-white transition-colors">
+                  Website Redesign
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/website-maintenance" className="text-slate-400 hover:text-white transition-colors">
+                  Website Management
+                </Link>
+              </li>
+              <li>
+                <Link href="/services/product-upload-catalog-management" className="text-slate-400 hover:text-white transition-colors">
+                  Product Upload &amp; Catalog
+                </Link>
+              </li>
             </ul>
           </div>
 

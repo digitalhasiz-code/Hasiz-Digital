@@ -628,6 +628,291 @@ export const servicesData: Record<string, ServiceDetail> = {
         answer: "Yes. We conduct evolutionary redesigns that solve usability pain points, modernize visual aesthetics, and streamline workflows while preserving established mental models so existing power users feel immediately comfortable."
       }
     ]
+  },
+  "website-redesign": {
+    slug: "website-redesign",
+    id: "redesign",
+    title: "Website Redesign & Modernization Services",
+    shortTitle: "Website Redesign",
+    seoTitle: "Website Redesign & Modernization Services | HASIZ Digital Studio",
+    metaDescription: "Transform your outdated website into a modern, mobile-first, high-converting digital platform. Zero lost SEO rankings, sub-second speed, and elevated brand credibility.",
+    h1: "Bespoke Website Redesign & Modernization",
+    tagline: "Transform Outdated Interfaces Into High-Converting Digital Assets",
+    heroSummary: "We revamp sluggish, dated, and low-converting websites into sleek, modern digital engines. We preserve your existing SEO equity while completely overhauling visual aesthetics, mobile responsiveness, and Core Web Vitals performance.",
+    heroImage: "/images/services/hasiz-web-development-portfolio.webp",
+    altText: "Modern website redesign and conversion optimization at HASIZ",
+    businessProblems: [
+      {
+        title: "Outdated Visuals Hurting Credibility",
+        description: "A website that looks like it was built five years ago instantly loses high-ticket clients to modern competitors."
+      },
+      {
+        title: "Broken Mobile Layouts & High Bounce Rates",
+        description: "Mobile visitors abandon clunky layouts, illegible fonts, and misaligned buttons within three seconds."
+      },
+      {
+        title: "Fear of Losing Current Google SEO Rankings",
+        description: "Most redesign agencies change URL structures recklessly, destroying years of accumulated organic search rankings and backlinks."
+      },
+      {
+        title: "Sluggish Loading Speeds Failing Core Web Vitals",
+        description: "Accumulated plugin bloat, outdated themes, and unoptimized assets make pages painfully slow to load on mobile connections."
+      }
+    ],
+    capabilities: [
+      {
+        title: "Visual Modernization & UX Elevation",
+        description: "Complete modern redesign using custom Next.js/Tailwind or streamlined WordPress with contemporary typography and whitespace.",
+        deliverables: ["Modern Responsive UI", "Component Restyling", "Micro-Interactions", "High-Resolution Asset Optimization"]
+      },
+      {
+        title: "SEO Equity & 301 Redirect Safeguarding",
+        description: "Comprehensive URL mapping, meta hierarchy preservation, and canonical auditing to ensure organic traffic never drops.",
+        deliverables: ["301 Redirect Architecture", "Meta Tag Preservation", "Canonical Verification", "Search Console Health Check"]
+      },
+      {
+        title: "Mobile-First Conversion Funnel Overhaul",
+        description: "Streamlined calls to action, friction-free forms, click-to-call mobile CTAs, and clear value proposition positioning.",
+        deliverables: ["Mobile-Optimized Wireframes", "Sticky Navigation Bar", "High-Converting Contact Triggers", "Form Usability Testing"]
+      },
+      {
+        title: "Speed Overhaul & Core Web Vitals Tuning",
+        description: "Tree-shaking legacy code, stripping useless plugins, and implementing next-gen WebP images for sub-second speeds.",
+        deliverables: ["Lighthouse 90+ Score", "Sub-Second LCP", "Zero Layout Shifts (CLS 0.0)", "CDN Edge Caching Setup"]
+      }
+    ],
+    approach: [
+      {
+        step: "01",
+        title: "Legacy Audit & SEO Preservation Map",
+        summary: "We inventory all existing URLs, top-ranking organic keywords, and usability pain points to establish a risk-free migration baseline."
+      },
+      {
+        step: "02",
+        title: "Modern UI/UX Architectural Prototype",
+        summary: "We design a contemporary, high-converting desktop and mobile interface tailored to your target audience."
+      },
+      {
+        step: "03",
+        title: "Clean-Code Engineering & Content Migration",
+        summary: "We build the platform on clean modern code, migrate all text and media seamlessly, and verify all interactive forms."
+      },
+      {
+        step: "04",
+        title: "Zero-Downtime Launch & Post-Cutover Audit",
+        summary: "We execute a flawless DNS transition with 301 redirects in place, followed by Google Search Console indexing verification."
+      }
+    ],
+    techStack: ["Next.js", "Tailwind CSS", "WordPress / Elementor", "Shopify Liquid", "Core Web Vitals", "Google Search Console"],
+    relatedProjects: ["melcasa-australia", "afterdark-hospitality", "blomma-flower-studio"],
+    faqs: [
+      {
+        question: "Will redesigning our website hurt our current Google rankings?",
+        answer: "No. When executed correctly, a redesign actually boosts your Google rankings. We perform strict URL mapping with permanent 301 redirects, preserve existing meta titles and heading hierarchy, and drastically improve Core Web Vitals speed scores, which Google rewards with higher ranking authority."
+      },
+      {
+        question: "Can we keep all our existing blog posts, pages, and products?",
+        answer: "Yes, 100%. We migrate all of your existing content, articles, portfolio items, and media assets into the new modernized architecture without loss of data."
+      },
+      {
+        question: "How long does a website redesign take from kickoff to launch?",
+        answer: "A standard corporate or service website redesign typically takes 2 to 3 weeks. E-commerce store redesigns take 3 to 4 weeks depending on catalog volume."
+      },
+      {
+        question: "Will our website remain live during the redesign process?",
+        answer: "Yes. Your current website remains 100% operational and open for business. We build the new redesign on a private staging environment. Once approved, the final cutover takes less than 15 minutes with zero downtime."
+      }
+    ]
+  },
+  "website-maintenance": {
+    slug: "website-maintenance",
+    id: "maintenance",
+    title: "Website Management & Maintenance Retainers",
+    shortTitle: "Website Management",
+    seoTitle: "Website Management & Maintenance Retainers | HASIZ Digital Studio",
+    metaDescription: "Proactive monthly website management, 24/7 uptime monitoring, security patching, cloud backups, and content updates for WordPress, Shopify, and Next.js sites.",
+    h1: "Proactive Website Management & Maintenance",
+    tagline: "Zero Downtime, Flawless Security, and Continuous Performance Optimization",
+    heroSummary: "Keep your digital platform secure, lightning-fast, and continuously updated without pulling your internal team away from core business operations. We provide 24/7 uptime monitoring, security audits, automated cloud backups, and fast turnaround for content updates.",
+    heroImage: "/images/services/custom-web-development-architecture.webp",
+    altText: "Proactive website maintenance, uptime monitoring, and security management",
+    businessProblems: [
+      {
+        title: "Plugin & CMS Updates Breaking Pages",
+        description: "Automatic background updates or neglected plugins frequently crash layouts, forms, and payment gateways without you noticing."
+      },
+      {
+        title: "Malware Injections & Vulnerability Exploits",
+        description: "Outdated software attracts automated bot exploits, malware injections, spam redirects, and Google blacklisting."
+      },
+      {
+        title: "No Reliable Offsite Backups During Disasters",
+        description: "When hosting servers fail or accidental edits delete critical content, most companies discover their backups are corrupted or months old."
+      },
+      {
+        title: "Lack of Immediate Support When Bugs Occur",
+        description: "Waiting days for freelance support or dealing with unresponsive agencies leads to lost sales and frustrated clients."
+      }
+    ],
+    capabilities: [
+      {
+        title: "24/7 Uptime & Health Monitoring",
+        description: "Continuous 60-second ping monitoring across global locations with instant alerting and automated recovery triage.",
+        deliverables: ["Global Uptime Monitoring", "SSL Expiry Tracking", "DNS Health Checks", "Monthly SLA Performance Reports"]
+      },
+      {
+        title: "Daily Automated Cloud Backups",
+        description: "Redundant, encrypted offsite daily backups with 1-click snapshot restore in under 15 minutes.",
+        deliverables: ["Offsite Cloud Backups", "Database Snapshots", "One-Click Disaster Recovery", "30-Day Backup Retention"]
+      },
+      {
+        title: "Core, Theme & Plugin Security Patching",
+        description: "Safe staged updates tested on private development environments prior to pushing to live production.",
+        deliverables: ["Staging-Tested Updates", "WAF Rules Hardening", "Malware Scanning & Cleanup", "Vulnerability Remediation"]
+      },
+      {
+        title: "Dedicated Engineering Support & Content Updates",
+        description: "Fast turnaround for adding new text, updating banners, publishing products, modifying forms, and tweaking layouts.",
+        deliverables: ["Dedicated Support Channel", "Content & Copy Tweaks", "Banner & Graphic Swaps", "Form & CTA Diagnostics"]
+      }
+    ],
+    approach: [
+      {
+        step: "01",
+        title: "Initial Security & Health Audit",
+        summary: "We inspect your CMS, hosting stack, DNS, plugins, and server logs to eliminate existing malware, broken scripts, and security gaps."
+      },
+      {
+        step: "02",
+        title: "Automated Offsite Backup & Monitor Setup",
+        summary: "We configure automated encrypted backups to independent cloud storage and establish 24/7 ping monitoring."
+      },
+      {
+        step: "03",
+        title: "Scheduled Staged Patching Cycles",
+        summary: "Updates are applied systematically on staging first, verified across viewports, and deployed to live production during low-traffic windows."
+      },
+      {
+        step: "04",
+        title: "Continuous Ticket Resolution & Optimization",
+        summary: "Your team submits content changes or support requests via direct email, completed with guaranteed turnaround times."
+      }
+    ],
+    techStack: ["Uptime Monitoring", "Cloudflare WAF", "AWS S3 Encrypted Backups", "WordPress Security", "Shopify Apps", "GitHub CI/CD"],
+    relatedProjects: ["melcasa-australia", "aurora-nordic-retreat", "mary-shavelle-couture"],
+    faqs: [
+      {
+        question: "What happens if our website goes down in the middle of the night?",
+        answer: "Our automated monitoring checks your website every 60 seconds from multiple global servers. If an outage is detected, our on-call engineers are alerted instantly to diagnose server connectivity, database locks, or code errors and restore service."
+      },
+      {
+        question: "Are content and text updates included in the monthly retainer?",
+        answer: "Yes! Every maintenance tier includes dedicated engineering support hours each month for updating copy, swapping banners, posting announcements, or adjusting styling."
+      },
+      {
+        question: "How do you test updates before applying them to our live site?",
+        answer: "We clone your website to an isolated staging environment, perform all core, theme, and plugin updates, test checkout flows and contact forms, and only deploy to production once 100% verified."
+      },
+      {
+        question: "Can we cancel or change our maintenance plan at any time?",
+        answer: "Yes. Our maintenance retainers are month-to-month with no long-term lock-in. You can upgrade, downgrade, or cancel anytime with 14 days notice."
+      }
+    ]
+  },
+  "product-upload-catalog-management": {
+    slug: "product-upload-catalog-management",
+    id: "catalog",
+    title: "E-Commerce Product Upload & Catalog Management Services",
+    shortTitle: "Product Upload & Catalog",
+    seoTitle: "E-Commerce Product Upload & Catalog Management Services | HASIZ",
+    metaDescription: "Accurate, SEO-optimized product uploading and catalog management for Shopify, WooCommerce, and custom e-commerce stores. Image formatting, variations, inventory, and meta tags.",
+    h1: "E-Commerce Product Upload & Catalog Management",
+    tagline: "Fast, Flawless Product Listings Optimized for Search & Sales",
+    heroSummary: "Free your team from tedious data entry. We accurately upload, format, and organize your product catalogs across Shopify, WooCommerce, and custom web stores with crisp image optimization, precise variant matrices, and conversion-optimized descriptions.",
+    heroImage: "/images/services/shopify-store-design.webp",
+    altText: "E-commerce product catalog management, bulk upload, and variant configuration",
+    businessProblems: [
+      {
+        title: "Slow Manual Entry Delaying Product Launches",
+        description: "Entering hundreds of products manually consumes dozens of team hours, pushing back marketing launches and hurting cash flow."
+      },
+      {
+        title: "Inconsistent Formatting & Mismatched Variants",
+        description: "Mismatched size/color variants, missing SKU codes, and broken inventory syncs frustrate customers and cause costly returns."
+      },
+      {
+        title: "Oversized Images Slowing Down the Store",
+        description: "Raw supplier photos uploaded at 10MB each destroy your mobile site speed, causing customer drop-off before checkout."
+      },
+      {
+        title: "Missing SEO Titles, Alt-Tags & Google Merchant Sync",
+        description: "Products uploaded without keyword-optimized titles, meta descriptions, and Google Merchant categories fail to rank on organic Google Shopping."
+      }
+    ],
+    capabilities: [
+      {
+        title: "Bulk & Single Product Uploading",
+        description: "Importing hundreds of SKUs accurately via structured CSV/Excel templates or manual precision entry directly in CMS.",
+        deliverables: ["Formatted CSV/Excel Catalog", "Bulk Import Execution", "Custom Field Mapping", "Pricing & Sale Rules Setup"]
+      },
+      {
+        title: "Variant Matrix & Inventory Architecture",
+        description: "Configuring multi-attribute variations (size, color, material, bundle packs) with individual SKU and stock synchronization.",
+        deliverables: ["Variant Combinations Matrix", "SKU & Barcode Mapping", "Inventory Tracking Thresholds", "Weight & Shipping Tier Rules"]
+      },
+      {
+        title: "Product Image Cropping & WebP Compression",
+        description: "Standardizing image aspect ratios (1:1 square or 4:5 fashion), removing unwanted borders, and compressing to lightweight WebP.",
+        deliverables: ["WebP Image Compression", "Square/Vertical Aspect Ratio Consistency", "Alt-Text SEO Tagging", "Zoom & Thumbnail Alignment"]
+      },
+      {
+        title: "Category, Collection & Navigation Structuring",
+        description: "Organizing products into intuitive automated smart collections, navigation menus, and faceted search filters.",
+        deliverables: ["Smart Collection Tagging", "Faceted Filter Navigation", "Breadcrumb Setup", "Cross-Sell / Upsell Tagging"]
+      }
+    ],
+    approach: [
+      {
+        step: "01",
+        title: "Catalog Data & Asset Collection",
+        summary: "You send us your product sheets (Excel, Google Sheets, or supplier PDFs) along with raw product imagery via Google Drive or Dropbox."
+      },
+      {
+        step: "02",
+        title: "Image Batch Processing & Standardization",
+        summary: "We crop, clean backgrounds if needed, compress images to WebP format, and generate descriptive SEO alt tags for each photo."
+      },
+      {
+        step: "03",
+        title: "Accurate Upload & Variant Configuration",
+        summary: "We upload all products, set pricing, assign SKUs, configure size/color dropdowns, and map products to the correct collections."
+      },
+      {
+        step: "04",
+        title: "Quality Control & Cart Flow Verification",
+        summary: "We test product page displays on mobile and desktop, verify variant price shifts, and test cart addition before handing over."
+      }
+    ],
+    techStack: ["Shopify Admin / Matrixify", "WooCommerce CSV Importer", "Adobe Photoshop / WebP", "Google Merchant Center", "SEO Meta Tags"],
+    relatedProjects: ["mary-shavelle-couture", "blomma-flower-studio", "afterdark-hospitality"],
+    faqs: [
+      {
+        question: "Which platforms do you support for product uploading?",
+        answer: "We support Shopify, WooCommerce, Magento, BigCommerce, Etsy, Amazon, and custom Next.js/headless e-commerce databases."
+      },
+      {
+        question: "Can you optimize our product images before uploading them?",
+        answer: "Yes! Every single product photo is cropped to consistent proportions, compressed to fast-loading WebP format, and labeled with descriptive SEO alt tags for Google Image search."
+      },
+      {
+        question: "What information do you need from us to start uploading products?",
+        answer: "Simply provide your raw data in an Excel/Google Sheet (product title, price, description, SKU, and variant details) along with a link to your product images. If your data is unorganized, our team can help clean and structure it."
+      },
+      {
+        question: "How fast can you upload a batch of 100 to 500 products?",
+        answer: "Standard catalog batches of 100 to 200 products are typically processed, verified, and published within 2 to 4 business days. Larger catalogs of 500+ SKUs are scheduled in fast-turnaround sprints."
+      }
+    ]
   }
 };
 

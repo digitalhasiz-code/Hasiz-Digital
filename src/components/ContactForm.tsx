@@ -24,15 +24,16 @@ const serviceOptions = [
   "Premium Package (Rs. 150k+ / $1,500+)",
   "Enterprise Custom Scope",
   "Landing Page (Special Offer)",
+  "Website Redesign",
+  "Website Management & Maintenance",
+  "Product Upload & Catalog Management",
   "WordPress Development",
   "Shopify Development",
   "Custom Web Development",
   "Web Application Development",
   "AI Integration",
   "UI/UX Design",
-  "Website Redesign",
   "Speed Optimization",
-  "Website Maintenance & SEO",
   "Other"
 ];
 
@@ -92,6 +93,12 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
         setFormData(prev => ({ ...prev, service: "Enterprise Custom Scope" }));
       } else if (srv === "landing-page") {
         setFormData(prev => ({ ...prev, service: "Landing Page (Special Offer)" }));
+      } else if (srv === "website-redesign") {
+        setFormData(prev => ({ ...prev, service: "Website Redesign" }));
+      } else if (srv === "website-maintenance") {
+        setFormData(prev => ({ ...prev, service: "Website Management & Maintenance" }));
+      } else if (srv === "product-upload-catalog-management") {
+        setFormData(prev => ({ ...prev, service: "Product Upload & Catalog Management" }));
       }
     }
   }, []);
