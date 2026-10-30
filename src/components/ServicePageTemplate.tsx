@@ -8,7 +8,9 @@ import { projects } from "@/data/projects";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import { ArrowRight, CheckCircle2, ChevronDown, Sparkles } from "lucide-react";
+import CurrencySelector from "@/components/CurrencySelector";
+import { useCurrency } from "@/context/CurrencyContext";
+import { ArrowRight, CheckCircle2, ChevronDown, Sparkles, ShieldCheck, Tag } from "lucide-react";
 
 interface ServicePageProps {
   service: ServiceDetail;
@@ -16,6 +18,8 @@ interface ServicePageProps {
 
 export default function ServicePageTemplate({ service }: ServicePageProps) {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const { formatServiceStartingPrice, getServicePricing, formatAmount, currencyConfig } = useCurrency();
+  const servicePricing = getServicePricing(service.slug);
 
   // Find relevant portfolio projects
   const relevantProjects = projects.filter((p) =>
@@ -85,9 +89,18 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>{service.tagline}</span>
+              <div className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{service.tagline}</span>
+                </div>
+
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-50 text-emerald-900 border border-emerald-200/80 shadow-subtle">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                  <span className="text-emerald-700 uppercase tracking-wider text-[11px]">Starts From:</span>
+                  <span className="font-bold text-emerald-950 font-heading">{formatServiceStartingPrice(service.slug)}</span>
+                  <span className="text-[10px] text-emerald-600">({currencyConfig.code})</span>
+                </div>
               </div>
 
               <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-navy-900 leading-tight">
@@ -98,20 +111,21 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
                 {service.heroSummary}
               </p>
 
-              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
                 <a
-                  href="#inquiry"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl text-sm font-semibold text-white bg-brand-blue hover:bg-blue-700 shadow-md transition-all group"
+                  href="#pricing"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-white bg-brand-blue hover:bg-blue-700 shadow-md transition-all group"
                 >
-                  <span>Request Technical Proposal</span>
-                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  <Tag className="w-4 h-4" />
+                  <span>View Rates & Packages</span>
                 </a>
 
                 <a
-                  href="#capabilities"
-                  className="inline-flex items-center justify-center px-7 py-4 rounded-xl text-sm font-semibold text-navy-900 bg-white hover:bg-slate-50 border border-surface-border shadow-subtle transition-all"
+                  href="#inquiry"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-sm font-semibold text-navy-900 bg-white hover:bg-slate-50 border border-surface-border shadow-subtle transition-all"
                 >
-                  <span>Explore Capabilities</span>
+                  <span>Request Proposal</span>
+                  <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </div>
             </div>
@@ -358,6 +372,124 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
           </div>
         </div>
       </section>
+
+      {/* Transparent Scoping & Pricing Packages */}
+      {servicePricing && (
+        <section id="pricing" className="py-20 lg:py-28 bg-surface border-t border-b border-surface-border">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+              <div className="max-w-2xl space-y-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Transparent Investment &amp; Scoping</span>
+                </div>
+                <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-navy-900 leading-tight">
+                  Clear Engineering Packages. Zero Hidden Fees.
+                </h2>
+                <p className="text-slate-600 text-base leading-relaxed">
+                  Calibrated for maximum commercial ROI. All deliverables backed by clean-code standards, verified speed benchmarks, and post-launch technical warranty.
+                </p>
+              </div>
+
+              {/* Currency Selector Pill */}
+              <div className="flex items-center gap-2.5 bg-white p-2.5 sm:p-3 rounded-xl border border-surface-border shadow-subtle flex-shrink-0">
+                <span className="text-xs font-mono font-medium text-slate-500">Currency:</span>
+                <CurrencySelector variant="inline" />
+              </div>
+            </div>
+
+            {/* 3 Tiers Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+              {servicePricing.tiers.map((tier) => {
+                const priceFormatted = formatAmount(tier.prices);
+                return (
+                  <div
+                    key={tier.id}
+                    className={`rounded-2xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 relative ${
+                      tier.popular
+                        ? "bg-navy-900 text-white shadow-elevated border-2 border-brand-blue ring-4 ring-brand-blue/10 md:-translate-y-2"
+                        : "bg-white text-navy-900 border border-surface-border shadow-subtle hover:shadow-card"
+                    }`}
+                  >
+                    {tier.badge && (
+                      <div className="absolute -top-3.5 left-7">
+                        <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-wider uppercase bg-brand-blue text-white shadow-sm">
+                          {tier.badge}
+                        </span>
+                      </div>
+                    )}
+
+                    <div>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className={`font-heading text-xl font-bold ${tier.popular ? "text-white" : "text-navy-900"}`}>
+                          {tier.name}
+                        </h3>
+                        <span className={`text-[11px] font-mono px-2 py-0.5 rounded font-semibold ${
+                          tier.popular ? "bg-navy-800 text-slate-300" : "bg-slate-100 text-slate-600"
+                        }`}>
+                          {tier.timeline}
+                        </span>
+                      </div>
+
+                      <p className={`text-xs leading-relaxed mb-6 ${tier.popular ? "text-slate-300" : "text-slate-600"}`}>
+                        {tier.summary}
+                      </p>
+
+                      <div className="mb-6 pt-5 border-t border-slate-200/20">
+                        <span className={`text-[10px] font-mono uppercase tracking-wider block mb-1 ${
+                          tier.popular ? "text-slate-400" : "text-slate-500"
+                        }`}>
+                          Investment
+                        </span>
+                        <div className="flex items-baseline gap-2">
+                          <span className={`font-heading text-3xl sm:text-4xl font-bold tracking-tight ${
+                            tier.popular ? "text-white" : "text-navy-900"
+                          }`}>
+                            {priceFormatted}
+                          </span>
+                          <span className={`text-xs font-mono font-semibold ${tier.popular ? "text-slate-400" : "text-slate-500"}`}>
+                            {currencyConfig.code}
+                          </span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-2.5 mb-8">
+                        <span className={`text-xs font-bold uppercase tracking-wider block ${
+                          tier.popular ? "text-slate-300" : "text-slate-700"
+                        }`}>
+                          Included Deliverables:
+                        </span>
+                        {tier.features.map((feat) => (
+                          <div key={feat} className="flex items-start gap-2 text-xs">
+                            <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 mt-0.5 ${
+                              tier.popular ? "text-blue-400" : "text-brand-blue"
+                            }`} />
+                            <span className={tier.popular ? "text-slate-300" : "text-slate-600"}>
+                              {feat}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    <a
+                      href="#inquiry"
+                      className={`w-full py-3.5 px-4 rounded-xl text-center text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center justify-center gap-2 ${
+                        tier.popular
+                          ? "bg-brand-blue text-white hover:bg-blue-600 shadow-md"
+                          : "bg-navy-900 text-white hover:bg-brand-blue shadow-sm"
+                      }`}
+                    >
+                      <span>Inquire For This Package</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Project Inquiry Section */}
       <section id="inquiry" className="py-20 lg:py-28 bg-white">

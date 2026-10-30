@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ServiceDetail } from "@/data/services";
-import { ArrowUpRight, Check } from "lucide-react";
+import { useCurrency } from "@/context/CurrencyContext";
+import { ArrowUpRight, Check, Tag } from "lucide-react";
 
 interface ServiceCardProps {
   service: ServiceDetail;
@@ -9,6 +12,7 @@ interface ServiceCardProps {
 
 export default function ServiceCard({ service, index }: ServiceCardProps) {
   const numberStr = String(index + 1).padStart(2, "0");
+  const { formatServiceStartingPrice, currencyConfig } = useCurrency();
 
   return (
     <div className="group bg-white rounded-2xl border border-surface-border p-7 sm:p-8 shadow-subtle hover:shadow-card hover:border-brand-blue/30 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
@@ -33,6 +37,17 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
           {service.tagline}
         </p>
 
+        {/* Dynamic Localized Pricing Badge */}
+        <div className="mb-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200/80 text-emerald-900">
+          <span className="text-[10px] font-mono font-semibold uppercase tracking-wider text-emerald-700">Starts At</span>
+          <span className="font-heading text-base font-bold text-emerald-950">
+            {formatServiceStartingPrice(service.slug)}
+          </span>
+          <span className="text-[10px] text-emerald-700/80 font-mono">
+            {currencyConfig.code}
+          </span>
+        </div>
+
         <p className="text-sm text-slate-600 leading-relaxed mb-6 line-clamp-3">
           {service.heroSummary}
         </p>
@@ -54,7 +69,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
           href={`/services/${service.slug}`}
           className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-navy-900 group-hover:text-brand-blue transition-colors"
         >
-          <span>Explore Capabilities</span>
+          <span>Explore Capabilities & Rates</span>
           <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </Link>
         <div className="flex gap-1">
@@ -68,4 +83,3 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
     </div>
   );
 }
-

@@ -1,7 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CheckCircle2, AlertCircle, Loader2, ArrowRight, ShieldCheck } from "lucide-react";
+import { useCurrency } from "@/context/CurrencyContext";
+import { budgetOptionsByCurrency } from "@/data/pricing";
 
 interface FormData {
   fullName: string;
@@ -47,6 +49,8 @@ interface ContactFormProps {
 }
 
 export default function ContactForm({ defaultService, formName }: ContactFormProps) {
+  const { currency, currencyConfig } = useCurrency();
+  const currentBudgetOptions = budgetOptionsByCurrency[currency] || budgetOptionsByCurrency.USD;
   const initialFormName = formName || (defaultService ? `${defaultService} Inquiry Form` : "Main Contact / Start a Project Form");
   const [formLoadTime] = useState<number>(() => Date.now());
 
@@ -55,13 +59,20 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
     email: "",
     companyName: "",
     service: defaultService || "Custom Web Development",
-    budget: "$10,000 – $25,000",
+    budget: currentBudgetOptions[0] || "$1,000 – $2,500",
     timeline: "1 – 2 Months",
     websiteUrl: "",
     projectDescription: "",
     honeypot: "",
     formName: initialFormName
   });
+
+  // Sync budget option default when currency changes
+  useEffect(() => {
+    if (currentBudgetOptions.length > 0 && !currentBudgetOptions.includes(formData.budget)) {
+      setFormData(prev => ({ ...prev, budget: currentBudgetOptions[0] }));
+    }
+  }, [currency, currentBudgetOptions]);
 
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
@@ -174,7 +185,7 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
               email: "",
               companyName: "",
               service: defaultService || "Custom Web Development",
-              budget: "$10,000 – $25,000",
+              budget: currentBudgetOptions[0] || "$1,000 – $2,500",
               timeline: "1 – 2 Months",
               websiteUrl: "",
               projectDescription: "",
@@ -331,7 +342,7 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
 
         <div className="space-y-2">
           <label htmlFor="budget" className="block text-xs font-semibold uppercase tracking-wider text-navy-900 font-sans">
-            Target Budget (USD)
+            Target Investment Range ({currencyConfig.code})
           </label>
           <select
             id="budget"
@@ -340,7 +351,7 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
             onChange={handleChange}
             className="w-full px-4 py-3 rounded-lg border border-surface-border text-sm text-navy-900 bg-white hover:border-slate-300 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue"
           >
-            {budgetOptions.map((opt) => (
+            {currentBudgetOptions.map((opt) => (
               <option key={opt} value={opt}>
                 {opt}
               </option>

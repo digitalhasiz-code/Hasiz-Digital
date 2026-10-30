@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ServiceCard from "@/components/ServiceCard";
+import CurrencySelector from "@/components/CurrencySelector";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import TechStackGrid from "@/components/TechStackGrid";
 import { servicesData } from "@/data/services";
@@ -65,6 +66,20 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="py-20 lg:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Localized Currency Bar */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-surface border border-surface-border mb-12 shadow-subtle">
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 text-xs font-mono font-semibold text-navy-900 uppercase tracking-wide">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Transparent Regional Pricing Architecture</span>
+              </div>
+              <p className="text-xs text-slate-500">
+                All engineering rates are automatically calibrated for your market. Switch currency anytime:
+              </p>
+            </div>
+            <CurrencySelector variant="inline" />
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {serviceList.map((service, index) => (
               <ServiceCard key={service.slug} service={service} index={index} />

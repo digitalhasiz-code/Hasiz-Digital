@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
+import CurrencySelector from "./CurrencySelector";
 import { Menu, X, ArrowUpRight, Globe2, BookOpen } from "lucide-react";
 
 const navLinks = [
@@ -88,7 +89,9 @@ export default function Header() {
           </nav>
 
           {/* Right Action & Mobile Toggle */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center space-x-2.5 sm:space-x-3">
+            <CurrencySelector variant="header" />
+
             <Link
               href="/contact"
               className="hidden sm:inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-lg text-sm font-semibold text-white bg-navy-900 hover:bg-brand-blue shadow-sm transition-all duration-200 group"
@@ -139,7 +142,11 @@ export default function Header() {
               })}
             </nav>
 
-            <div className="pt-3 border-t border-slate-100">
+            <div className="pt-3 border-t border-slate-100 space-y-3">
+              <div className="flex items-center justify-between px-2">
+                <span className="text-xs font-mono font-medium text-slate-500">Currency / Country:</span>
+                <CurrencySelector variant="inline" />
+              </div>
               <Link
                 href="/contact"
                 className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-base font-semibold text-white bg-brand-blue hover:bg-blue-700 shadow-sm transition-colors"
