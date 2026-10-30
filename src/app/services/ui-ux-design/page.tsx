@@ -1,0 +1,26 @@
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { servicesData } from "@/data/services";
+import ServicePageTemplate from "@/components/ServicePageTemplate";
+
+const service = servicesData["ui-ux-design"];
+
+export const metadata: Metadata = {
+  title: service.seoTitle,
+  description: service.metaDescription,
+  alternates: {
+    canonical: "/services/ui-ux-design",
+  },
+  openGraph: {
+    title: service.seoTitle,
+    description: service.metaDescription,
+    url: "https://hasiz.com/services/ui-ux-design",
+    images: [{ url: service.heroImage, width: 1200, height: 750, alt: service.altText }],
+  },
+};
+
+export default function UiUxDesignServicePage() {
+  if (!service) notFound();
+  return <ServicePageTemplate service={service} />;
+}
+

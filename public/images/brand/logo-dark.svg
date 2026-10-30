@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" width="240" height="50" fill="none">
+  <g font-family="'Space Grotesk', system-ui, -apple-system, sans-serif" font-weight="700" letter-spacing="-0.03em">
+    <text x="2" y="36" font-size="36" fill="#101828">HASIZ</text>
+    <circle cx="120" cy="34" r="4.5" fill="#2563EB" />
+  </g>
+  <text x="134" y="24" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="8.5" letter-spacing="0.18em" fill="#64748B">DIGITAL</text>
+  <text x="134" y="36" font-family="'Inter', system-ui, sans-serif" font-weight="600" font-size="8.5" letter-spacing="0.18em" fill="#2563EB">STUDIO</text>
+</svg>
