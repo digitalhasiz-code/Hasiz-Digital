@@ -28,9 +28,6 @@ import PhilosophySection from "@/components/PhilosophySection";
 export const metadata: Metadata = {
   title: "HASIZ — Digital Engineering Studio | We Engineer Digital Experiences",
   description: "HASIZ is an award-winning digital engineering studio building high-performance websites, e-commerce platforms, custom software, and intelligent digital solutions for modern businesses worldwide.",
-  alternates: {
-    canonical: "https://www.hasiz.com/",
-  },
   openGraph: {
     title: "HASIZ — We Engineer Digital Experiences That Move Businesses Forward",
     description: "From high-performance websites and scalable e-commerce to intelligent software solutions, HASIZ turns complex ideas into powerful digital experiences.",
@@ -47,6 +44,7 @@ export default function HomePage() {
 
   return (
     <div className="relative">
+      <link rel="canonical" href="https://www.hasiz.com/" />
       {/* SECTION 02 — HERO */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 bg-surface overflow-hidden">
         {/* Subtle engineering grid background */}
