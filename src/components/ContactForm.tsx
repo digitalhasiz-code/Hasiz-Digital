@@ -19,11 +19,11 @@ interface FormData {
 }
 
 const serviceOptions = [
-  "Starter Package (Rs. 35k / $350)",
-  "Professional Package (Rs. 80k / $900)",
-  "Premium Package (Rs. 150k+ / $1,500+)",
+  "Starter Package (Fast Launch)",
+  "Professional Package (Complete Business)",
+  "Premium Package (E-Commerce & Scale)",
   "Enterprise Custom Scope",
-  "Landing Page (Special Offer)",
+  "Landing Page (Pocket-Friendly Special)",
   "Website Redesign",
   "Website Management & Maintenance",
   "Product Upload & Catalog Management",
@@ -84,15 +84,15 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
       const srv = params.get("service");
 
       if (pkg === "starter") {
-        setFormData(prev => ({ ...prev, service: "Starter Package (Rs. 35k / $350)" }));
+        setFormData(prev => ({ ...prev, service: "Starter Package (Fast Launch)" }));
       } else if (pkg === "professional") {
-        setFormData(prev => ({ ...prev, service: "Professional Package (Rs. 80k / $900)" }));
+        setFormData(prev => ({ ...prev, service: "Professional Package (Complete Business)" }));
       } else if (pkg === "premium") {
-        setFormData(prev => ({ ...prev, service: "Premium Package (Rs. 150k+ / $1,500+)" }));
+        setFormData(prev => ({ ...prev, service: "Premium Package (E-Commerce & Scale)" }));
       } else if (pkg === "enterprise") {
         setFormData(prev => ({ ...prev, service: "Enterprise Custom Scope" }));
       } else if (srv === "landing-page") {
-        setFormData(prev => ({ ...prev, service: "Landing Page (Special Offer)" }));
+        setFormData(prev => ({ ...prev, service: "Landing Page (Pocket-Friendly Special)" }));
       } else if (srv === "website-redesign") {
         setFormData(prev => ({ ...prev, service: "Website Redesign" }));
       } else if (srv === "website-maintenance") {
@@ -420,15 +420,6 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
         const selectedEstimate = serviceEstimates[formData.service];
         if (!selectedEstimate) return null;
 
-        const estimatePriceValue = selectedEstimate.prices[currency];
-        let formattedEstimate = "";
-        if (estimatePriceValue === null) {
-          formattedEstimate = "Custom Scope Quote";
-        } else {
-          const formatted = currencyConfig.format(estimatePriceValue, selectedEstimate.isMonthly);
-          formattedEstimate = selectedEstimate.isStartingFrom ? `From ${formatted}` : formatted;
-        }
-
         return (
           <div className="p-4 sm:p-5 rounded-2xl bg-surface border border-blue-200/80 shadow-sm transition-all duration-300">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
@@ -438,7 +429,7 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
                 </span>
                 <div>
                   <span className="text-[11px] font-mono uppercase tracking-wider text-slate-500 font-semibold block">
-                    {currencyConfig.flag} Detected {currencyConfig.name} Rate ({currencyConfig.code})
+                    Custom Investment Architecture
                   </span>
                   <span className="font-heading font-bold text-navy-950 text-base">
                     {selectedEstimate.name}
@@ -449,7 +440,7 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
               <div className="flex items-center gap-2">
                 {selectedEstimate.isSpecialLandingPage ? (
                   <span className="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
-                    Special Offer
+                    Pocket-Friendly Launch
                   </span>
                 ) : selectedEstimate.badge ? (
                   <span className="px-2 py-0.5 rounded-full text-[11px] font-mono font-semibold bg-blue-100 text-brand-blue">
@@ -457,14 +448,15 @@ export default function ContactForm({ defaultService, formName }: ContactFormPro
                   </span>
                 ) : null}
 
-                <div className="font-heading text-lg sm:text-xl font-extrabold text-navy-900 bg-white px-3 py-1 rounded-xl border border-slate-200 shadow-xs">
-                  {formattedEstimate}
+                <div className="font-heading text-xs sm:text-sm font-bold text-brand-blue bg-white px-3 py-1.5 rounded-xl border border-blue-200/80 shadow-xs flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-brand-blue" />
+                  <span>Pocket-Friendly &amp; Custom Scoped</span>
                 </div>
               </div>
             </div>
 
             <p className="text-xs text-slate-600 leading-relaxed pt-2 border-t border-slate-200/60">
-              {selectedEstimate.scopeNotes}
+              {selectedEstimate.scopeNotes} We tailor the exact engineering deliverables to match your comfortable budget without agency overhead.
             </p>
 
             <div className="mt-2.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-[11px] font-mono text-slate-500">

@@ -107,7 +107,7 @@ export default function PricingConditions({ className = "" }: PricingConditionsP
 
           <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-mono">
             <span>Need us to manage hosting?</span>
-            <span className="text-brand-blue font-semibold">Available from $100 / Rs. 8,000/mo</span>
+            <span className="text-brand-blue font-semibold">Available via Pocket-Friendly Monthly Retainers</span>
           </div>
         </div>
       </div>

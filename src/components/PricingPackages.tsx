@@ -35,18 +35,18 @@ export default function PricingPackages({ className = "" }: PricingPackagesProps
 
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 flex-shrink-0">
             <div className="bg-white/10 backdrop-blur-md rounded-xl px-5 py-3 border border-white/15">
-              <div className="text-[11px] font-mono uppercase text-slate-300">Direct Special Price</div>
-              <div className="font-heading text-2xl font-bold text-white flex items-baseline gap-2">
-                <span>Rs. 15,000</span>
-                <span className="text-sm font-normal text-slate-400">/ $190 USD</span>
+              <div className="text-[11px] font-mono uppercase text-brand-sky font-semibold">Special Campaign Offer</div>
+              <div className="font-heading text-xl font-bold text-white flex items-center gap-2">
+                <span>Pocket-Friendly Launch</span>
               </div>
+              <div className="text-xs text-slate-300">Custom scoped to your specific goals &amp; budget</div>
             </div>
 
             <Link
               href="/contact?service=landing-page"
               className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-brand-blue hover:bg-blue-600 text-white text-sm font-semibold transition-all shadow-md hover:shadow-brand-blue/30 whitespace-nowrap"
             >
-              <span>Claim Landing Page Offer</span>
+              <span>Get Landing Page Estimate</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -102,26 +102,16 @@ export default function PricingPackages({ className = "" }: PricingPackagesProps
                   </p>
                 </div>
 
-                {/* Pricing Block */}
-                <div className="py-4 border-y border-slate-100 space-y-1.5 mb-5">
+                {/* Pricing / Investment Block */}
+                <div className="py-4 border-y border-slate-100 space-y-1 mb-5">
                   <div className="flex items-baseline gap-1">
-                    <span className="font-heading text-3xl sm:text-4xl font-extrabold text-navy-950 tracking-tight">
-                      {displayPrice}
+                    <span className="font-heading text-xl sm:text-2xl font-extrabold text-navy-950 tracking-tight">
+                      Pocket-Friendly Scope
                     </span>
-                    {!isEnterprise && (
-                      <span className="text-xs font-mono text-slate-400">/ project</span>
-                    )}
                   </div>
 
-                  {/* Dual Benchmark Badge (Pakistan vs International) */}
-                  <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
-                    <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">
-                      PK: {tier.pakistanDisplay}
-                    </span>
-                    <span>·</span>
-                    <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 font-semibold">
-                      Global: {tier.internationalDisplay}
-                    </span>
+                  <div className="flex items-center gap-1.5 text-xs font-mono text-brand-blue font-medium">
+                    <span>✨ Tailored to Your Budget</span>
                   </div>
                 </div>
 

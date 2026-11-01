@@ -89,7 +89,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link href="/pricing" className="text-slate-400 hover:text-white transition-colors">
-                  Pricing &amp; Packages
+                  Flexible Packages &amp; Scoping
                 </Link>
               </li>
               <li>

@@ -31,21 +31,21 @@ export default function PricingPage() {
           <div className="max-w-3xl space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Predictable Investment Architecture</span>
+              <span>Pocket-Friendly Investment Architecture</span>
             </div>
 
             <h1 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-navy-900 leading-tight">
-              Transparent Pricing. Zero Hidden Fees.
+              Flexible Scoping. Tailored to Your Budget.
             </h1>
 
             <p className="text-lg sm:text-xl text-slate-600 leading-relaxed">
-              Whether you need a rapid conversion landing page or an enterprise digital platform, our packages are engineered for maximum commercial ROI with full code ownership.
+              Whether you need a rapid conversion landing page or a full business platform, our engineering roadmaps are tailored to your comfortable budget with milestone-based delivery and 100% code ownership.
             </p>
 
             <div className="pt-2 flex flex-wrap gap-4 text-xs font-mono text-slate-600">
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                Automatic Local Currency Detection
+                Pocket-Friendly Startup &amp; Business Rates
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-brand-blue" />
@@ -53,7 +53,7 @@ export default function PricingPage() {
               </span>
               <span className="flex items-center gap-1.5">
                 <CheckCircle2 className="w-4 h-4 text-brand-blue" />
-                Milestone-Based Delivery
+                Zero Agency Markup Overhead
               </span>
             </div>
           </div>

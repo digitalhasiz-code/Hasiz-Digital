@@ -76,14 +76,14 @@ export default function ServicesPage() {
           <div className="pt-8 border-t border-slate-100 space-y-12">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-5 rounded-2xl bg-blue-50/70 border border-blue-200/60 shadow-sm">
               <div className="space-y-0.5">
-                <span className="text-xs font-mono font-bold text-navy-950 uppercase tracking-wide">Looking for Fixed Bundled Packages?</span>
-                <p className="text-xs text-slate-600">Review our Starter, Professional, and Premium packages with instant country-based quoting.</p>
+                <span className="text-xs font-mono font-bold text-navy-950 uppercase tracking-wide">Pocket-Friendly &amp; Milestone Scoped</span>
+                <p className="text-xs text-slate-600">Have a specific budget in mind? We customize our engineering deliverables to match your comfortable investment.</p>
               </div>
               <Link
-                href="/pricing"
+                href="/contact"
                 className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-navy-900 hover:bg-brand-blue text-white text-xs font-semibold font-mono transition-colors whitespace-nowrap shadow-sm"
               >
-                <span>View Pricing Packages</span>
+                <span>Request Custom Estimate</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

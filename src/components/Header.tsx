@@ -9,7 +9,6 @@ import { Menu, X, ArrowUpRight, Globe2, BookOpen } from "lucide-react";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
   { href: "/work", label: "Work" },
   { href: "/blog", label: "Blog" },
   { href: "/news", label: "News & Markets", badge: "LIVE" },

@@ -23,3 +23,4 @@ export default function WebsiteMaintenanceServicePage() {
   if (!service) notFound();
   return <ServicePageTemplate service={service} />;
 }
+

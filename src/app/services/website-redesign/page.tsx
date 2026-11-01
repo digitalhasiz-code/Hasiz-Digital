@@ -23,3 +23,4 @@ export default function WebsiteRedesignServicePage() {
   if (!service) notFound();
   return <ServicePageTemplate service={service} />;
 }
+

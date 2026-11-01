@@ -1437,6 +1437,23 @@ export interface ServiceEstimateInfo {
 }
 
 export const serviceEstimates: Record<string, ServiceEstimateInfo> = {
+  "Landing Page (Pocket-Friendly Special)": {
+    name: "Landing Page (Special Offer)",
+    badge: "⚡ Special Limited Offer",
+    isSpecialLandingPage: true,
+    prices: {
+      USD: 190,
+      PKR: 15000,
+      GBP: 150,
+      EUR: 175,
+      AED: 700,
+      SAR: 720,
+      CAD: 260,
+      AUD: 290,
+      INR: 13500
+    },
+    scopeNotes: "Ultra-fast conversion landing page for ad campaigns, lead gen & product launches. Includes basic responsive design & SEO setup."
+  },
   "Landing Page (Special Offer)": {
     name: "Landing Page (Special Offer)",
     badge: "⚡ Special Limited Offer",
@@ -1454,6 +1471,22 @@ export const serviceEstimates: Record<string, ServiceEstimateInfo> = {
     },
     scopeNotes: "Ultra-fast conversion landing page for ad campaigns, lead gen & product launches. Includes basic responsive design & SEO setup."
   },
+  "Starter Package (Fast Launch)": {
+    name: "Starter Package",
+    badge: "Fast Launch",
+    prices: {
+      USD: 350,
+      PKR: 35000,
+      GBP: 280,
+      EUR: 320,
+      AED: 1300,
+      SAR: 1350,
+      CAD: 480,
+      AUD: 530,
+      INR: 30000
+    },
+    scopeNotes: "Up to 5 conversion pages, 100% mobile-friendly responsive layout, on-page SEO metadata, and contact form integration."
+  },
   "Starter Package (Rs. 35k / $350)": {
     name: "Starter Package",
     badge: "Fast Launch",
@@ -1470,6 +1503,22 @@ export const serviceEstimates: Record<string, ServiceEstimateInfo> = {
     },
     scopeNotes: "Up to 5 conversion pages, 100% mobile-friendly responsive layout, on-page SEO metadata, and contact form integration."
   },
+  "Professional Package (Complete Business)": {
+    name: "Professional Package",
+    badge: "Most Popular",
+    prices: {
+      USD: 900,
+      PKR: 80000,
+      GBP: 700,
+      EUR: 800,
+      AED: 3300,
+      SAR: 3400,
+      CAD: 1240,
+      AUD: 1370,
+      INR: 72000
+    },
+    scopeNotes: "Up to 10 bespoke engineered pages, Next.js or custom WordPress, advanced SEO + schema markup, and 30-day post-launch support."
+  },
   "Professional Package (Rs. 80k / $900)": {
     name: "Professional Package",
     badge: "Most Popular",
@@ -1485,6 +1534,23 @@ export const serviceEstimates: Record<string, ServiceEstimateInfo> = {
       INR: 72000
     },
     scopeNotes: "Up to 10 bespoke engineered pages, Next.js or custom WordPress, advanced SEO + schema markup, and 30-day post-launch support."
+  },
+  "Premium Package (E-Commerce & Scale)": {
+    name: "Premium Package",
+    badge: "E-Commerce & Scale",
+    isStartingFrom: true,
+    prices: {
+      USD: 1500,
+      PKR: 150000,
+      GBP: 1200,
+      EUR: 1380,
+      AED: 5500,
+      SAR: 5700,
+      CAD: 2070,
+      AUD: 2280,
+      INR: 125000
+    },
+    scopeNotes: "Full E-Commerce store (Shopify / WooCommerce) or complex web application with payments, inventory and 60-day VIP support."
   },
   "Premium Package (Rs. 150k+ / $1,500+)": {
     name: "Premium Package",

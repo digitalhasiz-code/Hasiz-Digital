@@ -96,9 +96,7 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
 
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold bg-emerald-50 text-emerald-900 border border-emerald-200/80 shadow-subtle">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  <span className="text-emerald-700 uppercase tracking-wider text-[11px]">Starts From:</span>
-                  <span className="font-bold text-emerald-950 font-heading">{formatServiceStartingPrice(service.slug)}</span>
-                  <span className="text-[10px] text-emerald-600">({currencyConfig.code})</span>
+                  <span className="text-emerald-800 font-medium">Pocket-Friendly • Tailored to Your Scope</span>
                 </div>
               </div>
 
@@ -430,18 +428,18 @@ export default function ServicePageTemplate({ service }: ServicePageProps) {
                         <span className={`text-[10px] font-mono uppercase tracking-wider block mb-1 ${
                           tier.popular ? "text-slate-400" : "text-slate-500"
                         }`}>
-                          Investment
+                          Investment Architecture
                         </span>
                         <div className="flex items-baseline gap-2">
-                          <span className={`font-heading text-3xl sm:text-4xl font-bold tracking-tight ${
-                            tier.popular ? "text-white" : "text-navy-900"
+                          <span className={`font-heading text-2xl sm:text-3xl font-bold tracking-tight ${
+                            tier.popular ? "text-brand-sky" : "text-navy-900"
                           }`}>
-                            {priceFormatted}
-                          </span>
-                          <span className={`text-xs font-mono font-semibold ${tier.popular ? "text-slate-400" : "text-slate-500"}`}>
-                            {currencyConfig.code}
+                            Pocket-Friendly Scope
                           </span>
                         </div>
+                        <p className={`text-xs mt-1 leading-snug ${tier.popular ? "text-slate-300" : "text-slate-500"}`}>
+                          Tailored precisely to your comfortable budget &amp; deliverables.
+                        </p>
                       </div>
 
                       <div className="space-y-2.5 mb-8">

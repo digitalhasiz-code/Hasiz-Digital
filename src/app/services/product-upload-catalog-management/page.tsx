@@ -23,3 +23,4 @@ export default function ProductUploadCatalogServicePage() {
   if (!service) notFound();
   return <ServicePageTemplate service={service} />;
 }
+
