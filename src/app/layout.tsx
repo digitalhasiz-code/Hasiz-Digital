@@ -49,6 +49,12 @@ export const metadata: Metadata = {
         height: 630,
         alt: "HASIZ Digital Engineering Studio — We Engineer Digital Experiences",
       },
+      {
+        url: "/images/brand/hasiz-icon-square.png",
+        width: 512,
+        height: 512,
+        alt: "HASIZ Digital Engineering Studio Emblem",
+      },
     ],
   },
   twitter: {
@@ -97,7 +103,8 @@ export default function RootLayout({
         "name": "HASIZ",
         "legalName": "HASIZ Digital Engineering Studio",
         "url": "https://www.hasiz.com",
-        "logo": "https://www.hasiz.com/images/brand/logo-dark.svg",
+        "logo": "https://www.hasiz.com/images/brand/hasiz-icon-square.png",
+        "image": "https://www.hasiz.com/images/brand/hasiz-icon-square.png",
         "description": "HASIZ is a digital engineering studio focused on building high-performance websites, e-commerce experiences, custom software, and intelligent digital solutions for modern businesses.",
         "slogan": "We Engineer Digital Experiences.",
         "email": "digitalhasiz@gmail.com",
@@ -112,6 +119,7 @@ export default function RootLayout({
         "@id": "https://www.hasiz.com/#website",
         "url": "https://www.hasiz.com",
         "name": "HASIZ Digital Engineering Studio",
+        "image": "https://www.hasiz.com/images/brand/hasiz-icon-square.png",
         "publisher": {
           "@id": "https://www.hasiz.com/#organization"
         },
@@ -126,6 +134,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
