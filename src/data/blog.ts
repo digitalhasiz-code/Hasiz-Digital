@@ -73,8 +73,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "E-Commerce Solutions Architects"
     },
-    "featuredImage": "/images/services/shopify-store-design.webp",
-    "altText": "WordPress WooCommerce vs Shopify comprehensive business comparison",
+    "featuredImage": "/images/blog/wordpress-vs-shopify.webp",
+    "altText": "E-commerce store management and online shopping on laptop",
     "relatedServiceSlug": "shopify-development",
     "keyTakeaways": [
       "Shopify is unbeatable for speed-to-market, zero server headaches, and built-in payment compliance.",
@@ -147,8 +147,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Technical Project Directors"
     },
-    "featuredImage": "/images/services/custom-web-development-architecture.webp",
-    "altText": "Complete cost breakdown chart for modern business websites in 2026",
+    "featuredImage": "/images/blog/how-much-does-a-website-cost-in-2026.webp",
+    "altText": "Business budget planning and website development cost estimation",
     "relatedServiceSlug": "custom-web-development",
     "keyTakeaways": [
       "A professional brochure website typically ranges between $500–$1,200 (Rs. 45,000–Rs. 100,000 PKR).",
@@ -235,8 +235,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Lead Full-Stack Engineers"
     },
-    "featuredImage": "/images/services/custom-wordpress-development.webp",
-    "altText": "Step-by-step business website creation workflow for startups",
+    "featuredImage": "/images/blog/how-to-create-a-business-website.webp",
+    "altText": "Startup founder developing a responsive business website on laptop",
     "relatedServiceSlug": "wordpress-development",
     "keyTakeaways": [
       "Define your primary conversion goal before writing a single line of code or choosing a template.",
@@ -306,8 +306,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "E-Commerce Solutions Architects"
     },
-    "featuredImage": "/images/portfolio/blomma-flower-studio.webp",
-    "altText": "Shopify vs WooCommerce ecommerce platform comparison breakdown",
+    "featuredImage": "/images/blog/shopify-vs-woocommerce.webp",
+    "altText": "E-commerce order fulfillment, packaging, and digital checkout",
     "relatedServiceSlug": "shopify-development",
     "keyTakeaways": [
       "Shopify's 1-click Shop Pay checkout converts at 10%–15% higher rates than generic checkouts.",
@@ -363,8 +363,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "SEO & Performance Engineers"
     },
-    "featuredImage": "/images/portfolio/dluxe-destinations.webp",
-    "altText": "Diagnostics for website with low organic search traffic and Google ranking fixes",
+    "featuredImage": "/images/blog/why-is-my-website-not-getting-traffic.webp",
+    "altText": "Search engine traffic analytics and website performance graph",
     "relatedServiceSlug": "website-redesign",
     "keyTakeaways": [
       "Check Google Search Console first: 40% of 'no traffic' complaints stem from 'noindex' tags left on accidentally after staging.",
@@ -420,8 +420,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "AI Integration Specialists"
     },
-    "featuredImage": "/images/services/ai-workflow-automation.webp",
-    "altText": "Curated collection of practical AI tools for small business operational automation",
+    "featuredImage": "/images/blog/best-ai-tools-for-small-businesses.webp",
+    "altText": "Modern artificial intelligence generative interface for business productivity",
     "relatedServiceSlug": "ai-integration",
     "keyTakeaways": [
       "Generic chatbots are fun; integrated AI pipelines connected to your CRM and email generate real revenue.",
@@ -477,8 +477,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Performance Engineers"
     },
-    "featuredImage": "/images/portfolio/pulseguard-healthtech.webp",
-    "altText": "Web performance optimization dashboard showing 95+ Google PageSpeed score",
+    "featuredImage": "/images/blog/how-to-improve-website-speed.webp",
+    "altText": "High-speed digital data transfer and web performance acceleration",
     "relatedServiceSlug": "website-maintenance",
     "keyTakeaways": [
       "Images account for 60%+ of total page weight: convert all PNGs/JPEGs to next-gen WebP or AVIF formats.",
@@ -534,8 +534,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Lead SEO Strategists"
     },
-    "featuredImage": "/images/portfolio/inclusive-hydroponics.webp",
-    "altText": "Organic Google search ranking strategy diagram showing topical authority silos",
+    "featuredImage": "/images/blog/how-to-rank-your-website-on-google.webp",
+    "altText": "Google search engine optimization and SEO ranking strategy dashboard",
     "relatedServiceSlug": "website-redesign",
     "keyTakeaways": [
       "Match search intent: Does the user want information (Guide), comparison (VS), or to buy (Commercial landing page)?",
@@ -588,8 +588,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Senior Software Architects"
     },
-    "featuredImage": "/images/services/custom-web-development-architecture.webp",
-    "altText": "Bespoke custom web development code versus standard CMS platform comparison",
+    "featuredImage": "/images/blog/custom-website-vs-wordpress.webp",
+    "altText": "Custom web development code and software architecture on screen",
     "relatedServiceSlug": "custom-web-development",
     "keyTakeaways": [
       "WordPress is ideal for content publishing and standard business service sites.",
@@ -642,8 +642,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "E-Commerce Solutions Architects"
     },
-    "featuredImage": "/images/portfolio/melcasa-australia.webp",
-    "altText": "Complete blueprint for building and launching a profitable online ecommerce store",
+    "featuredImage": "/images/blog/how-to-build-an-online-store.webp",
+    "altText": "Curated retail storefront and digital merchandising setup",
     "relatedServiceSlug": "shopify-development",
     "keyTakeaways": [
       "High-converting product pages need high-res lifestyle imagery, clear pricing, and clear shipping timelines.",
@@ -697,8 +697,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Senior WordPress Engineers"
     },
-    "featuredImage": "/images/services/custom-wordpress-development.webp",
-    "altText": "Carefully selected lightweight business plugins for WordPress websites",
+    "featuredImage": "/images/blog/best-wordpress-plugins-for-business.webp",
+    "altText": "Clean workspace with laptop displaying web management tools",
     "relatedServiceSlug": "wordpress-development",
     "keyTakeaways": [
       "The golden rule of WordPress engineering: If a feature can be coded with 10 lines of clean PHP, never install a heavy plugin.",
@@ -750,8 +750,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "AI Integration Specialists"
     },
-    "featuredImage": "/images/services/ai-workflow-automation.webp",
-    "altText": "Integration architecture for custom Gemini and OpenAI AI chatbots on corporate websites",
+    "featuredImage": "/images/blog/how-to-add-an-ai-chatbot-to-your-website.webp",
+    "altText": "AI chatbot assistant interface for automated customer support",
     "relatedServiceSlug": "ai-integration",
     "keyTakeaways": [
       "An AI chatbot should act as your best digital sales rep, qualifying customer budget and timeline before handoff.",
@@ -804,8 +804,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "E-Commerce Solutions Architects"
     },
-    "featuredImage": "/images/services/shopify-store-design.webp",
-    "altText": "Transparent budget breakdown for professional Shopify storefront development",
+    "featuredImage": "/images/blog/how-much-does-shopify-development-cost.webp",
+    "altText": "E-commerce store financial planning and investment budget analysis",
     "relatedServiceSlug": "shopify-development",
     "keyTakeaways": [
       "Starter Shopify stores built on optimized themes cost between $500–$750 (Rs. 50,000–Rs. 70,000 PKR).",
@@ -853,8 +853,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "UI/UX & Conversion Designers"
     },
-    "featuredImage": "/images/services/ui-ux-design-system.webp",
-    "altText": "High-converting landing page UI UX design wireframe and conversion principles",
+    "featuredImage": "/images/blog/landing-page-design-best-practices.webp",
+    "altText": "UI UX designer sketching wireframes for high-converting landing page",
     "relatedServiceSlug": "ui-ux-design",
     "keyTakeaways": [
       "The 5-Second Test: Within 5 seconds, a visitor must understand what you offer, why it matters, and what to do next.",
@@ -906,8 +906,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "SaaS Product Architects"
     },
-    "featuredImage": "/images/services/custom-web-application-dashboard.webp",
-    "altText": "Full-stack SaaS application architecture diagram and database multitenancy model",
+    "featuredImage": "/images/blog/what-is-saas-development.webp",
+    "altText": "Global SaaS cloud infrastructure and web application architecture",
     "relatedServiceSlug": "web-application-development",
     "keyTakeaways": [
       "Build a Minimum Viable Product (MVP) that solves ONE acute problem exceptionally well before adding enterprise features.",
@@ -961,8 +961,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Cybersecurity & Maintenance Engineers"
     },
-    "featuredImage": "/images/portfolio/atrt-hygiene-solutions.webp",
-    "altText": "WordPress website cybersecurity hardening and malware protection checklist",
+    "featuredImage": "/images/blog/how-to-secure-a-wordpress-website.webp",
+    "altText": "Cybersecurity digital shield protecting web server and database",
     "relatedServiceSlug": "website-maintenance",
     "keyTakeaways": [
       "Never use 'admin' as your administrator username: it is the target of 85% of automated brute-force attacks.",
@@ -1015,8 +1015,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Lead Full-Stack Engineers"
     },
-    "featuredImage": "/images/portfolio/hello-pineapple-studio.webp",
-    "altText": "Signs your existing business website requires a professional modern redesign",
+    "featuredImage": "/images/blog/website-redesign-when-do-you-need-it.webp",
+    "altText": "Business executive evaluating digital brand redesign on tablet",
     "relatedServiceSlug": "website-redesign",
     "keyTakeaways": [
       "If your site is not 100% fluidly responsive on modern mobile devices, you are losing 65%+ of potential buyers.",
@@ -1068,8 +1068,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Automation & Integration Architects"
     },
-    "featuredImage": "/images/services/ai-workflow-automation.webp",
-    "altText": "Automated business workflow diagram showing webhooks, APIs, and AI processing",
+    "featuredImage": "/images/blog/how-to-automate-business-workflows.webp",
+    "altText": "Automated electronic processor and integrated business workflow systems",
     "relatedServiceSlug": "ai-integration",
     "keyTakeaways": [
       "Audit your business operations: Any task performed more than 3 times a day can and should be automated.",
@@ -1121,8 +1121,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Web Performance Engineers"
     },
-    "featuredImage": "/images/portfolio/wholesaler-b2b-portal.webp",
-    "altText": "Google Core Web Vitals metrics breakdown showing LCP, INP, and CLS thresholds",
+    "featuredImage": "/images/blog/what-are-core-web-vitals.webp",
+    "altText": "Google Core Web Vitals diagnostic speed metrics and website audit",
     "relatedServiceSlug": "website-maintenance",
     "keyTakeaways": [
       "Largest Contentful Paint (LCP): Must render within 2.5 seconds (ideally under 1.2s).",
@@ -1174,8 +1174,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Principal Technology Consultants"
     },
-    "featuredImage": "/images/services/hasiz-web-development-portfolio.webp",
-    "altText": "Checklist of critical questions when evaluating and hiring a web development agency",
+    "featuredImage": "/images/blog/how-to-choose-a-web-development-agency.webp",
+    "altText": "Client and engineering agency team collaborating in conference room",
     "relatedServiceSlug": "custom-web-development",
     "keyTakeaways": [
       "Always demand 100% full code ownership and repository access upon project completion.",
@@ -1221,8 +1221,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Lead Full-Stack Engineers"
     },
-    "featuredImage": "/images/services/custom-wordpress-development.webp",
-    "altText": "WordPress architecture comparison between commercial themes, visual builders, and custom code",
+    "featuredImage": "/images/blog/how-to-choose-the-right-wordpress-development-approach.webp",
+    "altText": "Web engineer architecting WordPress solution on modern laptop",
     "relatedServiceSlug": "wordpress-development",
     "keyTakeaways": [
       "Commercial marketplace themes carry immense code bloat that permanently limits mobile Core Web Vitals.",
@@ -1259,8 +1259,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "E-Commerce Solutions Architects"
     },
-    "featuredImage": "/images/services/shopify-store-design.webp",
-    "altText": "Technical diagram illustrating custom Shopify Liquid theme development versus off-the-shelf commercial templates",
+    "featuredImage": "/images/blog/custom-shopify-development-vs-ready-made-themes.webp",
+    "altText": "High-end retail storefront showcasing branded e-commerce products",
     "relatedServiceSlug": "shopify-development",
     "keyTakeaways": [
       "Commercial Shopify themes rely on heavy JavaScript app embeds that slow down mobile checkout speeds.",
@@ -1296,8 +1296,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Principal Technology Consultants"
     },
-    "featuredImage": "/images/services/hasiz-web-development-portfolio.webp",
-    "altText": "Strategic performance indicators demonstrating modern web development standards",
+    "featuredImage": "/images/blog/what-makes-a-business-website-high-performing.webp",
+    "altText": "Modern architectural enterprise building symbolizing high performance",
     "relatedServiceSlug": "custom-web-development",
     "keyTakeaways": [
       "Sub-second Largest Contentful Paint (LCP) directly correlates with higher organic search engine rankings.",
@@ -1333,8 +1333,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Senior Performance Engineers"
     },
-    "featuredImage": "/images/portfolio/pulseguard-healthtech.webp",
-    "altText": "Technical waterfall chart and Core Web Vitals audit for WordPress performance optimization",
+    "featuredImage": "/images/blog/wordpress-website-speed-optimization-guide.webp",
+    "altText": "High performance server rack in modern cloud data center",
     "relatedServiceSlug": "website-maintenance",
     "keyTakeaways": [
       "Layered caching (Redis object caching + edge CDN HTML caching) outperforms multiple conflicting WordPress plugins.",
@@ -1370,8 +1370,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "AI & Systems Integration Architects"
     },
-    "featuredImage": "/images/services/ai-workflow-automation.webp",
-    "altText": "Architecture flow diagram showing AI triage, document synthesis, and automated business workflows",
+    "featuredImage": "/images/blog/how-ai-automation-improves-business-workflows.webp",
+    "altText": "Neural network intelligence mapping for automated business workflows",
     "relatedServiceSlug": "ai-integration",
     "keyTakeaways": [
       "Domain-specific AI triage reduces tier-1 customer response times from hours to seconds.",
@@ -1407,8 +1407,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Principal Technology Consultants"
     },
-    "featuredImage": "/images/services/custom-web-development-architecture.webp",
-    "altText": "Comparison of closed proprietary website builders with modern custom open web architectures",
+    "featuredImage": "/images/blog/custom-web-development-vs-website-builders.webp",
+    "altText": "Custom JavaScript code syntax displayed on developer screen",
     "relatedServiceSlug": "custom-web-development",
     "keyTakeaways": [
       "SaaS builders offer rapid initial setup but enforce hard boundaries on database architecture and custom payment flows.",
@@ -1444,8 +1444,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Lead Full-Stack Engineers"
     },
-    "featuredImage": "/images/services/hasiz-web-development-portfolio.webp",
-    "altText": "Core digital features required for high-conversion commercial enterprise websites",
+    "featuredImage": "/images/blog/essential-website-features-for-growing-businesses.webp",
+    "altText": "Business growth strategy and core website feature metrics",
     "relatedServiceSlug": "ui-ux-design",
     "keyTakeaways": [
       "Contextual social proof placed adjacent to conversion forms increases submission rates by up to 28%.",
@@ -1481,8 +1481,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "E-Commerce Solutions Architects"
     },
-    "featuredImage": "/images/services/shopify-store-design.webp",
-    "altText": "E-commerce user experience wireframe showing high-converting product pages and checkout flows",
+    "featuredImage": "/images/blog/build-conversion-focused-ecommerce-website.webp",
+    "altText": "Secure mobile checkout and e-commerce shopping cart payment",
     "relatedServiceSlug": "shopify-development",
     "keyTakeaways": [
       "Every extra step in a mobile checkout funnel decreases final transaction completion by an average of 14%.",
@@ -1518,8 +1518,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "SEO & Performance Engineers"
     },
-    "featuredImage": "/images/portfolio/inclusive-hydroponics.webp",
-    "altText": "Information architecture diagram showing topic clusters, internal linking, and search crawler pathways",
+    "featuredImage": "/images/blog/why-website-architecture-matters-for-seo.webp",
+    "altText": "Structured architectural framework and technical information hierarchy",
     "relatedServiceSlug": "website-redesign",
     "keyTakeaways": [
       "Crawl depth matters: Important commercial landing pages should never be more than three clicks away from the home page.",
@@ -1555,8 +1555,8 @@ export const blogArticles: BlogArticle[] = [
       "name": "HASIZ Engineering Team",
       "role": "Lead Full-Stack Engineers"
     },
-    "featuredImage": "/images/portfolio/hello-pineapple-studio.webp",
-    "altText": "Step-by-step technical checklist for executing a website redesign while preserving search rankings",
+    "featuredImage": "/images/blog/how-to-plan-a-successful-website-redesign.webp",
+    "altText": "Creative agency team planning website redesign wireframes on whiteboard",
     "relatedServiceSlug": "website-redesign",
     "keyTakeaways": [
       "Never launch a redesign without a comprehensive 1-to-1 301 URL redirect map for every legacy URL indexed in Google.",
