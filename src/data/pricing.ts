@@ -94,26 +94,8 @@ export interface MasterServicePrice {
   prices: Record<CurrencyCode, number>;
 }
 
-// Master Pricing Table from client's official rate card (with Landing Page reduced to Rs. 15,000 PKR / $190 USD)
+// Master Pricing Table from client's official rate card
 export const masterPricingTable: MasterServicePrice[] = [
-  {
-    id: "landing-page",
-    name: "Landing Page",
-    category: "Development",
-    isSpecialLandingPage: true,
-    description: "Ultra-fast, conversion-focused single page designed to capture high-intent leads and drive direct sales.",
-    prices: {
-      USD: 190,
-      PKR: 15000,
-      GBP: 150,
-      EUR: 175,
-      AED: 700,
-      SAR: 720,
-      CAD: 260,
-      AUD: 290,
-      INR: 13500
-    }
-  },
   {
     id: "wordpress-website",
     name: "WordPress Website",
@@ -265,6 +247,24 @@ export const masterPricingTable: MasterServicePrice[] = [
       CAD: 550,
       AUD: 610,
       INR: 36000
+    }
+  },
+  {
+    id: "landing-page",
+    name: "Landing Page",
+    category: "Development",
+    isSpecialLandingPage: true,
+    description: "Ultra-fast, conversion-focused single page designed to capture high-intent leads and drive direct sales.",
+    prices: {
+      USD: 250,
+      PKR: 20000,
+      GBP: 200,
+      EUR: 230,
+      AED: 900,
+      SAR: 950,
+      CAD: 340,
+      AUD: 380,
+      INR: 18000
     }
   },
   {

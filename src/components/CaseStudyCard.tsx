@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Project } from "@/data/projects";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Lock, MoveVertical } from "lucide-react";
 
 interface CaseStudyCardProps {
   project: Project;
@@ -11,29 +11,52 @@ interface CaseStudyCardProps {
 export default function CaseStudyCard({ project, priority = false }: CaseStudyCardProps) {
   return (
     <article className="group bg-white rounded-2xl border border-surface-border overflow-hidden shadow-subtle hover:shadow-card transition-all duration-300 flex flex-col h-full">
-      {/* Screenshot / Image container */}
+      {/* Interactive Website Preview with Smooth Hover Scroll */}
       <Link 
         href={`/work/${project.slug}`} 
-        className="block relative aspect-[16/10] overflow-hidden bg-slate-100 focus:outline-none focus:ring-2 focus:ring-brand-blue"
+        className="block relative overflow-hidden bg-slate-950 focus:outline-none focus:ring-2 focus:ring-brand-blue group/screen"
         tabIndex={-1}
         aria-hidden="true"
       >
-        <Image
-          src={project.featuredImage}
-          alt={project.altText}
-          width={1200}
-          height={750}
-          priority={priority}
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover object-top w-full h-full transform transition-transform duration-500 ease-out group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-navy-900/0 group-hover:bg-navy-900/10 transition-colors duration-300 pointer-events-none" />
-        
-        {/* Category Badge on top of image */}
-        <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-white/90 backdrop-blur-md text-navy-900 shadow-sm border border-white/40">
+        {/* Browser Mockup Top Chrome */}
+        <div className="h-7 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-3.5 select-none relative z-10">
+          <div className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-rose-500/80" />
+            <span className="w-2 h-2 rounded-full bg-amber-400/80" />
+            <span className="w-2 h-2 rounded-full bg-emerald-500/80" />
+          </div>
+
+          <div className="flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-800/80 text-[10px] font-mono text-slate-400 max-w-[190px] sm:max-w-[220px] truncate border border-slate-700/50">
+            <Lock className="w-2.5 h-2.5 text-emerald-400 shrink-0" />
+            <span className="truncate">{project.slug}.com</span>
+          </div>
+
+          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-semibold hidden sm:inline-block">
             {project.category}
           </span>
+        </div>
+
+        {/* Viewport Frame with Smooth Slow Scroll */}
+        <div className="relative h-60 sm:h-72 overflow-hidden bg-slate-900">
+          <Image
+            src={project.featuredImage}
+            alt={project.altText}
+            width={1200}
+            height={750}
+            priority={priority}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="w-full h-auto min-h-[420px] sm:min-h-[480px] object-cover object-top will-change-transform transition-transform duration-[1400ms] ease-out group-hover/screen:duration-[6500ms] group-hover/screen:ease-in-out group-hover/screen:-translate-y-[calc(100%-15rem)] sm:group-hover/screen:-translate-y-[calc(100%-18rem)]"
+          />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
+
+          {/* Hover to scroll indicator badge */}
+          <div className="absolute bottom-3 right-3 z-10 pointer-events-none transition-all duration-300 group-hover/screen:opacity-0 group-hover/screen:translate-y-1">
+            <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono font-medium bg-navy-950/85 backdrop-blur-md text-slate-200 border border-white/15 shadow-md">
+              <MoveVertical className="w-2.5 h-2.5 text-brand-sky animate-bounce" />
+              <span>Hover to preview page</span>
+            </span>
+          </div>
         </div>
       </Link>
 

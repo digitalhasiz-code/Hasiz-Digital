@@ -17,13 +17,13 @@ export default function MasterPricingTable() {
     ? masterPricingTable
     : masterPricingTable.filter(s => s.category === selectedCategory);
 
-  const mainColumns: { code: CurrencyCode; label: string; flag: string }[] = [
-    { code: "USD", label: "Global / USA", flag: "🇺🇸" },
-    { code: "PKR", label: "Pakistan", flag: "🇵🇰" },
-    { code: "GBP", label: "UK", flag: "🇬🇧" },
-    { code: "EUR", label: "Europe", flag: "🇪🇺" },
-    { code: "AED", label: "UAE", flag: "🇦🇪" },
-    { code: "SAR", label: "Saudi", flag: "🇸🇦" },
+  const mainColumns: { code: CurrencyCode; label: string; countryCode: string }[] = [
+    { code: "USD", label: "GLOBAL / USA", countryCode: "US" },
+    { code: "PKR", label: "PAKISTAN", countryCode: "PK" },
+    { code: "GBP", label: "UK", countryCode: "GB" },
+    { code: "EUR", label: "EUROPE", countryCode: "EU" },
+    { code: "AED", label: "UAE", countryCode: "AE" },
+    { code: "SAR", label: "SAUDI", countryCode: "SA" },
   ];
 
   return (
@@ -79,11 +79,11 @@ export default function MasterPricingTable() {
                   <th
                     key={col.code}
                     className={`py-4 px-4 font-bold text-center transition-colors ${
-                      isActive ? "bg-brand-blue/30 text-white border-x border-brand-blue/40" : "text-slate-300"
+                      isActive ? "bg-[#132C5B] text-white border-x border-blue-500/30" : "text-slate-300"
                     }`}
                   >
                     <div className="flex items-center justify-center gap-1.5">
-                      <span className="text-sm">{col.flag}</span>
+                      <span className="text-[10px] text-slate-400 font-mono font-normal uppercase">{col.countryCode}</span>
                       <span>{col.label}</span>
                     </div>
                   </th>

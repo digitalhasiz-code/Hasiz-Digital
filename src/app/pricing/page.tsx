@@ -2,9 +2,10 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import PricingPackages from "@/components/PricingPackages";
+import MasterPricingTable from "@/components/MasterPricingTable";
 import PricingConditions from "@/components/PricingConditions";
 import { pricingFaqs } from "@/data/pricing";
-import { ArrowRight, CheckCircle2, HelpCircle, Shield, Sparkles } from "lucide-react";
+import { ArrowRight, CheckCircle2, HelpCircle, Shield, Sparkles, Tag } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Engineering Pricing & Packages | Transparent Global Rates | HASIZ",
@@ -75,6 +76,24 @@ export default function PricingPage() {
             </div>
 
             <PricingPackages />
+          </div>
+
+          {/* Transparent Multi-Country Rate Card Table */}
+          <div id="rate-card" className="pt-6">
+            <div className="text-center max-w-2xl mx-auto mb-10 space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase bg-blue-50 text-brand-blue border border-blue-200/60">
+                <Tag className="w-3.5 h-3.5" />
+                <span>Transparent Multi-Currency Rate Card</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl font-heading font-bold text-navy-900 tracking-tight">
+                Complete Service Rates by Region
+              </h2>
+              <p className="text-slate-600 text-sm sm:text-base">
+                Explore transparent rates for all 13 services across Pakistan, Global/USA, UK, Europe, UAE, and Saudi Arabia.
+              </p>
+            </div>
+
+            <MasterPricingTable />
           </div>
 
           {/* Pricing Conditions & Project Inclusions */}

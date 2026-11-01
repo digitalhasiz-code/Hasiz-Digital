@@ -6,7 +6,7 @@ import { projects } from "@/data/projects";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import CaseStudyCard from "@/components/CaseStudyCard";
-import { ArrowLeft, ArrowRight, CheckCircle2, Cpu, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, Cpu, ExternalLink, Lock, Sparkles } from "lucide-react";
 
 interface Props {
   params: { slug: string };
@@ -118,17 +118,35 @@ export default function CaseStudyPage({ params }: Props) {
       {/* Hero Showcase Image */}
       <section className="py-12 bg-white border-b border-surface-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl overflow-hidden border border-surface-border shadow-elevated bg-slate-900">
-            <Image
-              src={project.featuredImage}
-              alt={project.altText}
-              width={1200}
-              height={750}
-              priority
-              fetchPriority="high"
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              className="w-full h-auto object-cover object-top"
-            />
+          <div className="rounded-2xl overflow-hidden border border-surface-border shadow-elevated bg-slate-900 group">
+            {/* Browser Mockup Chrome Header */}
+            <div className="h-9 bg-slate-900 border-b border-slate-800 flex items-center justify-between px-4 select-none">
+              <div className="flex items-center gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-400/80" />
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-md bg-slate-800/80 text-xs font-mono text-slate-300 border border-slate-700/50">
+                <Lock className="w-3 h-3 text-emerald-400 shrink-0" />
+                <span>https://{project.slug}.com</span>
+              </div>
+              <span className="text-xs font-mono text-slate-400 uppercase tracking-wider font-semibold">
+                {project.category}
+              </span>
+            </div>
+
+            <div className="relative overflow-hidden bg-slate-950">
+              <Image
+                src={project.featuredImage}
+                alt={project.altText}
+                width={1200}
+                height={750}
+                priority
+                fetchPriority="high"
+                sizes="(max-width: 1200px) 100vw, 1200px"
+                className="w-full h-auto object-cover object-top"
+              />
+            </div>
           </div>
         </div>
       </section>
