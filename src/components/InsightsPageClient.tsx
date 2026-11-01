@@ -4,17 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { blogArticles } from "@/data/blog";
+import { blogArticles, officialBlogCategories } from "@/data/blog";
 import { ArrowUpRight, BookOpen } from "lucide-react";
-
-const categories = [
-  "All Articles",
-  "Engineering",
-  "E-Commerce",
-  "Architecture & SEO",
-  "AI & Automation",
-  "Strategy & Design"
-];
 
 export default function InsightsPageClient() {
   const [selectedCategory, setSelectedCategory] = useState("All Articles");
@@ -47,7 +38,7 @@ export default function InsightsPageClient() {
 
           {/* Category Tabs */}
           <div className="pt-10 flex flex-wrap gap-2">
-            {categories.map((cat) => {
+            {officialBlogCategories.map((cat) => {
               const isSelected = selectedCategory === cat;
               return (
                 <button

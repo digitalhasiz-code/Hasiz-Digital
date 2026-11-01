@@ -56,11 +56,10 @@ export default function MasterPricingTable() {
             key={cat}
             type="button"
             onClick={() => setSelectedCategory(cat)}
-            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue ${
-              selectedCategory === cat
-                ? "bg-navy-900 text-white shadow-sm"
-                : "bg-white text-slate-600 hover:text-navy-900 border border-surface-border hover:border-slate-300"
-            }`}
+            className={`px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-brand-blue ${selectedCategory === cat
+              ? "bg-navy-900 text-white shadow-sm"
+              : "bg-white text-slate-600 hover:text-navy-900 border border-surface-border hover:border-slate-300"
+              }`}
           >
             {cat}
           </button>
@@ -98,9 +97,8 @@ export default function MasterPricingTable() {
               return (
                 <tr
                   key={item.id}
-                  className={`transition-colors hover:bg-slate-50/80 ${
-                    isLandingPage ? "bg-blue-50/40 font-semibold" : ""
-                  }`}
+                  className={`transition-colors hover:bg-slate-50/80 ${isLandingPage ? "bg-blue-50/40 font-semibold" : ""
+                    }`}
                 >
                   <td className="py-4 px-5">
                     <div className="flex items-center gap-2">
@@ -125,11 +123,10 @@ export default function MasterPricingTable() {
                     return (
                       <td
                         key={col.code}
-                        className={`py-4 px-4 text-center font-mono text-xs whitespace-nowrap ${
-                          isActive
-                            ? "bg-blue-50/70 text-navy-950 font-bold border-x border-blue-200/60"
-                            : "text-slate-700"
-                        } ${isLandingPage && col.code === "PKR" ? "text-emerald-700 font-bold" : ""}`}
+                        className={`py-4 px-4 text-center font-mono text-xs whitespace-nowrap ${isActive
+                          ? "bg-blue-50/70 text-navy-950 font-bold border-x border-blue-200/60"
+                          : "text-slate-700"
+                          } ${isLandingPage && col.code === "PKR" ? "text-emerald-700 font-bold" : ""}`}
                       >
                         {formatted}
                       </td>
