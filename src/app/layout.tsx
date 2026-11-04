@@ -7,10 +7,10 @@ import { CurrencyProvider } from "@/context/CurrencyContext";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.hasiz.com"),
   title: {
-    default: "HASIZ — Digital Engineering Studio | We Engineer Digital Experiences",
+    default: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
     template: "%s | HASIZ Digital Engineering Studio"
   },
-  description: "HASIZ is an award-winning digital engineering studio building high-performance websites, e-commerce platforms, custom software, and intelligent digital solutions for modern businesses worldwide.",
+  description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership. Get a quote today!",
   keywords: [
     "Digital Engineering Studio",
     "High Performance Web Development",
@@ -40,8 +40,8 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.hasiz.com",
     siteName: "HASIZ Digital Engineering Studio",
-    title: "HASIZ — We Engineer Digital Experiences That Move Businesses Forward",
-    description: "From high-performance websites and scalable e-commerce to intelligent software solutions, HASIZ turns complex ideas into powerful digital experiences.",
+    title: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
+    description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership.",
     images: [
       {
         url: "/images/brand/og-image.png",
@@ -59,18 +59,17 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "HASIZ — Digital Engineering Studio",
-    description: "We engineer high-performance digital experiences for ambitious businesses worldwide.",
+    title: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
+    description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership.",
     images: ["/images/brand/og-image.png"],
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
       { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
       { url: "/icon.png", sizes: "512x512", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
     ],
     apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
       { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
     shortcut: ["/favicon.ico"],
@@ -133,13 +132,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="shortcut icon" href="/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

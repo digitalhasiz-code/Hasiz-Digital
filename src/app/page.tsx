@@ -26,13 +26,16 @@ import TechStackGrid from "@/components/TechStackGrid";
 import PhilosophySection from "@/components/PhilosophySection";
 
 export const metadata: Metadata = {
-  title: "HASIZ — Digital Engineering Studio | We Engineer Digital Experiences",
-  description: "HASIZ is an award-winning digital engineering studio building high-performance websites, e-commerce platforms, custom software, and intelligent digital solutions for modern businesses worldwide.",
+  title: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
+  description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership. Get a quote today!",
   openGraph: {
-    title: "HASIZ — We Engineer Digital Experiences That Move Businesses Forward",
-    description: "From high-performance websites and scalable e-commerce to intelligent software solutions, HASIZ turns complex ideas into powerful digital experiences.",
+    title: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
+    description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership.",
     url: "https://www.hasiz.com/",
-    images: [{ url: "/images/brand/og-image.png", width: 1200, height: 630 }],
+    images: [
+      { url: "/images/brand/og-image.png", width: 1200, height: 630 },
+      { url: "/images/brand/hasiz-icon-square.png", width: 512, height: 512 },
+    ],
   },
 };
 
