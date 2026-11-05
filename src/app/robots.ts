@@ -39,12 +39,23 @@ export default function robots(): MetadataRoute.Robots {
           "Omgilibot",
           "PerplexityBot",
           "Amazonbot",
-          "FacebookBot",
           "cohere-ai",
           "Scrapy",
           "spbot"
         ],
         disallow: "/",
+      },
+      // Social Media Preview Bots: Explicitly Allowed for Link Sharing
+      {
+        userAgent: [
+          "facebookexternalhit",
+          "Facebot",
+          "Twitterbot",
+          "LinkedInBot",
+          "WhatsApp",
+          "Slackbot"
+        ],
+        allow: "/",
       },
       // Default rule for all other crawlers
       {
