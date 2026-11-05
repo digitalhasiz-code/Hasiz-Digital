@@ -27,7 +27,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
 
         <h3 className="font-heading text-xl sm:text-2xl font-bold text-navy-900 mb-2 group-hover:text-brand-blue transition-colors">
           <Link href={`/services/${service.slug}`} className="focus:outline-none focus-visible:underline">
-            {service.shortTitle}
+            {service.title}
           </Link>
         </h3>
 

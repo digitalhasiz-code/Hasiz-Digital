@@ -28,10 +28,13 @@ import PhilosophySection from "@/components/PhilosophySection";
 export const metadata: Metadata = {
   title: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
   description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership. Get a quote today!",
+  alternates: {
+    canonical: "https://www.hasiz.com",
+  },
   openGraph: {
     title: "Custom Web, Shopify & Next.js Development Studio | HASIZ",
     description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership.",
-    url: "https://www.hasiz.com/",
+    url: "https://www.hasiz.com",
     images: [
       { url: "/images/brand/og-image.png", width: 1200, height: 630 },
       { url: "/images/brand/hasiz-icon-square.png", width: 512, height: 512 },
@@ -47,7 +50,6 @@ export default function HomePage() {
 
   return (
     <div className="relative">
-      <link rel="canonical" href="https://www.hasiz.com/" />
       {/* SECTION 02 — HERO */}
       <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-32 bg-surface overflow-hidden">
         {/* Subtle engineering grid background */}
@@ -64,11 +66,11 @@ export default function HomePage() {
               </div>
 
               <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-navy-900 leading-[1.1] sm:leading-[1.08]">
-                We Engineer Digital Experiences That Move Businesses Forward.
+                Custom Web, Shopify &amp; Next.js Development Studio.
               </h1>
 
               <p className="text-base sm:text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl">
-                From high-performance websites and scalable e-commerce platforms to intelligent software solutions, HASIZ helps ambitious businesses turn complex ideas into powerful digital experiences.
+                We engineer high-performance digital experiences that move businesses forward. From custom web applications and scalable e-commerce storefronts to AI workflow automation, HASIZ turns complex ideas into powerful digital experiences.
               </p>
 
               {/* Action Buttons */}
@@ -199,30 +201,30 @@ export default function HomePage() {
             </div>
             <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-3 gap-6">
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2 text-navy-900 font-semibold text-sm">
+                <h3 className="flex items-center gap-2 text-navy-900 font-semibold text-sm">
                   <Globe2 className="w-4 h-4 text-brand-blue" />
                   <span>International Reach</span>
-                </div>
+                </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Engineering web platforms for commercial clients in the US, UK, Europe, and global startup ecosystems.
                 </p>
               </div>
 
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2 text-navy-900 font-semibold text-sm">
+                <h3 className="flex items-center gap-2 text-navy-900 font-semibold text-sm">
                   <ShieldCheck className="w-4 h-4 text-brand-blue" />
                   <span>Security by Design</span>
-                </div>
+                </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Enterprise-grade Content Security Policies, hardened CMS setups, and secure cloud API gateways.
                 </p>
               </div>
 
               <div className="space-y-1.5">
-                <div className="flex items-center gap-2 text-navy-900 font-semibold text-sm">
+                <h3 className="flex items-center gap-2 text-navy-900 font-semibold text-sm">
                   <Cpu className="w-4 h-4 text-brand-blue" />
                   <span>Full-Stack Mastery</span>
-                </div>
+                </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Deep technical expertise across Next.js, WordPress, Shopify, relational PostgreSQL, and AI workflows.
                 </p>
@@ -247,8 +249,9 @@ export default function HomePage() {
             <Link
               href="/services"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-blue hover:text-blue-700 transition-colors"
+              aria-label="Explore all 9 HASIZ engineering services and capabilities"
             >
-              <span>View All 6 Service Specializations</span>
+              <span>Explore All 9 Engineering Services &amp; Capabilities</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

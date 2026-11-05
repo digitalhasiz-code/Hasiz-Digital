@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     template: "%s | HASIZ Digital Engineering Studio"
   },
   description: "Bespoke web development, high-converting Shopify stores & Next.js applications. Transparent pocket-friendly rates, sub-second speed & 100% code ownership. Get a quote today!",
+  alternates: {
+    canonical: "https://www.hasiz.com",
+  },
   keywords: [
     "Digital Engineering Studio",
     "High Performance Web Development",
@@ -108,9 +111,8 @@ export default function RootLayout({
         "slogan": "We Engineer Digital Experiences.",
         "email": "digitalhasiz@gmail.com",
         "sameAs": [
-          "https://github.com",
-          "https://linkedin.com",
-          "https://twitter.com"
+          "https://www.linkedin.com/in/hasiz-digital-192225449/",
+          "https://www.facebook.com/hasizdigitalengineeringstudio"
         ]
       },
       {

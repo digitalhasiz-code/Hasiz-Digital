@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
-import { Mail, Clock, Globe, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Mail, Clock, Globe, ShieldCheck, CheckCircle2, Linkedin, Facebook } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Start a Project | Contact HASIZ Digital Engineering Studio",
@@ -85,6 +85,35 @@ export default function ContactPage() {
                     <div>
                       <span className="block text-xs text-slate-400 font-mono">Guaranteed Response SLA</span>
                       <span className="font-medium text-slate-700">Within 24 business hours</span>
+                    </div>
+                  </div>
+
+                  {/* Official Social Channels */}
+                  <div className="pt-3 border-t border-slate-200/80">
+                    <span className="block text-xs text-slate-400 font-mono mb-2.5">Official Social Channels</span>
+                    <div className="flex items-center gap-3">
+                      <a
+                        href="https://www.linkedin.com/in/hasiz-digital-192225449/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-navy-900 hover:text-brand-blue hover:border-brand-blue/30 transition-all shadow-subtle"
+                        aria-label="HASIZ Official LinkedIn Profile"
+                        title="Follow HASIZ on LinkedIn"
+                      >
+                        <Linkedin className="w-3.5 h-3.5 text-brand-blue" />
+                        <span>LinkedIn</span>
+                      </a>
+                      <a
+                        href="https://www.facebook.com/hasizdigitalengineeringstudio"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-xs font-semibold text-navy-900 hover:text-brand-blue hover:border-brand-blue/30 transition-all shadow-subtle"
+                        aria-label="HASIZ Official Facebook Page"
+                        title="Follow HASIZ on Facebook"
+                      >
+                        <Facebook className="w-3.5 h-3.5 text-brand-blue" />
+                        <span>Facebook</span>
+                      </a>
                     </div>
                   </div>
                 </div>

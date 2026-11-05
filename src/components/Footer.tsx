@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { Mail, Clock, ArrowUpRight, Github, Linkedin, Twitter, Globe } from "lucide-react";
+import { Mail, Clock, ArrowUpRight, Linkedin, Facebook, Globe } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -24,9 +24,9 @@ export default function Footer() {
 
           {/* Services Links */}
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold tracking-wider uppercase text-white font-sans">
+            <p className="text-xs font-semibold tracking-wider uppercase text-white font-sans" role="heading" aria-level={4}>
               Engineering Services
-            </h3>
+            </p>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/services/wordpress-development" className="text-slate-400 hover:text-white transition-colors">
@@ -78,9 +78,9 @@ export default function Footer() {
 
           {/* Company Links */}
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold tracking-wider uppercase text-white font-sans">
+            <p className="text-xs font-semibold tracking-wider uppercase text-white font-sans" role="heading" aria-level={4}>
               Studio
-            </h3>
+            </p>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about" className="text-slate-400 hover:text-white transition-colors">
@@ -133,9 +133,9 @@ export default function Footer() {
 
           {/* Contact Information & Channels */}
           <div className="space-y-3">
-            <h3 className="text-xs font-semibold tracking-wider uppercase text-white font-sans">
+            <p className="text-xs font-semibold tracking-wider uppercase text-white font-sans" role="heading" aria-level={4}>
               Connect With Us
-            </h3>
+            </p>
             <div className="space-y-3 text-sm text-slate-400">
               <div className="flex items-start gap-2.5">
                 <Mail className="w-4 h-4 text-brand-sky mt-0.5 flex-shrink-0" />
@@ -166,31 +166,24 @@ export default function Footer() {
               {/* Social Channels */}
               <div className="pt-2 flex items-center gap-3">
                 <a
-                  href="https://github.com"
+                  href="https://www.linkedin.com/in/hasiz-digital-192225449/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-md bg-navy-800 text-slate-400 hover:text-white hover:bg-navy-700 transition-colors"
-                  aria-label="GitHub Profile"
-                >
-                  <Github className="w-4 h-4" />
-                </a>
-                <a
-                  href="https://linkedin.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="p-2 rounded-md bg-navy-800 text-slate-400 hover:text-white hover:bg-navy-700 transition-colors"
-                  aria-label="LinkedIn Profile"
+                  aria-label="HASIZ LinkedIn Profile"
+                  title="Follow HASIZ on LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
                 <a
-                  href="https://twitter.com"
+                  href="https://www.facebook.com/hasizdigitalengineeringstudio"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-2 rounded-md bg-navy-800 text-slate-400 hover:text-white hover:bg-navy-700 transition-colors"
-                  aria-label="Twitter Profile"
+                  aria-label="HASIZ Facebook Page"
+                  title="Follow HASIZ on Facebook"
                 >
-                  <Twitter className="w-4 h-4" />
+                  <Facebook className="w-4 h-4" />
                 </a>
               </div>
             </div>
